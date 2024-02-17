@@ -35,7 +35,7 @@ Transform:
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 180, y: 0, z: -90}
 --- !u!33 &4099026771233809308
 MeshFilter:
@@ -102,14 +102,14 @@ CapsuleCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.088817686
   m_Height: 0.701948
   m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Center: {x: 0, y: 1.51, z: 0}
 --- !u!114 &2542472404593646371
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -134,7 +134,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00509d3e5def80747bc7921d571fd979, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  raycastDistance: 1.84
+  raycastDistance: 2.3
   attackDamage: 3
   attackCooldown: 1
   numberOfRays: 9

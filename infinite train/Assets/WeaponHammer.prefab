@@ -11,10 +11,10 @@ GameObject:
   - component: {fileID: 6754409834940596029}
   - component: {fileID: 1316855766219935825}
   - component: {fileID: 3535066486762617559}
-  - component: {fileID: 3064513209827557401}
   - component: {fileID: 8214975014800773434}
   - component: {fileID: 5823308682747116250}
   - component: {fileID: 2078455771724125232}
+  - component: {fileID: 209572186399960150}
   m_Layer: 0
   m_Name: WeaponHammer
   m_TagString: Item
@@ -35,7 +35,7 @@ Transform:
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 180, y: 0, z: -90}
 --- !u!33 &1316855766219935825
 MeshFilter:
@@ -87,27 +87,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &3064513209827557401
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2500005920866960155}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &8214975014800773434
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -132,7 +111,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c70bf3ac042ff949b4f2a7dd0d7a129, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  raycastDistance: 3
+  raycastDistance: 3.8
   attackDamage: 10
   attackCooldown: 1
   attackPrepTime: 1
@@ -148,3 +127,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66aa4eb83f4bef34fb2d382690aa2d4b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!136 &209572186399960150
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2500005920866960155}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.06652957
+  m_Height: 1.1306183
+  m_Direction: 1
+  m_Center: {x: -0.00000092387194, y: 1.7353089, z: 0}

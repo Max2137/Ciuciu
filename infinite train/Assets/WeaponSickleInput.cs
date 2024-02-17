@@ -69,7 +69,7 @@ public class WeaponSickleInput : MonoBehaviour
         if (piercedObject != null)
         {
             // Przesuñ obiekt o sta³¹ odleg³oœæ w kierunku raycasta
-            Vector3 newPosition = transform.position + transform.forward * raycastDistance;
+            Vector3 newPosition = transform.position + transform.up * raycastDistance;
             piercedObject.position = newPosition;
         }
     }
@@ -85,9 +85,9 @@ public class WeaponSickleInput : MonoBehaviour
     private void PerformRaycast()
     {
         RaycastHit hit;
-        if (Physics.Raycast(transform.position, transform.forward, out hit, raycastDistance))
+        if (Physics.Raycast(transform.position, transform.up, out hit, raycastDistance))
         {
-            Debug.DrawRay(transform.position, transform.forward * raycastDistance, Color.green);
+            Debug.DrawRay(transform.position, transform.up * raycastDistance, Color.green);
 
             if (hit.collider.CompareTag("Enemy"))
             {
@@ -104,7 +104,7 @@ public class WeaponSickleInput : MonoBehaviour
         }
         else
         {
-            Debug.DrawRay(transform.position, transform.forward * raycastDistance, Color.red);
+            Debug.DrawRay(transform.position, transform.up * raycastDistance, Color.red);
         }
     }
 
@@ -161,6 +161,6 @@ public class WeaponSickleInput : MonoBehaviour
     void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
-        Gizmos.DrawRay(transform.position, transform.forward * raycastDistance);
+        Gizmos.DrawRay(transform.position, transform.up * raycastDistance);
     }
 }

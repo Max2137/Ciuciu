@@ -26,9 +26,9 @@ public class WeaponStickInput : MonoBehaviour
     {
         // Wykonaj raycast
         RaycastHit hit;
-        if (Physics.Raycast(transform.position, transform.forward, out hit, raycastDistance))
+        if (Physics.Raycast(transform.position, transform.up, out hit, raycastDistance))
         {
-            Debug.DrawRay(transform.position, transform.forward * raycastDistance, Color.green);
+            Debug.DrawRay(transform.position, transform.up * raycastDistance, Color.green);
 
             // Sprawdü czy trafiony obiekt ma tag "Enemy"
             if (hit.collider.CompareTag("Enemy"))
@@ -70,6 +70,6 @@ public class WeaponStickInput : MonoBehaviour
     void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
-        Gizmos.DrawRay(transform.position, transform.forward * raycastDistance);
+        //Gizmos.DrawRay(transform.position, transform.up * raycastDistance);
     }
 }

@@ -25,8 +25,8 @@ public class WeaponSpearInput : MonoBehaviour
     public void SpearDetect(float attackDamage, int attackPuncture)
     {
         // Wykonaj raycast
-        RaycastHit[] hits = Physics.RaycastAll(transform.position, transform.forward, raycastDistance);
-        Debug.DrawRay(transform.position, transform.forward * raycastDistance, Color.green);
+        RaycastHit[] hits = Physics.RaycastAll(transform.position, transform.up, raycastDistance);
+        Debug.DrawRay(transform.position, transform.up * raycastDistance, Color.green);
 
         // Iteruj przez trafienia z uwzglêdnieniem attackPuncture
         for (int i = 0; i < Mathf.Min(hits.Length, attackPuncture); i++)
@@ -63,6 +63,6 @@ public class WeaponSpearInput : MonoBehaviour
     void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
-        Gizmos.DrawRay(transform.position, transform.forward * raycastDistance);
+        Gizmos.DrawRay(transform.position, transform.up * raycastDistance);
     }
 }

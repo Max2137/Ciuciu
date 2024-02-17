@@ -34,8 +34,8 @@ public class WeaponSaberInput : MonoBehaviour
         for (int i = 0; i < numberOfRays; i++)
         {
             // Oblicz kierunek promienia wachlarza
-            Quaternion rotation = Quaternion.AngleAxis(-fanAngle / 2 + i * angleStep, transform.up);
-            Vector3 direction = rotation * transform.forward;
+            Quaternion rotation = Quaternion.AngleAxis(-fanAngle / 2 + i * angleStep, transform.forward);
+            Vector3 direction = rotation * transform.up;
 
             // Wykonaj raycast
             RaycastHit hit;
@@ -85,8 +85,8 @@ public class WeaponSaberInput : MonoBehaviour
         // Rysuj ka¿dy promieñ w wachlarzu
         for (int i = 0; i < numberOfRays; i++)
         {
-            Quaternion rotation = Quaternion.AngleAxis(-fanAngle / 2 + i * angleStep, transform.up);
-            Vector3 direction = rotation * transform.forward;
+            Quaternion rotation = Quaternion.AngleAxis(-fanAngle / 2 + i * angleStep, transform.forward);
+            Vector3 direction = rotation * transform.up;
             Gizmos.color = Color.red;
             Gizmos.DrawRay(transform.position, direction * raycastDistance);
         }

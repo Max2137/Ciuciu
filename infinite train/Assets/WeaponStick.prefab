@@ -11,10 +11,10 @@ GameObject:
   - component: {fileID: 3500022437684600333}
   - component: {fileID: 4775033481129420759}
   - component: {fileID: 4477994015414067428}
-  - component: {fileID: 8530103159680187741}
   - component: {fileID: 4863291591891316240}
   - component: {fileID: 1861063024769751098}
   - component: {fileID: -7239578983224423562}
+  - component: {fileID: 3949401721607731207}
   m_Layer: 0
   m_Name: WeaponStick
   m_TagString: Item
@@ -35,7 +35,7 @@ Transform:
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &4775033481129420759
 MeshFilter:
@@ -87,27 +87,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &8530103159680187741
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8376720767005889026}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &4863291591891316240
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -148,3 +127,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66aa4eb83f4bef34fb2d382690aa2d4b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!136 &3949401721607731207
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8376720767005889026}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.091000274
+  m_Height: 1.1460326
+  m_Direction: 1
+  m_Center: {x: -0.0000003799796, y: 1.7403605, z: 0.0000003799796}

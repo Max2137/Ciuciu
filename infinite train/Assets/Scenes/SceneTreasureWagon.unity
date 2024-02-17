@@ -1287,6 +1287,38 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 838026996}
     m_Modifications:
+    - target: {fileID: 175364362686980031, guid: da9aa875e3b84ce4486ccea3d62312d1, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 175364362686980031, guid: da9aa875e3b84ce4486ccea3d62312d1, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 175364362686980031, guid: da9aa875e3b84ce4486ccea3d62312d1, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 175364362686980031, guid: da9aa875e3b84ce4486ccea3d62312d1, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 175364362686980031, guid: da9aa875e3b84ce4486ccea3d62312d1, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 175364362686980031, guid: da9aa875e3b84ce4486ccea3d62312d1, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 175364362686980031, guid: da9aa875e3b84ce4486ccea3d62312d1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 175364362686980031, guid: da9aa875e3b84ce4486ccea3d62312d1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1639425876461056283, guid: da9aa875e3b84ce4486ccea3d62312d1, type: 3}
       propertyPath: m_Name
       value: Pedastal (1)
@@ -1301,7 +1333,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3087533269088200366, guid: da9aa875e3b84ce4486ccea3d62312d1, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 23.117111
+      value: 22.617111
       objectReference: {fileID: 0}
     - target: {fileID: 3087533269088200366, guid: da9aa875e3b84ce4486ccea3d62312d1, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1443,6 +1475,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 838026996}
     m_Modifications:
+    - target: {fileID: 175364362686980031, guid: da9aa875e3b84ce4486ccea3d62312d1, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 175364362686980031, guid: da9aa875e3b84ce4486ccea3d62312d1, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 1639425876461056283, guid: da9aa875e3b84ce4486ccea3d62312d1, type: 3}
       propertyPath: m_Name
       value: Pedastal
@@ -1457,7 +1497,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3087533269088200366, guid: da9aa875e3b84ce4486ccea3d62312d1, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 23.117111
+      value: 22.617111
       objectReference: {fileID: 0}
     - target: {fileID: 3087533269088200366, guid: da9aa875e3b84ce4486ccea3d62312d1, type: 3}
       propertyPath: m_LocalPosition.z

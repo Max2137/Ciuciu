@@ -25,7 +25,7 @@ public class WeaponDaggerInput : MonoBehaviour
     {
         // Wykonaj raycast
         RaycastHit hit;
-        Ray ray = new Ray(transform.position, transform.forward);
+        Ray ray = new Ray(transform.position, transform.up);
         Debug.DrawRay(ray.origin, ray.direction * raycastDistance, Color.green);
 
         if (Physics.Raycast(ray, out hit, raycastDistance))
@@ -62,6 +62,6 @@ public class WeaponDaggerInput : MonoBehaviour
     void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
-        Gizmos.DrawRay(transform.position, transform.forward * raycastDistance);
+        Gizmos.DrawRay(transform.position, transform.up * raycastDistance);
     }
 }
