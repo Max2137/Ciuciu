@@ -77,14 +77,28 @@ public class UniversalHealth : MonoBehaviour
 
         if(FloatingTextPrefab)
         {
-            ShowFloatingText();
-        }
-    }
+            // Spawnowanie tekstu bez przypisywania go jako dziecko
+            var go = Instantiate(FloatingTextPrefab, transform.position, Quaternion.identity);
 
-    void ShowFloatingText()
-    {
-        var go = Instantiate(FloatingTextPrefab, transform.position, Quaternion.identity, transform);
-        go.GetComponent<TextMesh>().text = currentHealth.ToString();
+            // Pobieranie referencji do komponentu TextMesh
+            var textMesh = go.GetComponent<TextMesh>();
+
+            // Ustawianie tekstu
+            textMesh.text = "-" + damage.ToString();
+
+            // Obracanie tekstu w kierunku kamery
+            Camera mainCamera = Camera.main;
+            if (mainCamera != null)
+            {
+                // Ustawienie rotacji w kierunku kamery
+                go.transform.LookAt(go.transform.position + mainCamera.transform.rotation * Vector3.forward,
+                                    mainCamera.transform.rotation * Vector3.up);
+            }
+            else
+            {
+                Debug.LogWarning("Main camera not found. Text rotation might not work correctly.");
+            }
+        }
     }
 
     public void Heal(float amount)
