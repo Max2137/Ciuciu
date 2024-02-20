@@ -134,7 +134,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38bf6da3b02a40b49b5d2cbe22359540, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  raycastDistance: 1.5
+  raycastDistance: 2
   attackDamage: 2
   attackCooldown: 0.05
 --- !u!114 &7766333631501441698
