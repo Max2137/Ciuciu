@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class UniversalHealth : MonoBehaviour
 {
+    public GameObject FloatingTextPrefab;
     public float maxHealth;
     public float currentHealth;
     public float blinkDuration = 0.2f; // Duration of the blink effect
@@ -73,6 +74,17 @@ public class UniversalHealth : MonoBehaviour
         }
 
         attackers.Add(attacker);
+
+        if(FloatingTextPrefab)
+        {
+            ShowFloatingText();
+        }
+    }
+
+    void ShowFloatingText()
+    {
+        var go = Instantiate(FloatingTextPrefab, transform.position, Quaternion.identity, transform);
+        go.GetComponent<TextMesh>().text = currentHealth.ToString();
     }
 
     public void Heal(float amount)
