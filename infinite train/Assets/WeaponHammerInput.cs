@@ -25,8 +25,8 @@ public class WeaponHammerInput : MonoBehaviour
         // SprawdŸ zmianê pozycji gracza i zeruj attackPrepTimer jeœli zachodzi
         if (transform.position != lastPlayerPosition)
         {
-            attackPrepTimer = 0f;
-            isReadyForAttack = false;
+            //attackPrepTimer = 0f;
+            //isReadyForAttack = false;
         }
 
         lastPlayerPosition = transform.position;

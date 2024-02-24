@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 323657880645937723}
   - component: {fileID: 4519624598694543932}
   - component: {fileID: 7766333631501441698}
+  - component: {fileID: 8531165353773519053}
   m_Layer: 0
   m_Name: WeaponDagger
   m_TagString: Item
@@ -29,13 +30,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 842366105222026008}
+  serializedVersion: 2
   m_LocalRotation: {x: 0.7071068, y: 0.7071068, z: -0, w: 0}
   m_LocalPosition: {x: 2.8000002, y: 0.75, z: 3.8899999}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 180, y: 0, z: -90}
 --- !u!33 &8075265851525942788
 MeshFilter:
@@ -109,7 +110,7 @@ CapsuleCollider:
   m_Radius: 0.061615713
   m_Height: 0.17655225
   m_Direction: 1
-  m_Center: {x: 0.00000005960464, y: 1.3088219, z: -0.00000008940697}
+  m_Center: {x: 0.00000005960464, y: 1.93, z: -0.00000008940697}
 --- !u!114 &323657880645937723
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -149,3 +150,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66aa4eb83f4bef34fb2d382690aa2d4b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &8531165353773519053
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 842366105222026008}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d188174b48c04e74f9113fc015a54467, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Dagger
+  Description: 
+  BasicStats:
+  - BasicStatName: attackDamage
+    BasicStatDisplay: DMG
+  - BasicStatName: attackCooldown
+    BasicStatDisplay: CLD

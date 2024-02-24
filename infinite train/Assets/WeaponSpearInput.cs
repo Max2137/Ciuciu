@@ -5,9 +5,9 @@ using UnityEngine;
 public class WeaponSpearInput : MonoBehaviour
 {
     public float raycastDistance = 5f;  // D³ugoœæ raycasta
-    public int attackDamage;
-    public int attackPuncture = 1;  // Przebicie, czyli iloœæ wrogów, przez któr¹ przebije siê w³ócznia
-    public float attackCooldown = 1.0f;  // Czas oczekiwania miêdzy atakami
+    [SerializeField] public int attackDamage;
+    [SerializeField] public int attackPuncture = 1;  // Przebicie, czyli iloœæ wrogów, przez któr¹ przebije siê w³ócznia
+    [SerializeField] public float attackCooldown = 1.0f;  // Czas oczekiwania miêdzy atakami
 
     private float lastAttackTime;  // Czas ostatniego ataku
 
