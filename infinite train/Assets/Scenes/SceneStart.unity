@@ -1621,10 +1621,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 209572186399960150, guid: 0610dbfad0defc6468436d37b81650d7, type: 3}
-      propertyPath: m_Center.y
-      value: 4.16
-      objectReference: {fileID: 0}
     - target: {fileID: 2500005920866960155, guid: 0610dbfad0defc6468436d37b81650d7, type: 3}
       propertyPath: m_Name
       value: WeaponHammer
@@ -1726,10 +1722,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -90
       objectReference: {fileID: 0}
-    - target: {fileID: 8732949729554857588, guid: 383af72899ebd2141bf1978e200f9a00, type: 3}
-      propertyPath: m_Center.y
-      value: 1.93
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1746,10 +1738,6 @@ PrefabInstance:
     - target: {fileID: 3614776925894866446, guid: 5b65b835d62a6c847ac34050e0e04676, type: 3}
       propertyPath: m_Name
       value: WeaponSaber
-      objectReference: {fileID: 0}
-    - target: {fileID: 6801864240326280086, guid: 5b65b835d62a6c847ac34050e0e04676, type: 3}
-      propertyPath: m_Center.y
-      value: 2.43
       objectReference: {fileID: 0}
     - target: {fileID: 8671364925012055008, guid: 5b65b835d62a6c847ac34050e0e04676, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1804,10 +1792,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 7250869662551783267, guid: 7524b5355622457428d3664e058a7b62, type: 3}
-      propertyPath: m_Center.y
-      value: 3.45
-      objectReference: {fileID: 0}
     - target: {fileID: 7820225779465803517, guid: 7524b5355622457428d3664e058a7b62, type: 3}
       propertyPath: m_LocalPosition.x
       value: -4.679
@@ -1904,10 +1888,6 @@ PrefabInstance:
     - target: {fileID: 3500022437684600333, guid: 814881e569bac91449e575d4ee0e159e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: -90
-      objectReference: {fileID: 0}
-    - target: {fileID: 3949401721607731207, guid: 814881e569bac91449e575d4ee0e159e, type: 3}
-      propertyPath: m_Center.y
-      value: 3.13
       objectReference: {fileID: 0}
     - target: {fileID: 8376720767005889026, guid: 814881e569bac91449e575d4ee0e159e, type: 3}
       propertyPath: m_Name
