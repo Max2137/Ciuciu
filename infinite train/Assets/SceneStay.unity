@@ -815,7 +815,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 355.32642, y: -156.9}
+  m_AnchoredPosition: {x: 355.32642, y: -110}
   m_SizeDelta: {x: 330.1809, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &332023901
@@ -860,7 +860,7 @@ MonoBehaviour:
   m_spriteAsset: {fileID: 0}
   m_tintAllSprites: 0
   m_StyleSheet: {fileID: 0}
-  m_TextStyleHashCode: -1183493901
+  m_TextStyleHashCode: 97690656
   m_overrideHtmlColors: 0
   m_faceColor:
     serializedVersion: 2
@@ -1315,7 +1315,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 355.33, y: -259.6031}
+  m_AnchoredPosition: {x: 355.33, y: -216.29085}
   m_SizeDelta: {x: 330.18, y: 59.7938}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &429170622
@@ -1371,7 +1371,7 @@ MonoBehaviour:
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 0
+  m_fontStyle: 2
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 1024
   m_textAlignment: 65535
@@ -1601,8 +1601,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 357.5567, y: -209.70917}
-  m_SizeDelta: {x: 342.6856, y: 163.9827}
+  m_AnchoredPosition: {x: 357.5567, y: -175}
+  m_SizeDelta: {x: 342.6856, y: 188.92}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &721798291
 MonoBehaviour:
@@ -3016,7 +3016,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 353.96, y: -197.6}
+  m_AnchoredPosition: {x: 353.96, y: -162.89085}
   m_SizeDelta: {x: 332.92, y: 64.206}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1928922081
@@ -3072,7 +3072,7 @@ MonoBehaviour:
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 0
+  m_fontStyle: 1
   m_HorizontalAlignment: 1
   m_VerticalAlignment: 256
   m_textAlignment: 65535
