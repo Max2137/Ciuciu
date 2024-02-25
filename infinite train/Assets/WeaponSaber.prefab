@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 2542472404593646371}
   - component: {fileID: 8156141555224387643}
   - component: {fileID: -8980736477891435684}
+  - component: {fileID: 8011309924731413470}
   m_Layer: 0
   m_Name: WeaponSaber
   m_TagString: Item
@@ -29,13 +30,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3614776925894866446}
+  serializedVersion: 2
   m_LocalRotation: {x: 0.7071068, y: 0.7071068, z: -0, w: 0}
   m_LocalPosition: {x: -0.4499998, y: 0.75, z: 3.8899999}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 180, y: 0, z: -90}
 --- !u!33 &4099026771233809308
 MeshFilter:
@@ -109,7 +110,7 @@ CapsuleCollider:
   m_Radius: 0.088817686
   m_Height: 0.701948
   m_Direction: 1
-  m_Center: {x: 0, y: 1.51, z: 0}
+  m_Center: {x: 0, y: 2.43, z: 0}
 --- !u!114 &2542472404593646371
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -151,3 +152,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66aa4eb83f4bef34fb2d382690aa2d4b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &8011309924731413470
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3614776925894866446}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d188174b48c04e74f9113fc015a54467, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Saber
+  Description: Can hit a range of nearby enemies
+  BasicStats:
+  - BasicStatName: attackDamage
+    BasicStatDisplay: DMG
+  - BasicStatName: attackCooldown
+    BasicStatDisplay: CLD

@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 1861063024769751098}
   - component: {fileID: -7239578983224423562}
   - component: {fileID: 3949401721607731207}
+  - component: {fileID: 7776881963904416509}
   m_Layer: 0
   m_Name: WeaponStick
   m_TagString: Item
@@ -29,13 +30,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8376720767005889026}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 1.25, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &4775033481129420759
 MeshFilter:
@@ -114,7 +115,7 @@ MonoBehaviour:
   raycastDistance: 3
   attackDamage: 2
   attackCooldown: 0.25
-  attackPushForce: 600
+  attackPushForce: 100
 --- !u!114 &-7239578983224423562
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -149,4 +150,23 @@ CapsuleCollider:
   m_Radius: 0.091000274
   m_Height: 1.1460326
   m_Direction: 1
-  m_Center: {x: -0.0000003799796, y: 1.7403605, z: 0.0000003799796}
+  m_Center: {x: -0.0000003799796, y: 3.13, z: 0.0000003799796}
+--- !u!114 &7776881963904416509
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8376720767005889026}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d188174b48c04e74f9113fc015a54467, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Stick
+  Description: Pushes hitted enemies back
+  BasicStats:
+  - BasicStatName: attackDamage
+    BasicStatDisplay: DMG
+  - BasicStatName: attackCooldown
+    BasicStatDisplay: CLD

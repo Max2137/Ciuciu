@@ -12,9 +12,10 @@ GameObject:
   - component: {fileID: 7226436542247087963}
   - component: {fileID: 1177461320346412163}
   - component: {fileID: 7250869662551783267}
-  - component: {fileID: 5274928127919656208}
   - component: {fileID: 3274745059357686945}
+  - component: {fileID: 5274928127919656208}
   - component: {fileID: -4563633110740087477}
+  - component: {fileID: 5837217702080204614}
   m_Layer: 0
   m_Name: WeaponSpear
   m_TagString: Item
@@ -29,13 +30,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8880890778134909794}
+  serializedVersion: 2
   m_LocalRotation: {x: 0.7071068, y: 0.7071068, z: -0, w: 0}
   m_LocalPosition: {x: -3.179, y: 0.75, z: 3.8999999}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 180, y: 0, z: -90}
 --- !u!33 &7226436542247087963
 MeshFilter:
@@ -109,19 +110,7 @@ CapsuleCollider:
   m_Radius: 0.040933914
   m_Height: 0.2783746
   m_Direction: 1
-  m_Center: {x: 0.000038824975, y: 1.3656101, z: 0.000042248517}
---- !u!114 &5274928127919656208
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8880890778134909794}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: caeb3061a71a967489cba6071bad3563, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Center: {x: 0.000038824975, y: 3.45, z: 0.000042248517}
 --- !u!114 &3274745059357686945
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -138,6 +127,18 @@ MonoBehaviour:
   attackDamage: 5
   attackPuncture: 2
   attackCooldown: 1.5
+--- !u!114 &5274928127919656208
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8880890778134909794}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: caeb3061a71a967489cba6071bad3563, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &-4563633110740087477
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -150,3 +151,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66aa4eb83f4bef34fb2d382690aa2d4b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &5837217702080204614
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8880890778134909794}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d188174b48c04e74f9113fc015a54467, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Spear
+  Description: Can pearce through 1 enemy and hit 2nd
+  BasicStats:
+  - BasicStatName: attackDamage
+    BasicStatDisplay: DMG
+  - BasicStatName: attackCooldown
+    BasicStatDisplay: CLD

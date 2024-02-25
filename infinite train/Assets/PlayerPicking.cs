@@ -1,3 +1,4 @@
+//using System.Diagnostics;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -5,20 +6,18 @@ public class PlayerPicking : MonoBehaviour
 {
     public float interactionDistance = 2f;
     private Transform heldItem;
+    private Collider[] originalColliders; // Dodano pole do przechowywania pierwotnych colliderów trzymanego obiektu
 
     void Update()
     {
-        // Sprawdzanie, czy gracz nacisn¹³ klawisz "e"
         if (Input.GetKeyDown(KeyCode.E))
         {
-            // Sprawdzanie, czy w pobli¿u gracza znajduje siê obiekt z tagiem "Item"
             Collider[] colliders = Physics.OverlapSphere(transform.position, interactionDistance);
             Transform nearestObject = null;
             foreach (Collider collider in colliders)
             {
                 if (collider.CompareTag("Item"))
                 {
-                    // Je¿eli gracz ju¿ trzyma przedmiot, odk³adamy go
                     if (heldItem == collider.transform)
                     {
                         continue;
@@ -39,20 +38,23 @@ public class PlayerPicking : MonoBehaviour
 
             if (nearestObject != null)
             {
-                // Je¿eli gracz ju¿ trzyma przedmiot, odk³adamy go
                 if (heldItem != null)
                 {
+                    // Przywracanie colliderów, gdy trzymany obiekt jest odk³adany
+                    EnableColliders(heldItem.gameObject);
                     DropItem();
                 }
 
-                // Podnieœ obiekt i ustaw go jako dziecko gracza
                 PickUpItem(nearestObject);
+                // Wy³¹czanie colliderów po podniesieniu nowego obiektu
+                DisableColliders(nearestObject.gameObject);
             }
         }
 
-        // Odk³adanie przedmiotu po naciœniêciu klawisza "R"
         if (Input.GetKeyDown(KeyCode.R) && heldItem != null)
         {
+            // Przywracanie colliderów przedmiotu przed odk³adaniem
+            EnableColliders(heldItem.gameObject);
             DropItem();
         }
     }
@@ -62,8 +64,16 @@ public class PlayerPicking : MonoBehaviour
         heldItem = item;
         Debug.Log("Podnoszenie przedmiotu: " + heldItem.name);
 
+        // Przechowaj pierwotne collidery trzymanego obiektu
+        originalColliders = heldItem.GetComponentsInChildren<Collider>();
+
+        // Wy³¹cz collidery trzymanego obiektu
+        foreach (Collider collider in originalColliders)
+        {
+            collider.enabled = false;
+        }
+
         heldItem.parent = transform;
-        // Ustaw pozycjê i rotacjê obiektu na pozycji gracza
         heldItem.localPosition = Vector3.zero;
         heldItem.localRotation = Quaternion.identity;
     }
@@ -75,19 +85,45 @@ public class PlayerPicking : MonoBehaviour
         // Odk³adamy przedmiot
         heldItem.parent = null;
 
-        // SprawdŸ, czy istnieje scena "SceneStart"
+        // Przywracanie colliderów trzymanego obiektu
+        EnableColliders(heldItem.gameObject);
+
+        // Przeniesienie obiektu do sceny
+        MoveObjectToScene(heldItem.gameObject);
+
+        heldItem = null;
+    }
+
+    void EnableColliders(GameObject obj)
+    {
+        // Przywracanie colliderów obiektu
+        Collider[] colliders = obj.GetComponentsInChildren<Collider>();
+        foreach (Collider collider in colliders)
+        {
+            collider.enabled = true;
+        }
+    }
+
+    void DisableColliders(GameObject obj)
+    {
+        // Wy³¹czanie colliderów obiektu
+        Collider[] colliders = obj.GetComponentsInChildren<Collider>();
+        foreach (Collider collider in colliders)
+        {
+            collider.enabled = false;
+        }
+    }
+
+    void MoveObjectToScene(GameObject obj)
+    {
         Scene startScene = SceneManager.GetSceneByName("SceneStart");
         if (startScene.isLoaded)
         {
-            // Je¿eli istnieje, przenieœ przedmiot do sceny "SceneStart"
-            SceneManager.MoveGameObjectToScene(heldItem.gameObject, startScene);
+            SceneManager.MoveGameObjectToScene(obj, startScene);
         }
         else
         {
-            // Je¿eli nie istnieje, przenieœ przedmiot do ostatnio wczytanej sceny
-            SceneManager.MoveGameObjectToScene(heldItem.gameObject, SceneManager.GetSceneAt(SceneManager.sceneCount - 1));
+            SceneManager.MoveGameObjectToScene(obj, SceneManager.GetSceneAt(SceneManager.sceneCount - 1));
         }
-
-        heldItem = null;
     }
 }
