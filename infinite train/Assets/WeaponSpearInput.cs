@@ -9,7 +9,7 @@ public class WeaponSpearInput : MonoBehaviour
     [SerializeField] public int attackPuncture = 1;  // Przebicie, czyli iloœæ wrogów, przez któr¹ przebije siê w³ócznia
     [SerializeField] public float attackCooldown = 1.0f;  // Czas oczekiwania miêdzy atakami
 
-    private float lastAttackTime;  // Czas ostatniego ataku
+    [SerializeField] private float lastAttackTime;  // Czas ostatniego ataku
 
     //INPUT
     public void Update()
