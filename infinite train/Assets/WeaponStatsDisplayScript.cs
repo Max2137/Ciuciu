@@ -31,7 +31,11 @@ public class WeaponStatsDisplayScript : MonoBehaviour
         {
             if (collider.CompareTag(itemTag))
             {
-                float distance = Vector3.Distance(transform.position, collider.transform.position);
+                // Pobierz œrodek collidera obiektu "Item"
+                Vector3 itemCenter = collider.bounds.center;
+
+                // Oblicz odleg³oœæ pomiêdzy œrodkiem tego obiektu a œrodkiem collidera obiektu "Item"
+                float distance = Vector3.Distance(transform.position, itemCenter);
 
                 // SprawdŸ, czy to jest najbli¿szy obiekt
                 if (distance < nearestDistance)

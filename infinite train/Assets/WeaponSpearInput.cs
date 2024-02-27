@@ -17,8 +17,10 @@ public class WeaponSpearInput : MonoBehaviour
         if (Input.GetMouseButtonDown(0) && CanAttack() && IsChildOfFirstSlot())
         {
             SpearDetect(attackDamage, attackPuncture);
-            lastAttackTime = Time.time;
+            lastAttackTime = 0;
         }
+
+        lastAttackTime += Time.deltaTime;
     }
 
     //DETECTION
@@ -49,7 +51,7 @@ public class WeaponSpearInput : MonoBehaviour
     // SprawdŸ czy mo¿na wykonaæ atak z uwzglêdnieniem cooldownu
     private bool CanAttack()
     {
-        return Time.time - lastAttackTime >= attackCooldown;
+        return lastAttackTime >= attackCooldown;
     }
 
     // Dodatkowa metoda do sprawdzania, czy obiekt jest dzieckiem obiektu z tagiem "1stSlot"

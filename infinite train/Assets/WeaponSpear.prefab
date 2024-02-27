@@ -126,7 +126,7 @@ MonoBehaviour:
   raycastDistance: 5
   attackDamage: 5
   attackPuncture: 2
-  attackCooldown: 1.5
+  attackCooldown: 1
 --- !u!114 &5274928127919656208
 MonoBehaviour:
   m_ObjectHideFlags: 0
