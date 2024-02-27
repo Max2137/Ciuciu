@@ -815,8 +815,13 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
+<<<<<<< Updated upstream
   m_AnchoredPosition: {x: 355.32642, y: -156.9}
   m_SizeDelta: {x: 330.1809, y: 50}
+=======
+  m_AnchoredPosition: {x: 228.47678, y: -192.39822}
+  m_SizeDelta: {x: 306.1472, y: 46.3605}
+>>>>>>> Stashed changes
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &332023901
 MonoBehaviour:
@@ -1315,8 +1320,13 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
+<<<<<<< Updated upstream
   m_AnchoredPosition: {x: 355.33, y: -259.6031}
   m_SizeDelta: {x: 330.18, y: 59.7938}
+=======
+  m_AnchoredPosition: {x: 338, y: -210.02}
+  m_SizeDelta: {x: 351.5611, y: 81.5945}
+>>>>>>> Stashed changes
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &429170622
 MonoBehaviour:
@@ -1601,8 +1611,13 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
+<<<<<<< Updated upstream
   m_AnchoredPosition: {x: 357.5567, y: -209.70917}
   m_SizeDelta: {x: 342.6856, y: 163.9827}
+=======
+  m_AnchoredPosition: {x: 379.3865, y: -202.87569}
+  m_SizeDelta: {x: 499.3956, y: 175.1686}
+>>>>>>> Stashed changes
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &721798291
 MonoBehaviour:
@@ -3008,7 +3023,11 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1928922079}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+<<<<<<< Updated upstream
   m_LocalPosition: {x: 0, y: 0, z: 0}
+=======
+  m_LocalPosition: {x: 0, y: 0, z: 27.4454}
+>>>>>>> Stashed changes
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3016,8 +3035,13 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
+<<<<<<< Updated upstream
   m_AnchoredPosition: {x: 353.96, y: -197.6}
   m_SizeDelta: {x: 332.92, y: 64.206}
+=======
+  m_AnchoredPosition: {x: 503.11652, y: -144.64687}
+  m_SizeDelta: {x: 308.6869, y: 59.5325}
+>>>>>>> Stashed changes
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1928922081
 MonoBehaviour:
