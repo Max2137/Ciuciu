@@ -1,22 +1,34 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class WeaponSpearInput : MonoBehaviour
 {
-    public float raycastDistance = 5f;  // D³ugoœæ raycasta
+    public float raycastDistance = 5f;
     [SerializeField] public int attackDamage;
-    [SerializeField] public int attackPuncture = 1;  // Przebicie, czyli iloœæ wrogów, przez któr¹ przebije siê w³ócznia
-    [SerializeField] public float attackCooldown = 1.0f;  // Czas oczekiwania miêdzy atakami
+    [SerializeField] public int attackPuncture = 1;
+    [SerializeField] public float attackCooldown = 1.0f;
 
-    private float lastAttackTime;  // Czas ostatniego ataku
+    private float lastAttackTime;
+    private WeaponInputManager inputManager;
 
     //INPUT
+    public void Start()
+    {
+        // Uzyskaj referencjê do WeaponInputManager z obiektu rêki (parent)
+        inputManager = GetComponentInParent<WeaponInputManager>();
+
+        if (inputManager == null)
+        {
+            Debug.LogError("WeaponInputManager not found in the parent objects.");
+        }
+    }
+
     public void Update()
     {
-        if (Input.GetMouseButtonDown(0) && CanAttack() && IsChildOfFirstSlot())
+        if (Input.GetMouseButtonDown((int)inputManager.attackMouseButton) && CanAttack() && IsChildOfFirstSlot())
         {
             SpearDetect(attackDamage, attackPuncture);
+            Debug.Log("ZadanoDamage");
             lastAttackTime = 0;
         }
 

@@ -1,99 +1,80 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using TMPro;
 using UnityEngine.UI;
+using TMPro;
 
 public class PlayerEqUiScript : MonoBehaviour
 {
-    public PlayerEqScript playerEqScript;
-    public TextMeshProUGUI carriedItemsText;
-    public TextMeshProUGUI categoriesText;
+    public PlayerEqScript playerEqScript; // Referencja do skryptu zarz¹dzaj¹cego ekwipunkiem
 
-    public Transform carriedItemsPanel;
-    public Transform categoriesPanel; // Dodane pole do przechowywania panelu kategorii
-    public GameObject buttonPrefab;
+    public Transform carriedItemsPanel; // Panel dla obiektów w CarriedItems
+    public Transform categoryCarriedPanel; // Panel dla obiektów w CategoryCarried
 
-    private List<GameObject> spawnedCarriedItemButtons = new List<GameObject>();
-    private List<GameObject> spawnedCategoryButtons = new List<GameObject>();
+    public GameObject itemButtonPrefab; // Prefab przycisku reprezentuj¹cego obiekt
 
-    void Update()
+    void Start()
     {
-        DisplayCarriedItems();
-        DisplayCategories();
+        UpdateUi();
     }
 
-    void DisplayCarriedItems()
+    // Aktualizuje interfejs u¿ytkownika
+    public void UpdateUi()
     {
-        spawnedCarriedItemButtons.RemoveAll(button => !playerEqScript.CarriedItems.Contains(button.GetComponent<CarriedItemReference>().Item));
+        ClearPanel(carriedItemsPanel);
+        ClearPanel(categoryCarriedPanel);
 
-        Vector2 buttonPosition = Vector2.zero;
-
-        foreach (GameObject item in playerEqScript.CarriedItems)
+        // Dodaje przyciski dla obiektów w CarriedItems
+        foreach (GameObject carriedItem in playerEqScript.CarriedItems)
         {
-            GameObject existingButton = spawnedCarriedItemButtons.Find(button => button.GetComponent<CarriedItemReference>().Item == item);
-
-            if (existingButton == null)
-            {
-                GameObject button = Instantiate(buttonPrefab, carriedItemsPanel);
-                button.GetComponentInChildren<TextMeshProUGUI>().text = item.name;
-                button.GetComponent<RectTransform>().anchoredPosition = buttonPosition;
-
-                spawnedCarriedItemButtons.Add(button);
-
-                button.AddComponent<CarriedItemReference>().Item = item;
-
-                button.GetComponent<Button>().onClick.AddListener(() => OnCarriedItemClick(item));
-            }
-
-            buttonPosition.y -= 65f;
+            AddItemButton(carriedItem, carriedItemsPanel);
         }
-    }
 
-    void DisplayCategories()
-    {
-        spawnedCategoryButtons.RemoveAll(button => !playerEqScript.ItemsCategories.Contains(button.GetComponent<CategoryReference>().Category));
-
-        Vector2 buttonPosition = Vector2.zero;
-
+        // Dodaje przyciski dla obiektów w CategoryCarried
         foreach (Category category in playerEqScript.ItemsCategories)
         {
-            GameObject existingButton = spawnedCategoryButtons.Find(button => button.GetComponent<CategoryReference>().Category == category);
-
-            if (existingButton == null)
+            if (category.CategoryCarried != null)
             {
-                GameObject button = Instantiate(buttonPrefab, categoriesPanel);
-                button.GetComponentInChildren<TextMeshProUGUI>().text = category.CategoryName;
-                button.GetComponent<RectTransform>().anchoredPosition = buttonPosition;
-
-                spawnedCategoryButtons.Add(button);
-
-                button.AddComponent<CategoryReference>().Category = category;
-
-                button.GetComponent<Button>().onClick.AddListener(() => OnCategoryClick(category));
+                AddItemButton(category.CategoryCarried, categoryCarriedPanel, category);
             }
-
-            buttonPosition.y -= 65f;
         }
     }
 
-    void OnCarriedItemClick(GameObject item)
+    // Dodaje przycisk dla obiektu do panelu
+    void AddItemButton(GameObject item, Transform panel, Category category = null)
     {
-        Debug.Log("Clicked on carried item: " + item.name);
+        GameObject button = Instantiate(itemButtonPrefab, panel);
+        TextMeshProUGUI buttonText = button.GetComponentInChildren<TextMeshProUGUI>();
+        buttonText.text = item.name;
+
+        // Dodaje funkcjê wywo³ywan¹ po klikniêciu przycisku
+        button.GetComponent<Button>().onClick.AddListener(delegate { OnItemButtonClick(item, category); });
     }
 
-    void OnCategoryClick(Category category)
+    // Obs³uguje klikniêcie na przycisk obiektu
+    void OnItemButtonClick(GameObject item, Category category)
     {
-        Debug.Log("Clicked on category: " + category.CategoryName);
+        if (category == null)
+        {
+            // Klikniêto na obiekt w CarriedItems
+            playerEqScript.MoveToCategory(playerEqScript.CarriedItems.IndexOf(item), 0); // Przenosi do pierwszej kategorii
+        }
+        else
+        {
+            // Klikniêto na obiekt w CategoryCarried
+            playerEqScript.MoveToCarried(playerEqScript.ItemsCategories.IndexOf(category));
+        }
+
+        // Aktualizuje interfejs u¿ytkownika po przeniesieniu
+        UpdateUi();
     }
-}
 
-public class CarriedItemReference : MonoBehaviour
-{
-    public GameObject Item { get; set; }
-}
-
-public class CategoryReference : MonoBehaviour
-{
-    public Category Category { get; set; }
+    // Czyœci panel z przycisków
+    void ClearPanel(Transform panel)
+    {
+        foreach (Transform child in panel)
+        {
+            Destroy(child.gameObject);
+        }
+    }
 }

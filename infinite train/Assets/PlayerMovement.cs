@@ -45,8 +45,8 @@ public class PlayerMovement : MonoBehaviour
 
         if (movement != Vector3.zero)
         {
-            Quaternion toRotation = Quaternion.LookRotation(movement.normalized, Vector3.up);
-            rb.MoveRotation(Quaternion.RotateTowards(rb.rotation, toRotation, Time.deltaTime * 1000f));
+            //Quaternion toRotation = Quaternion.LookRotation(movement.normalized, Vector3.up);
+            //rb.MoveRotation(Quaternion.RotateTowards(rb.rotation, toRotation, Time.deltaTime * 1000f));
         }
 
         if (isDashing)

@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 2078455771724125232}
   - component: {fileID: 209572186399960150}
   - component: {fileID: 169573374001743080}
+  - component: {fileID: 6100752900602815198}
   m_Layer: 0
   m_Name: WeaponHammer
   m_TagString: Item
@@ -170,3 +171,16 @@ MonoBehaviour:
     BasicStatDisplay: DMG
   - BasicStatName: attackCooldown
     BasicStatDisplay: CLD
+--- !u!114 &6100752900602815198
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2500005920866960155}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da8dde2da7541b247b2fd33d686d796d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackMouseButton: 0
