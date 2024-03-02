@@ -85,9 +85,9 @@ public class WeaponSickleInput : MonoBehaviour
     private void PerformRaycast()
     {
         RaycastHit hit;
-        if (Physics.Raycast(transform.position, transform.up, out hit, raycastDistance))
+        if (Physics.Raycast(transform.position, transform.forward, out hit, raycastDistance))
         {
-            Debug.DrawRay(transform.position, transform.up * raycastDistance, Color.green);
+            Debug.DrawRay(transform.position, transform.forward * raycastDistance, Color.green);
 
             if (hit.collider.CompareTag("Enemy"))
             {
@@ -161,6 +161,6 @@ public class WeaponSickleInput : MonoBehaviour
     void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
-        Gizmos.DrawRay(transform.position, transform.up * raycastDistance);
+        Gizmos.DrawRay(transform.position, transform.forward * raycastDistance);
     }
 }

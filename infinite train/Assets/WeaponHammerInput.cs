@@ -65,7 +65,7 @@ public class WeaponHammerInput : MonoBehaviour
     void Detect(float attackDamage)
     {
         RaycastHit hit;
-        Ray ray = new Ray(transform.position, transform.up);
+        Ray ray = new Ray(transform.position, transform.forward);
         Debug.DrawRay(ray.origin, ray.direction * raycastDistance, Color.green);
 
         Debug.Log("raycastowano");
@@ -96,6 +96,6 @@ public class WeaponHammerInput : MonoBehaviour
     void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
-        Gizmos.DrawRay(transform.position, transform.up * raycastDistance);
+        Gizmos.DrawRay(transform.position, transform.forward * raycastDistance);
     }
 }
