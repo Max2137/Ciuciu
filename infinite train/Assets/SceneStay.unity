@@ -4340,30 +4340,6 @@ PrefabInstance:
       propertyPath: healthBar
       value: 
       objectReference: {fileID: 1632015986}
-    - target: {fileID: 3261687489886916463, guid: 075f8d6af68f0a7468a7d6f4f9d9e722, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.9914449
-      objectReference: {fileID: 0}
-    - target: {fileID: 3261687489886916463, guid: 075f8d6af68f0a7468a7d6f4f9d9e722, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3261687489886916463, guid: 075f8d6af68f0a7468a7d6f4f9d9e722, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0.13052616
-      objectReference: {fileID: 0}
-    - target: {fileID: 3261687489886916463, guid: 075f8d6af68f0a7468a7d6f4f9d9e722, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3261687489886916463, guid: 075f8d6af68f0a7468a7d6f4f9d9e722, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3261687489886916463, guid: 075f8d6af68f0a7468a7d6f4f9d9e722, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 15
-      objectReference: {fileID: 0}
     - target: {fileID: 3689692717191288447, guid: 075f8d6af68f0a7468a7d6f4f9d9e722, type: 3}
       propertyPath: carriedItemsPanel
       value: 
@@ -4372,30 +4348,6 @@ PrefabInstance:
       propertyPath: categoryCarriedPanel
       value: 
       objectReference: {fileID: 2115872736}
-    - target: {fileID: 6073581832217739199, guid: 075f8d6af68f0a7468a7d6f4f9d9e722, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.9914449
-      objectReference: {fileID: 0}
-    - target: {fileID: 6073581832217739199, guid: 075f8d6af68f0a7468a7d6f4f9d9e722, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6073581832217739199, guid: 075f8d6af68f0a7468a7d6f4f9d9e722, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0.13052624
-      objectReference: {fileID: 0}
-    - target: {fileID: 6073581832217739199, guid: 075f8d6af68f0a7468a7d6f4f9d9e722, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6073581832217739199, guid: 075f8d6af68f0a7468a7d6f4f9d9e722, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6073581832217739199, guid: 075f8d6af68f0a7468a7d6f4f9d9e722, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: -15
-      objectReference: {fileID: 0}
     - target: {fileID: 8051717618033381600, guid: 075f8d6af68f0a7468a7d6f4f9d9e722, type: 3}
       propertyPath: uiImage
       value: 
@@ -4423,30 +4375,6 @@ PrefabInstance:
     - target: {fileID: 8867545689970261612, guid: 075f8d6af68f0a7468a7d6f4f9d9e722, type: 3}
       propertyPath: m_Name
       value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 8990621063259843846, guid: 075f8d6af68f0a7468a7d6f4f9d9e722, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8990621063259843846, guid: 075f8d6af68f0a7468a7d6f4f9d9e722, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8990621063259843846, guid: 075f8d6af68f0a7468a7d6f4f9d9e722, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8990621063259843846, guid: 075f8d6af68f0a7468a7d6f4f9d9e722, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8990621063259843846, guid: 075f8d6af68f0a7468a7d6f4f9d9e722, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8990621063259843846, guid: 075f8d6af68f0a7468a7d6f4f9d9e722, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
