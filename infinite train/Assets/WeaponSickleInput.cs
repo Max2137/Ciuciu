@@ -16,12 +16,26 @@ public class WeaponSickleInput : MonoBehaviour
     private Transform piercedObject;
     private Vector3 lastPlayerPosition;
 
+    private WeaponInputManager inputManager;
+
+    //INPUT
+    public void Start()
+    {
+        // Uzyskaj referencjê do WeaponInputManager z obiektu rêki (parent)
+        inputManager = GetComponentInParent<WeaponInputManager>();
+
+        if (inputManager == null)
+        {
+            Debug.LogError("WeaponInputManager not found in the parent objects.");
+        }
+    }
+
     void Update()
     {
         // Dodany warunek sprawdzaj¹cy, czy sickle ma rodzica
         if (transform.parent != null)
         {
-            if (Input.GetMouseButtonDown(0) && CanAttack() && IsChildOfFirstSlot())
+            if (Input.GetMouseButtonDown((int)inputManager.attackMouseButton) && CanAttack() && IsChildOfFirstSlot())
             {
                 StartAttack();
             }

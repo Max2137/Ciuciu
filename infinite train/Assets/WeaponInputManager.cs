@@ -2,7 +2,8 @@ using UnityEngine;
 
 public class WeaponInputManager : MonoBehaviour
 {
-    public MouseButton attackMouseButton = MouseButton.Left; // Przycisk myszy do ataku
+    // Usuniêcie publicznej zmiennej attackMouseButton
+    public MouseButton attackMouseButton = MouseButton.Left;
 
     public enum MouseButton
     {
@@ -14,6 +15,7 @@ public class WeaponInputManager : MonoBehaviour
     private void DetectHandType()
     {
         string parentName = transform.parent != null ? transform.parent.name : "";
+
         if (parentName.Equals("Hand1"))
         {
             attackMouseButton = MouseButton.Left;
@@ -27,5 +29,15 @@ public class WeaponInputManager : MonoBehaviour
     private void Update()
     {
         DetectHandType();
+
+        // Pobranie lub dodanie komponentu WeaponInputManager na obiekcie
+        WeaponInputManager weaponInputManagerComponent = GetComponent<WeaponInputManager>();
+
+        if (weaponInputManagerComponent != null)
+        {
+            // Manipulacja zmienn¹ attackMouseButton w komponencie WeaponInputManager
+            weaponInputManagerComponent.attackMouseButton = attackMouseButton;
+            //Debug.Log(weaponInputManagerComponent.name);
+        }
     }
 }

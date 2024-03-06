@@ -14,10 +14,19 @@ public class WeaponHammerInput : MonoBehaviour
     private bool isReadyForAttack;
 
     private Vector3 lastPlayerPosition;
+    private WeaponInputManager inputManager;
 
     void Start()
     {
         lastPlayerPosition = transform.position;
+
+        // Uzyskaj referencjê do WeaponInputManager z obiektu rêki (parent)
+        inputManager = GetComponentInParent<WeaponInputManager>();
+
+        if (inputManager == null)
+        {
+            Debug.LogError("WeaponInputManager not found in the parent objects.");
+        }
     }
 
     void Update()
@@ -33,12 +42,12 @@ public class WeaponHammerInput : MonoBehaviour
 
         // Pozosta³a czêœæ metody Update pozostaje bez zmian
 
-        if (Input.GetMouseButtonDown(0) && CanAttack())
+        if (Input.GetMouseButtonDown((int)inputManager.attackMouseButton) && CanAttack())
         {
             attackPrepTimer = 0f;
         }
 
-        if (Input.GetMouseButton(0) && attackPrepTimer < attackPrepTime)
+        if (Input.GetMouseButton((int)inputManager.attackMouseButton) && attackPrepTimer < attackPrepTime)
         {
             attackPrepTimer += Time.deltaTime;
 
@@ -50,7 +59,7 @@ public class WeaponHammerInput : MonoBehaviour
             }
         }
 
-        if (Input.GetMouseButtonUp(0))
+        if (Input.GetMouseButtonUp((int)inputManager.attackMouseButton))
         {
             if (isReadyForAttack)
             {

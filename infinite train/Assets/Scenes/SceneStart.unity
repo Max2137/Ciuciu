@@ -1625,6 +1625,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: WeaponHammer
       objectReference: {fileID: 0}
+    - target: {fileID: 6100752900602815198, guid: 0610dbfad0defc6468436d37b81650d7, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6754409834940596029, guid: 0610dbfad0defc6468436d37b81650d7, type: 3}
       propertyPath: m_LocalPosition.x
       value: -7
@@ -1722,6 +1726,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 90
       objectReference: {fileID: 0}
+    - target: {fileID: 8514973368092189630, guid: 383af72899ebd2141bf1978e200f9a00, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1735,13 +1743,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -8683978406744646671, guid: 5b65b835d62a6c847ac34050e0e04676, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3614776925894866446, guid: 5b65b835d62a6c847ac34050e0e04676, type: 3}
       propertyPath: m_Name
       value: WeaponSaber
       objectReference: {fileID: 0}
     - target: {fileID: 8671364925012055008, guid: 5b65b835d62a6c847ac34050e0e04676, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.4499998
+      value: -0.291
       objectReference: {fileID: 0}
     - target: {fileID: 8671364925012055008, guid: 5b65b835d62a6c847ac34050e0e04676, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1749,7 +1761,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8671364925012055008, guid: 5b65b835d62a6c847ac34050e0e04676, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 4.1400003
+      value: 4.176
       objectReference: {fileID: 0}
     - target: {fileID: 8671364925012055008, guid: 5b65b835d62a6c847ac34050e0e04676, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1849,6 +1861,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -5092501597210824729, guid: 814881e569bac91449e575d4ee0e159e, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3500022437684600333, guid: 814881e569bac91449e575d4ee0e159e, type: 3}
       propertyPath: m_LocalPosition.x
       value: 5.35

@@ -13,10 +13,24 @@ public class WeaponSaberInput : MonoBehaviour
     private float lastAttackTime;  // Czas ostatniego ataku
     private List<GameObject> enemiesHitThisAttack = new List<GameObject>();  // Lista obiektów, które ju¿ otrzyma³y obra¿enia
 
+    private WeaponInputManager inputManager;
+
+    //INPUT
+    public void Start()
+    {
+        // Uzyskaj referencjê do WeaponInputManager z obiektu rêki (parent)
+        inputManager = GetComponentInParent<WeaponInputManager>();
+
+        if (inputManager == null)
+        {
+            Debug.LogError("WeaponInputManager not found in the parent objects.");
+        }
+    }
+
     //INPUT
     public void Update()
     {
-        if (Input.GetMouseButtonDown(0) && CanAttack() && IsChildOfFirstSlot())
+        if (Input.GetMouseButtonDown((int)inputManager.attackMouseButton) && CanAttack() && IsChildOfFirstSlot())
         {
                 FanDetect(attackDamage);
                 lastAttackTime = Time.time;
@@ -34,7 +48,7 @@ public class WeaponSaberInput : MonoBehaviour
         for (int i = 0; i < numberOfRays; i++)
         {
             // Oblicz kierunek promienia wachlarza
-            Quaternion rotation = Quaternion.AngleAxis(-fanAngle / 2 + i * angleStep, transform.forward);
+            Quaternion rotation = Quaternion.AngleAxis(-fanAngle / 2 + i * angleStep, transform.up);
             Vector3 direction = rotation * transform.forward;
 
             // Wykonaj raycast
@@ -85,7 +99,7 @@ public class WeaponSaberInput : MonoBehaviour
         // Rysuj ka¿dy promieñ w wachlarzu
         for (int i = 0; i < numberOfRays; i++)
         {
-            Quaternion rotation = Quaternion.AngleAxis(-fanAngle / 2 + i * angleStep, transform.forward);
+            Quaternion rotation = Quaternion.AngleAxis(-fanAngle / 2 + i * angleStep, transform.up);
             Vector3 direction = rotation * transform.forward;
             Gizmos.color = Color.red;
             Gizmos.DrawRay(transform.position, direction * raycastDistance);

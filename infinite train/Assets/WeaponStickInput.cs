@@ -10,11 +10,24 @@ public class WeaponStickInput : MonoBehaviour
     public float attackPushForce = 10f;  // Si³a odpychaj¹ca obiekt po trafieniu
 
     private float lastAttackTime;  // Czas ostatniego ataku
+    private WeaponInputManager inputManager;
+
+    //INPUT
+    public void Start()
+    {
+        // Uzyskaj referencjê do WeaponInputManager z obiektu rêki (parent)
+        inputManager = GetComponentInParent<WeaponInputManager>();
+
+        if (inputManager == null)
+        {
+            Debug.LogError("WeaponInputManager not found in the parent objects.");
+        }
+    }
 
     //INPUT
     public void Update()
     {
-        if (Input.GetMouseButtonDown(0) && CanAttack() && IsChildOfFirstSlot())
+        if (Input.GetMouseButtonDown((int)inputManager.attackMouseButton) && CanAttack() && IsChildOfFirstSlot())
         {
             StickDetect(attackDamage, attackPushForce);
             lastAttackTime = Time.time;

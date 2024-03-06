@@ -9,11 +9,24 @@ public class WeaponDaggerInput : MonoBehaviour
     public float attackCooldown = 1.0f;  // Czas oczekiwania miêdzy atakami
 
     private float lastAttackTime;  // Czas ostatniego ataku
+    private WeaponInputManager inputManager;
+
+    //INPUT
+    public void Start()
+    {
+        // Uzyskaj referencjê do WeaponInputManager z obiektu rêki (parent)
+        inputManager = GetComponentInParent<WeaponInputManager>();
+
+        if (inputManager == null)
+        {
+            Debug.LogError("WeaponInputManager not found in the parent objects.");
+        }
+    }
 
     //INPUT
     public void Update()
     {
-        if (Input.GetMouseButtonDown(0) && CanAttack() && IsChildOfFirstSlot())
+        if (Input.GetMouseButtonDown((int)inputManager.attackMouseButton) && CanAttack() && IsChildOfFirstSlot())
         {
             Detect(attackDamage);
             lastAttackTime = Time.time;
