@@ -122,8 +122,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   targetObject: {fileID: 0}
   moveSpeed: 5
-  stoppingDistance: 6.5
-  escapingDistance: 4
+  stoppingDistance: 7
+  escapingDistance: 3.5
   attackCooldown: 1
   attackDamage: 10
   projectilePrefab: {fileID: 6369002540794184857, guid: 4f387a6f0ee3a2b40ab0e0bd9b086893, type: 3}
