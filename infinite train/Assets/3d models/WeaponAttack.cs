@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class WeaponAttack : MonoBehaviour
 {
-    public Animator mAnimator;
-
     public void DealDamage(GameObject enemy, float attackDamage)
     {
         // Sprawdü czy obiekt ma skrypt UniversalHealth
@@ -18,16 +16,5 @@ public class WeaponAttack : MonoBehaviour
             // Zadaj obraøenia obiektowi
             enemyHealth.TakeDamage(attackDamage, gameObject);
         }
-
-        if (mAnimator != null)
-        {
-            mAnimator.SetTrigger("TrAttack");
-            Debug.Log("Animacja!");
-        }
-    }
-
-    public void Start()
-    {
-        mAnimator = GetComponent<Animator>();
     }
 }

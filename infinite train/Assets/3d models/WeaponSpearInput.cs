@@ -3,6 +3,9 @@ using UnityEngine;
 
 public class WeaponSpearInput : MonoBehaviour
 {
+    public Animator mAnimator;
+
+
     public float raycastDistance = 5f;
     [SerializeField] public int attackDamage;
     [SerializeField] public int attackPuncture = 1;
@@ -14,6 +17,9 @@ public class WeaponSpearInput : MonoBehaviour
     //INPUT
     public void Start()
     {
+        //mAnimator = GetComponent<Animator>();
+
+
         // Uzyskaj referencjê do WeaponInputManager z obiektu rêki (parent)
         inputManager = GetComponentInParent<WeaponInputManager>();
 
@@ -38,6 +44,13 @@ public class WeaponSpearInput : MonoBehaviour
     //DETECTION
     public void SpearDetect(float attackDamage, int attackPuncture)
     {
+        if (mAnimator != null)
+        {
+            mAnimator.SetTrigger("TrAttack");
+            Debug.Log("Animacja!");
+        }
+
+
         // Wykonaj raycast
         RaycastHit[] hits = Physics.RaycastAll(transform.position, transform.forward, raycastDistance);
         Debug.DrawRay(transform.position, transform.forward * raycastDistance, Color.green);
