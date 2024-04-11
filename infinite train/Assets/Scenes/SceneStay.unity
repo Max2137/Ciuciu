@@ -4645,6 +4645,18 @@ PrefabInstance:
       propertyPath: categoryCarriedPanel
       value: 
       objectReference: {fileID: 2115872736}
+    - target: {fileID: 4236484256503308634, guid: 075f8d6af68f0a7468a7d6f4f9d9e722, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: d10ccf965521622488804490e8b448a8, type: 2}
+    - target: {fileID: 5487311006809628854, guid: 075f8d6af68f0a7468a7d6f4f9d9e722, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: d10ccf965521622488804490e8b448a8, type: 2}
+    - target: {fileID: 7342020651995729413, guid: 075f8d6af68f0a7468a7d6f4f9d9e722, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: d10ccf965521622488804490e8b448a8, type: 2}
     - target: {fileID: 8051717618033381600, guid: 075f8d6af68f0a7468a7d6f4f9d9e722, type: 3}
       propertyPath: uiImage
       value: 
@@ -4661,6 +4673,10 @@ PrefabInstance:
       propertyPath: DescriptionSpace
       value: 
       objectReference: {fileID: 429170622}
+    - target: {fileID: 8213982161158074806, guid: 075f8d6af68f0a7468a7d6f4f9d9e722, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: d10ccf965521622488804490e8b448a8, type: 2}
     - target: {fileID: 8379313672745962808, guid: 075f8d6af68f0a7468a7d6f4f9d9e722, type: 3}
       propertyPath: carriedItemsPanel
       value: 
