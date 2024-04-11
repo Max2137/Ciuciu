@@ -11,6 +11,8 @@ public class FloatingText : MonoBehaviour
     void Start()
     {
         StartCoroutine(ShowAndFade());
+
+        transform.SetParent(CanvasMainParenting.GetInstance().transform);
     }
 
     IEnumerator ShowAndFade()
