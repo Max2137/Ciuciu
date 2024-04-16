@@ -10,14 +10,14 @@ AnimatorStateMachine:
   m_Name: Base Layer
   m_ChildStates:
   - serializedVersion: 1
-    m_State: {fileID: 1943631824957077149}
-    m_Position: {x: 520, y: 240, z: 0}
-  - serializedVersion: 1
     m_State: {fileID: 8577699660846653764}
     m_Position: {x: 470, y: 100, z: 0}
+  - serializedVersion: 1
+    m_State: {fileID: 7217236091138084045}
+    m_Position: {x: 520.5, y: 260, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions:
-  - {fileID: 3352657112602338}
+  - {fileID: 5328689707815150740}
   m_EntryTransitions: []
   m_StateMachineTransitions: {}
   m_StateMachineBehaviours: []
@@ -32,7 +32,7 @@ AnimatorController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: ACweaponSpear
+  m_Name: ACweaponHammer
   serializedVersion: 5
   m_AnimatorParameters:
   - m_Name: TrAttack
@@ -40,7 +40,7 @@ AnimatorController:
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   m_AnimatorLayers:
   - serializedVersion: 5
     m_Name: Base Layer
@@ -54,7 +54,7 @@ AnimatorController:
     m_IKPass: 0
     m_SyncedLayerAffectsTiming: 0
     m_Controller: {fileID: 9100000}
---- !u!1101 &3352657112602338
+--- !u!1101 &5328689707815150740
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -66,7 +66,7 @@ AnimatorStateTransition:
     m_ConditionEvent: TrAttack
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
-  m_DstState: {fileID: 1943631824957077149}
+  m_DstState: {fileID: 7217236091138084045}
   m_Solo: 0
   m_Mute: 0
   m_IsExit: 0
@@ -79,14 +79,14 @@ AnimatorStateTransition:
   m_InterruptionSource: 0
   m_OrderedInterruption: 1
   m_CanTransitionToSelf: 1
---- !u!1102 &1943631824957077149
+--- !u!1102 &7217236091138084045
 AnimatorState:
   serializedVersion: 6
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Cube_004|Cube_004Action
+  m_Name: Cube_005|Cube_005Action
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
@@ -99,7 +99,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: -5755876124362903034, guid: 5d63008bc66b8b640bfef9234e946074, type: 3}
+  m_Motion: {fileID: 2108944049028585761, guid: 4e4597dfeb859214fafdb2fd5962a8f9, type: 3}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 

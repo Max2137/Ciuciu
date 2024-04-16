@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class WeaponDaggerInput : MonoBehaviour
 {
+    public Animator mAnimator;
+
+
     public float raycastDistance = 5f;  // D³ugoœæ raycasta
     public int attackDamage;
     public float attackCooldown = 1.0f;  // Czas oczekiwania miêdzy atakami
@@ -36,6 +39,13 @@ public class WeaponDaggerInput : MonoBehaviour
     //DETECTION
     public void Detect(float attackDamage)
     {
+        if (mAnimator != null)
+        {
+            mAnimator.SetTrigger("TrAttack");
+            Debug.Log("Animacja!");
+        }
+
+
         // Wykonaj raycast
         RaycastHit hit;
         Ray ray = new Ray(transform.position, transform.forward);

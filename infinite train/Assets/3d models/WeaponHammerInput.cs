@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class WeaponHammerInput : MonoBehaviour
 {
+    public Animator mAnimator;
+
+
+
     public float raycastDistance = 5f;
     public int attackDamage;
     public float attackCooldown = 1.0f;
@@ -73,6 +77,14 @@ public class WeaponHammerInput : MonoBehaviour
 
     void Detect(float attackDamage)
     {
+        if (mAnimator != null)
+        {
+            mAnimator.SetTrigger("TrAttack");
+            Debug.Log("Animacja!");
+        }
+
+
+
         RaycastHit hit;
         Ray ray = new Ray(transform.position, transform.forward);
         Debug.DrawRay(ray.origin, ray.direction * raycastDistance, Color.green);

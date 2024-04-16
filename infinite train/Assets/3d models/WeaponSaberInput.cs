@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class WeaponSaberInput : MonoBehaviour
 {
+    public Animator mAnimator;
+
+
     public float raycastDistance = 5f;  // D³ugoœæ raycasta
     public int attackDamage;
     public float attackCooldown = 1.0f;  // Czas oczekiwania miêdzy atakami
@@ -41,6 +44,13 @@ public class WeaponSaberInput : MonoBehaviour
     //DETECTION
     public void FanDetect(float attackDamage)
     {
+        if (mAnimator != null)
+        {
+            mAnimator.SetTrigger("TrAttack");
+            Debug.Log("Animacja!");
+        }
+
+
         // Oblicz k¹t pomiêdzy promieniami w wachlarzu
         float angleStep = fanAngle / (numberOfRays - 1);
 

@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class WeaponStickInput : MonoBehaviour
 {
+    public Animator mAnimator;
+
+
+
     public float raycastDistance = 5f;  // D³ugoœæ raycasta
     public int attackDamage;
     public float attackCooldown = 1.0f;  // Czas oczekiwania miêdzy atakami
@@ -37,6 +41,14 @@ public class WeaponStickInput : MonoBehaviour
     //DETECTION
     public void StickDetect(float attackDamage, float attackPushForce)
     {
+        if (mAnimator != null)
+        {
+            mAnimator.SetTrigger("TrAttack");
+            Debug.Log("Animacja!");
+        }
+
+
+
         // Wykonaj raycast
         RaycastHit hit;
         if (Physics.Raycast(transform.position, transform.forward, out hit, raycastDistance))
