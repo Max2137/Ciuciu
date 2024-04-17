@@ -8,6 +8,7 @@ TagManager:
   - Item
   - 1stSlot
   - Ground
+  - AudioPlayer
   layers:
   - Default
   - TransparentFX

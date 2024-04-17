@@ -108,6 +108,8 @@ MonoBehaviour:
   deathColor: {r: 0, g: 0, b: 0, a: 1}
   deathDuration: 0.1
   experienceWorth: 10
+  audioClip: {fileID: 8300000, guid: a3ab8d26cb42eff46bb8aa317d942e36, type: 3}
+  audioSourceObject: {fileID: 0}
 --- !u!114 &-491618465944054964
 MonoBehaviour:
   m_ObjectHideFlags: 0

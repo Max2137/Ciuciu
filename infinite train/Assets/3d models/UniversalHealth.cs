@@ -26,11 +26,39 @@ public class UniversalHealth : MonoBehaviour
 
     private PlayerXpBar playerXpBar;
 
+
+    public AudioClip audioClip; // Zmienna do przechowywania dŸwiêku
+
+    private AudioSource audioSource; // Komponent AudioSource do odtwarzania dŸwiêku
+
+
+    // Metoda do odtwarzania dŸwiêku
+    public void PlayAudio()
+    {
+        //Debug.Log("Zagrano DŸwiêk!");
+
+        // SprawdŸ, czy dŸwiêk jest dostêpny
+        if (audioSource.clip != null)
+        {
+            // Odtwórz dŸwiêk
+            audioSource.Play();
+            Debug.Log("Zagrano DŸwiêk!");
+        }
+        else
+        {
+            Debug.LogError("Nie ustawiono pliku audio!");
+        }
+    }
+
+    // W skrypcie UniversalHealth
+
+    // W skrypcie UniversalHealth
+
     void Start()
     {
         currentHealth = maxHealth;
         rend = GetComponent<Renderer>();
-        originalColor = rend.material.color;
+        //originalColor = rend.material.color;
 
         meshFilter = GetComponent<MeshFilter>();
         meshRenderer = GetComponent<MeshRenderer>();
@@ -50,6 +78,38 @@ public class UniversalHealth : MonoBehaviour
         {
             Debug.LogError("Nie znaleziono obiektu z tagiem 'Player'. Upewnij siê, ¿e obiekt gracza ma tag 'Player'.");
         }
+
+
+        // ZnajdŸ obiekt na scenie z tagiem "audioPlayer"
+        GameObject audioPlayerObject = GameObject.FindGameObjectWithTag("AudioPlayer");
+
+        // SprawdŸ, czy obiekt Ÿród³a dŸwiêku zosta³ znaleziony
+        if (audioPlayerObject != null)
+        {
+            // Spróbuj pobraæ komponent AudioSource z obiektu Ÿród³a dŸwiêku
+            audioSource = audioPlayerObject.GetComponent<AudioSource>();
+
+            // Jeœli komponent AudioSource zosta³ znaleziony, ustaw dŸwiêk
+            if (audioSource != null)
+            {
+                if (audioClip != null)
+                {
+                    audioSource.clip = audioClip;
+                }
+                else
+                {
+                    Debug.LogError("Nie ustawiono pliku audio w inspektorze!");
+                }
+            }
+            else
+            {
+                Debug.LogError("Komponent AudioSource nie zosta³ znaleziony na obiekcie Ÿród³a dŸwiêku!");
+            }
+        }
+        else
+        {
+            Debug.LogError("Nie znaleziono obiektu z tagiem 'audioPlayer' na scenie!");
+        }
     }
 
     public void TakeDamage(float damage, GameObject attacker)
@@ -67,6 +127,9 @@ public class UniversalHealth : MonoBehaviour
 
         if (currentHealth <= 0)
         {
+            //Debug.Log("Zagrano DŸwiêk!");
+            PlayAudio();
+
             if (!gameObject.CompareTag("Player"))
             {
                 StartCoroutine(DieWithColorChange());
@@ -127,6 +190,9 @@ public class UniversalHealth : MonoBehaviour
 
     IEnumerator DieWithColorChange()
     {
+        //PlayAudio();
+        //Debug.Log("Zagrano DŸwiêk!");
+
         DisableComponentsExceptEssentials();
         rend.material.color = deathColor;
         yield return new WaitForSeconds(deathDuration);
