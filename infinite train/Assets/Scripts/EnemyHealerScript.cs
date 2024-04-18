@@ -14,6 +14,7 @@ public class EnemyHealerScript : MonoBehaviour
     private bool isHealing;
     private float currentHealingCooldown;
     private float currentSwitchTargetCooldown;
+    private GameObject healingEffect; // Usuniêcie publicznego pola, bêdzie automatycznie ustawiane na pierwszego potomka
 
     void Start()
     {
@@ -28,6 +29,17 @@ public class EnemyHealerScript : MonoBehaviour
 
         // Inicjalizuj pierwszy cel
         FindNextTarget();
+
+        // ZnajdŸ pierwszego potomka (childa) obiektu i ustaw go jako obiekt HealingEffect
+        if (transform.childCount > 0)
+        {
+            healingEffect = transform.GetChild(0).gameObject;
+        }
+        else
+        {
+            Debug.LogError("Nie znaleziono ¿adnych potomków (childów) tego obiektu.");
+        }
+        healingEffect.SetActive(false);
     }
 
     void Update()
@@ -84,6 +96,17 @@ public class EnemyHealerScript : MonoBehaviour
             FindNextTarget(); // Je¿eli obecny cel przestaje istnieæ, znajdŸ nowy cel
             //Debug.LogWarning("Brak obiektu celu lub komponentu Rigidbody");
         }
+        else
+        {
+            healingEffect.SetActive(false);
+        }
+
+        // Ustawianie aktywnoœci obiektu HealingEffect
+        if (healingEffect != null)
+        {
+            //healingEffect.SetActive(isHealing);
+            //Debug.Log(isHealing);
+        }
     }
 
     void CheckAndHealTarget()
@@ -94,10 +117,12 @@ public class EnemyHealerScript : MonoBehaviour
             isHealing = true;
             Debug.Log("Healing target");
             targetHealth.Heal(healingAmount);
+            healingEffect.SetActive(true);
 
             // Je¿eli obecny cel ma teraz wiêcej ni¿ 90% zdrowia, znajdŸ nowy cel
             if (targetHealth.currentHealth >= targetHealth.maxHealth * 0.9f)
             {
+                healingEffect.SetActive(false);
                 FindNextTarget();
             }
 

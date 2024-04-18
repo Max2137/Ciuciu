@@ -129,13 +129,6 @@ public class UniversalHealth : MonoBehaviour
 
         if (currentHealth <= 0)
         {
-            if (deathEffectPrefab != null)
-            {
-                Vector3 deathEffectPosition = transform.position;
-                deathEffectPosition.y = 0.25f; // Ustaw wysokoœæ na 0.25 na osi Y
-
-                Instantiate(deathEffectPrefab, deathEffectPosition, Quaternion.identity); // Instancjonuj efekt œmierci
-            }
 
             //Debug.Log("Zagrano DŸwiêk!");
             PlayAudio();
@@ -203,11 +196,21 @@ public class UniversalHealth : MonoBehaviour
         //PlayAudio();
         //Debug.Log("Zagrano DŸwiêk!");
 
+
+
         DisableComponentsExceptEssentials();
         rend.material.color = deathColor;
         yield return new WaitForSeconds(deathDuration);
 
         playerXpBar.GainExperience(experienceWorth);
+
+        if (deathEffectPrefab != null)
+        {
+            Vector3 deathEffectPosition = transform.position;
+            deathEffectPosition.y = 0.25f; // Ustaw wysokoœæ na 0.25 na osi Y
+
+            Instantiate(deathEffectPrefab, deathEffectPosition, Quaternion.identity); // Instancjonuj efekt œmierci
+        }
 
         Destroy(gameObject);
     }
