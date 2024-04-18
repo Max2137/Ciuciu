@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel;
 using UnityEngine;
 
 public class UniversalHealth : MonoBehaviour
@@ -26,35 +27,29 @@ public class UniversalHealth : MonoBehaviour
 
     private PlayerXpBar playerXpBar;
 
-
     public AudioClip audioClip; // Zmienna do przechowywania dŸwiêku
-
+    public AudioClip PlayerHurt;
     private AudioSource audioSource; // Komponent AudioSource do odtwarzania dŸwiêku
-
     public GameObject deathEffectPrefab; // Dodaj publiczn¹ zmienn¹ przechowuj¹c¹ efekt œmierci
 
-
     // Metoda do odtwarzania dŸwiêku
-    public void PlayAudio()
+    public void PlayAudio(AudioClip clip)
     {
-        //Debug.Log("Zagrano DŸwiêk!");
-
         // SprawdŸ, czy dŸwiêk jest dostêpny
-        if (audioSource.clip != null)
+        if (clip != null && audioSource != null)
         {
+            // Ustaw dŸwiêk
+            audioSource.clip = clip;
+
             // Odtwórz dŸwiêk
             audioSource.Play();
             Debug.Log("Zagrano DŸwiêk!");
         }
         else
         {
-            Debug.LogError("Nie ustawiono pliku audio!");
+            Debug.LogError("Nie ustawiono pliku audio lub obiekt AudioSource!");
         }
     }
-
-    // W skrypcie UniversalHealth
-
-    // W skrypcie UniversalHealth
 
     void Start()
     {
@@ -80,7 +75,6 @@ public class UniversalHealth : MonoBehaviour
         {
             Debug.LogError("Nie znaleziono obiektu z tagiem 'Player'. Upewnij siê, ¿e obiekt gracza ma tag 'Player'.");
         }
-
 
         // ZnajdŸ obiekt na scenie z tagiem "audioPlayer"
         GameObject audioPlayerObject = GameObject.FindGameObjectWithTag("AudioPlayer");
@@ -117,6 +111,13 @@ public class UniversalHealth : MonoBehaviour
     public void TakeDamage(float damage, GameObject attacker)
     {
         Debug.Log(gameObject.name + " Taking damage from: " + attacker.name);
+
+        // Jeœli obiekt ma tag "Player", odtwórz dŸwiêk obra¿eñ gracza
+        if (gameObject.CompareTag("Player"))
+        {
+            PlayAudio(PlayerHurt);
+        }
+
         currentHealth -= damage;
 
         // Stop any ongoing blink coroutine before starting a new one
@@ -129,10 +130,6 @@ public class UniversalHealth : MonoBehaviour
 
         if (currentHealth <= 0)
         {
-
-            //Debug.Log("Zagrano DŸwiêk!");
-
-
             if (!gameObject.CompareTag("Player"))
             {
                 StartCoroutine(DieWithColorChange());
@@ -141,7 +138,7 @@ public class UniversalHealth : MonoBehaviour
 
         attackers.Add(attacker);
 
-        if(FloatingTextPrefab)
+        if (FloatingTextPrefab)
         {
             // Spawnowanie tekstu bez przypisywania go jako dziecko
             var go = Instantiate(FloatingTextPrefab, transform.position, Quaternion.identity);
@@ -193,11 +190,6 @@ public class UniversalHealth : MonoBehaviour
 
     IEnumerator DieWithColorChange()
     {
-        //PlayAudio();
-        //Debug.Log("Zagrano DŸwiêk!");
-
-
-
         DisableComponentsExceptEssentials();
         rend.material.color = deathColor;
         yield return new WaitForSeconds(deathDuration);
@@ -212,15 +204,15 @@ public class UniversalHealth : MonoBehaviour
             Instantiate(deathEffectPrefab, deathEffectPosition, Quaternion.identity); // Instancjonuj efekt œmierci
         }
 
-        PlayAudio();
+        PlayAudio(audioClip);
 
         Destroy(gameObject);
     }
 
     private void DisableComponentsExceptEssentials()
     {
-        Component[] components = GetComponents<Component>();
-        foreach (Component component in components)
+        UnityEngine.Component[] components = GetComponents<UnityEngine.Component>();
+        foreach (UnityEngine.Component component in components)
         {
             if (component != meshFilter && component != meshRenderer && component != objTransform && component != this)
             {

@@ -5,7 +5,14 @@ using UnityEngine.UI;
 public class PlayerHealthBar : MonoBehaviour
 {
     public UniversalHealth universalHealth;
-    public Image healthBar;
+    public UnityEngine.UI.Image healthBar; // Jednoznaczne okreœlenie Image jako UnityEngine.UI.Image
+
+    public AudioSource audioSource;
+    public AudioClip HeartBeat1;
+    public AudioClip HeartBeat2;
+
+    private bool isPlayingHeartBeat1 = false;
+    private bool isPlayingHeartBeat2 = false;
 
     // Start is called before the first frame update
     void Start()
@@ -22,6 +29,12 @@ public class PlayerHealthBar : MonoBehaviour
             return;
         }
 
+        if (audioSource == null)
+        {
+            Debug.LogError("AudioSource reference not set in PlayerHealthBar!");
+            return;
+        }
+
         StartCoroutine(UpdateHealthBar());
     }
 
@@ -31,6 +44,35 @@ public class PlayerHealthBar : MonoBehaviour
         {
             float fillAmount = universalHealth.currentHealth / universalHealth.maxHealth;
             healthBar.fillAmount = fillAmount;
+
+            // Sprawdzanie warunków dla odtwarzania dŸwiêków
+            if (fillAmount < 0.5f && !isPlayingHeartBeat1)
+            {
+                isPlayingHeartBeat1 = true;
+                audioSource.loop = true;
+                audioSource.clip = HeartBeat1;
+                audioSource.Play();
+            }
+            else if (fillAmount >= 0.5f && isPlayingHeartBeat1)
+            {
+                isPlayingHeartBeat1 = false;
+                audioSource.loop = false;
+                audioSource.Stop();
+            }
+
+            if (fillAmount < 0.2f && !isPlayingHeartBeat2)
+            {
+                isPlayingHeartBeat2 = true;
+                audioSource.loop = true;
+                audioSource.clip = HeartBeat2;
+                audioSource.Play();
+            }
+            else if (fillAmount >= 0.2f && isPlayingHeartBeat2)
+            {
+                isPlayingHeartBeat2 = false;
+                audioSource.loop = false;
+                audioSource.Stop();
+            }
 
             yield return null;
         }

@@ -2240,7 +2240,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1053179758191247288, guid: 01bafe4a0f6eac64e841a8ee814f6bba, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 2.7
+      value: -5.56
       objectReference: {fileID: 0}
     - target: {fileID: 1053179758191247288, guid: 01bafe4a0f6eac64e841a8ee814f6bba, type: 3}
       propertyPath: m_LocalPosition.y
@@ -3876,6 +3876,10 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1861063024769751098, guid: 814881e569bac91449e575d4ee0e159e, type: 3}
+      propertyPath: hitSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 1b437d9c853250247be17b914b92259d, type: 3}
     - target: {fileID: 1861063024769751098, guid: 814881e569bac91449e575d4ee0e159e, type: 3}
       propertyPath: mAnimator
       value: 

@@ -6,7 +6,7 @@ public class WeaponStickInput : MonoBehaviour
 {
     public Animator mAnimator;
 
-
+    public AudioClip hitSound; // Dodaj pole dla dŸwiêku
 
     public float raycastDistance = 5f;  // D³ugoœæ raycasta
     public int attackDamage;
@@ -47,7 +47,10 @@ public class WeaponStickInput : MonoBehaviour
             Debug.Log("Animacja!");
         }
 
-
+        if (hitSound != null)
+        {
+            AudioSource.PlayClipAtPoint(hitSound, transform.position);
+        }
 
         // Wykonaj raycast
         RaycastHit hit;
