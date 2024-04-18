@@ -111,7 +111,7 @@ MonoBehaviour:
   deathDuration: 0.5
   experienceWorth: 50
   audioClip: {fileID: 8300000, guid: a3ab8d26cb42eff46bb8aa317d942e36, type: 3}
-  deathEffectPrefab: {fileID: 2123108786520256827, guid: 4c31b486024496e499f481f3ca074cb5, type: 3}
+  audioSourceObject: {fileID: 0}
 --- !u!114 &-5494522854188486467
 MonoBehaviour:
   m_ObjectHideFlags: 0

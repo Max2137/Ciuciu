@@ -37,10 +37,6 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-<<<<<<< HEAD
     - _pixeliaztion: 4
-=======
-    - _pixeliaztion: 3
->>>>>>> 4783801c9bc5094aed089e6ad571e34f9ab7772b
     m_Colors: []
   m_BuildTextureStacks: []
