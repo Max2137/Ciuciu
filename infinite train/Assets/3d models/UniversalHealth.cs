@@ -31,6 +31,8 @@ public class UniversalHealth : MonoBehaviour
 
     private AudioSource audioSource; // Komponent AudioSource do odtwarzania dŸwiêku
 
+    public GameObject deathEffectPrefab; // Dodaj publiczn¹ zmienn¹ przechowuj¹c¹ efekt œmierci
+
 
     // Metoda do odtwarzania dŸwiêku
     public void PlayAudio()
@@ -127,6 +129,14 @@ public class UniversalHealth : MonoBehaviour
 
         if (currentHealth <= 0)
         {
+            if (deathEffectPrefab != null)
+            {
+                Vector3 deathEffectPosition = transform.position;
+                deathEffectPosition.y = 0.25f; // Ustaw wysokoœæ na 0.25 na osi Y
+
+                Instantiate(deathEffectPrefab, deathEffectPosition, Quaternion.identity); // Instancjonuj efekt œmierci
+            }
+
             //Debug.Log("Zagrano DŸwiêk!");
             PlayAudio();
 
