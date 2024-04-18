@@ -6,6 +6,7 @@ public class WeaponSaberInput : MonoBehaviour
 {
     public Animator mAnimator;
 
+    public AudioClip hitSound; // Dodaj pole dla dŸwiêku
 
     public float raycastDistance = 5f;  // D³ugoœæ raycasta
     public int attackDamage;
@@ -50,6 +51,10 @@ public class WeaponSaberInput : MonoBehaviour
             Debug.Log("Animacja!");
         }
 
+        if (hitSound != null)
+        {
+            AudioSource.PlayClipAtPoint(hitSound, transform.position);
+        }
 
         // Oblicz k¹t pomiêdzy promieniami w wachlarzu
         float angleStep = fanAngle / (numberOfRays - 1);
