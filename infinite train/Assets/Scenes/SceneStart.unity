@@ -3127,6 +3127,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: WeaponSaber
       objectReference: {fileID: 0}
+    - target: {fileID: 8156141555224387643, guid: 5b65b835d62a6c847ac34050e0e04676, type: 3}
+      propertyPath: hitSound
+      value: 
+      objectReference: {fileID: 8300000, guid: b36cd16021a89be419364f2a9b1d0c4b, type: 3}
     - target: {fileID: 8671364925012055008, guid: 5b65b835d62a6c847ac34050e0e04676, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.291
