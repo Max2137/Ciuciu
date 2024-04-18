@@ -131,7 +131,7 @@ public class UniversalHealth : MonoBehaviour
         {
 
             //Debug.Log("Zagrano DŸwiêk!");
-            PlayAudio();
+
 
             if (!gameObject.CompareTag("Player"))
             {
@@ -211,6 +211,8 @@ public class UniversalHealth : MonoBehaviour
 
             Instantiate(deathEffectPrefab, deathEffectPosition, Quaternion.identity); // Instancjonuj efekt œmierci
         }
+
+        PlayAudio();
 
         Destroy(gameObject);
     }

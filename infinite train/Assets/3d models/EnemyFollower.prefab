@@ -128,7 +128,7 @@ MonoBehaviour:
   deathColor: {r: 0, g: 0, b: 0, a: 1}
   deathDuration: 0.5
   experienceWorth: 20
-  audioClip: {fileID: 8300000, guid: a3ab8d26cb42eff46bb8aa317d942e36, type: 3}
+  audioClip: {fileID: 8300000, guid: fa1eb5eaf596d6a42be96857c272a8f2, type: 3}
   deathEffectPrefab: {fileID: 2123108786520256827, guid: 4c31b486024496e499f481f3ca074cb5, type: 3}
 --- !u!54 &3637136298017708421
 Rigidbody:

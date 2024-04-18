@@ -3578,6 +3578,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5823308682747116250, guid: 0610dbfad0defc6468436d37b81650d7, type: 3}
+      propertyPath: hitSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 5f8b510adb2befe4f8f11b21fca89388, type: 3}
+    - target: {fileID: 5823308682747116250, guid: 0610dbfad0defc6468436d37b81650d7, type: 3}
       propertyPath: mAnimator
       value: 
       objectReference: {fileID: 1800055602}
