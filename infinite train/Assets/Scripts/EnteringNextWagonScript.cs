@@ -3,8 +3,33 @@ using UnityEngine;
 public class EnteringNextWagonScript : MonoBehaviour
 {
     public bool isOpened;
+    public bool wasOpenedLastFrame; // Dodane pole œledz¹ce stan otwarcia drzwi w poprzedniej klatce
     public WagonLoader wagonLoader;
-    public Transform spawnPlace; // Dodane pole do ustawienia obiektu SpawnPlace
+    public Transform spawnPlace;
+    public AudioClip doorOpenSound; // Dodane pole dla dŸwiêku otwierania drzwi
+
+    private AudioSource audioSource;
+
+    private void Start()
+    {
+        audioSource = GetComponent<AudioSource>();
+        if (audioSource == null)
+        {
+            audioSource = gameObject.AddComponent<AudioSource>();
+        }
+
+        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+        if (enemies.Length == 0)
+        {
+            isOpened = true;
+        }
+        else
+        {
+            isOpened = false;
+        }
+
+        wasOpenedLastFrame = isOpened; // Inicjalizacja pola
+    }
 
     private void OnTriggerEnter(Collider other)
     {
@@ -36,7 +61,6 @@ public class EnteringNextWagonScript : MonoBehaviour
     private void Update()
     {
         GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
-
         if (enemies.Length == 0)
         {
             isOpened = true;
@@ -46,5 +70,15 @@ public class EnteringNextWagonScript : MonoBehaviour
             isOpened = false;
         }
 
+        // Sprawdzenie, czy stan otwarcia drzwi w³aœnie zmieni³ siê z false na true
+        if (!wasOpenedLastFrame && isOpened)
+        {
+            if (doorOpenSound != null)
+            {
+                audioSource.PlayOneShot(doorOpenSound); // Odtwarzanie dŸwiêku otwierania drzwi
+            }
+        }
+
+        wasOpenedLastFrame = isOpened; // Aktualizacja stanu otwarcia drzwi w poprzedniej klatce
     }
 }

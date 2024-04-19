@@ -2100,7 +2100,7 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 338aad7b8246a7c4c8d296090db5894e, type: 3}
---- !u!1 &1185123047
+--- !u!1 &1142220535
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2108,23 +2108,23 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 1185123050}
-  - component: {fileID: 1185123049}
-  - component: {fileID: 1185123048}
+  - component: {fileID: 1142220538}
+  - component: {fileID: 1142220537}
+  - component: {fileID: 1142220536}
   m_Layer: 0
-  m_Name: Area Light
+  m_Name: Area Light (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1185123048
+--- !u!114 &1142220536
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1185123047}
+  m_GameObject: {fileID: 1142220535}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 474bcb49853aa07438625e644c072ee6, type: 3}
@@ -2141,19 +2141,19 @@ MonoBehaviour:
   m_LightCookieSize: {x: 1, y: 1}
   m_LightCookieOffset: {x: 0, y: 0}
   m_SoftShadowQuality: 0
---- !u!108 &1185123049
+--- !u!108 &1142220537
 Light:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1185123047}
+  m_GameObject: {fileID: 1142220535}
   m_Enabled: 1
   serializedVersion: 10
   m_Type: 1
   m_Shape: 0
   m_Color: {r: 1, g: 0.6779948, b: 0.3150943, a: 1}
-  m_Intensity: 2
+  m_Intensity: 0.22
   m_Range: 100
   m_SpotAngle: 70.99669
   m_InnerSpotAngle: 62.798756
@@ -2203,17 +2203,17 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
---- !u!4 &1185123050
+--- !u!4 &1142220538
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1185123047}
+  m_GameObject: {fileID: 1142220535}
   serializedVersion: 2
   m_LocalRotation: {x: 0.96979815, y: -0.100272566, z: 0.10928863, w: 0.19363104}
   m_LocalPosition: {x: 0, y: 2.84, z: 16}
-  m_LocalScale: {x: 3.6191, y: 1, z: 1}
+  m_LocalScale: {x: 3.6190999, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -4014,7 +4014,7 @@ SceneRoots:
   - {fileID: 1797632148}
   - {fileID: 92381878}
   - {fileID: 874306797}
-  - {fileID: 1185123050}
+  - {fileID: 1142220538}
   - {fileID: 772282458}
   - {fileID: 1351361564}
   - {fileID: 1698880799}

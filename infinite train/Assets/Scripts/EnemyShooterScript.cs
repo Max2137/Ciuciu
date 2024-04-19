@@ -19,9 +19,18 @@ public class EnemyShooterScript : MonoBehaviour
     private float currentCooldownPhysical;
     public float attackCooldownPhysical;
     public float attackDamagePhysical;
+    
+    private AudioSource audioSource;
+    public AudioClip shootingSound;
 
-    void Start()
+    private void Start()
     {
+        audioSource = GetComponent<AudioSource>();
+        if (audioSource == null)
+        {
+            audioSource = gameObject.AddComponent<AudioSource>();
+        }
+
         isTouchingPlayer = false;
 
         enemyRigidbody = GetComponent<Rigidbody>();
@@ -147,6 +156,8 @@ public class EnemyShooterScript : MonoBehaviour
 
         if (projectilePrefab != null && firePoint != null)
         {
+            audioSource.PlayOneShot(shootingSound);
+
             GameObject projectile = Instantiate(projectilePrefab, firePoint.position, firePoint.rotation);
             projectile.GetComponent<ProjectileStandardScript>().SetOwner(gameObject);
         }

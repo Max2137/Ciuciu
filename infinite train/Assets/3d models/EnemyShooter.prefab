@@ -111,6 +111,9 @@ MonoBehaviour:
   deathDuration: 0.5
   experienceWorth: 35
   audioClip: {fileID: 8300000, guid: fa1eb5eaf596d6a42be96857c272a8f2, type: 3}
+  PlayerHurt: {fileID: 0}
+  GeneralHurtSounds:
+  - {fileID: 8300000, guid: feaf8bb96e04d9445a902fc84b735f7d, type: 3}
   deathEffectPrefab: {fileID: 2123108786520256827, guid: 4c31b486024496e499f481f3ca074cb5, type: 3}
 --- !u!114 &5881850781660444712
 MonoBehaviour:
@@ -133,6 +136,7 @@ MonoBehaviour:
   projectilePrefab: {fileID: 6369002540794184857, guid: 4f387a6f0ee3a2b40ab0e0bd9b086893, type: 3}
   attackCooldownPhysical: 1
   attackDamagePhysical: 5
+  shootingSound: {fileID: 8300000, guid: 2af04dfba7f08d94f8ef3570a892ae8c, type: 3}
 --- !u!54 &3637136298017708421
 Rigidbody:
   m_ObjectHideFlags: 0

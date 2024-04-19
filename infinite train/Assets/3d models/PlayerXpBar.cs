@@ -15,9 +15,14 @@ public class PlayerXpBar : MonoBehaviour
     public TMP_Text experienceText;
     public UnityEngine.UI.Image experienceFillImage;
 
-    public PlayerStatsScript playerStatsScript;  // Referencja do skryptu PlayerStatsScript
+    public PlayerStatsScript playerStatsScript;  // Reference to the PlayerStatsScript
 
     public GameObject attackMeleePanel, attackMagicPanel, defenseGeneralPanel;
+
+    public AudioClip LevelUpSound;
+    public AudioClip PickingPowerSound;
+
+    private AudioSource audioSource; // Declare audioSource variable here
 
     void Start()
     {
@@ -28,6 +33,12 @@ public class PlayerXpBar : MonoBehaviour
         attackMeleePanel.SetActive(false);
         attackMagicPanel.SetActive(false);
         defenseGeneralPanel.SetActive(false);
+
+        audioSource = GetComponent<AudioSource>(); // Assign audioSource here
+        if (audioSource == null)
+        {
+            audioSource = gameObject.AddComponent<AudioSource>();
+        }
     }
 
     private void Update()
@@ -61,6 +72,11 @@ public class PlayerXpBar : MonoBehaviour
 
     void DisableUpgradeButtons()
     {
+        if (PickingPowerSound != null)
+        {
+            audioSource.PlayOneShot(PickingPowerSound); // Odtwarzanie dźwięku otwierania drzwi
+        }
+
         Time.timeScale = 1;
 
         attackMeleePanel.SetActive(false);
@@ -89,6 +105,11 @@ public class PlayerXpBar : MonoBehaviour
         level++;
         experience = 0;
         experienceToNextLevel = Mathf.RoundToInt(experienceToNextLevel * levelMultiplier);
+
+        if (LevelUpSound != null)
+        {
+            audioSource.PlayOneShot(LevelUpSound); // Odtwarzanie dźwięku otwierania drzwi
+        }
     }
 
     float GetExperienceRatio()

@@ -29,6 +29,7 @@ public class UniversalHealth : MonoBehaviour
 
     public AudioClip audioClip; // Zmienna do przechowywania dŸwiêku
     public AudioClip PlayerHurt;
+    public List<AudioClip> GeneralHurtSounds; // List of general hurt sounds
     private AudioSource audioSource; // Komponent AudioSource do odtwarzania dŸwiêku
     public GameObject deathEffectPrefab; // Dodaj publiczn¹ zmienn¹ przechowuj¹c¹ efekt œmierci
 
@@ -48,6 +49,22 @@ public class UniversalHealth : MonoBehaviour
         else
         {
             Debug.LogError("Nie ustawiono pliku audio lub obiekt AudioSource!");
+        }
+    }
+
+    // Method to play a random audio clip from a list
+    public void PlayRandomAudio(List<AudioClip> clips)
+    {
+        if (clips != null && clips.Count > 0 && audioSource != null)
+        {
+            int randomIndex = UnityEngine.Random.Range(0, clips.Count);
+            audioSource.clip = clips[randomIndex];
+            audioSource.Play();
+            Debug.Log("Played Audio!");
+        }
+        else
+        {
+            Debug.LogError("Audio clips list is empty or AudioSource component not set!");
         }
     }
 
@@ -117,6 +134,11 @@ public class UniversalHealth : MonoBehaviour
         {
             PlayAudio(PlayerHurt);
         }
+        else
+        {
+            // If not player, play a random general hurt sound
+            PlayRandomAudio(GeneralHurtSounds);
+        }
 
         currentHealth -= damage;
 
@@ -132,6 +154,8 @@ public class UniversalHealth : MonoBehaviour
         {
             if (!gameObject.CompareTag("Player"))
             {
+                PlayAudio(audioClip);
+
                 StartCoroutine(DieWithColorChange());
             }
         }
@@ -204,7 +228,7 @@ public class UniversalHealth : MonoBehaviour
             Instantiate(deathEffectPrefab, deathEffectPosition, Quaternion.identity); // Instancjonuj efekt œmierci
         }
 
-        PlayAudio(audioClip);
+        
 
         Destroy(gameObject);
     }

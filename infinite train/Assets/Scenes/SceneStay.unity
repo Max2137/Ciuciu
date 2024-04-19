@@ -3747,6 +3747,107 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 175316a618314cf41b93b7c65983bef6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1825172127 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2540548566599941887, guid: bf5d24fa9c913f844b96827ab84d80e7, type: 3}
+  m_PrefabInstance: {fileID: 5744685108542294114}
+  m_PrefabAsset: {fileID: 0}
+--- !u!82 &1825172133
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1825172127}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &1928922079
 GameObject:
   m_ObjectHideFlags: 0
@@ -4862,6 +4963,10 @@ PrefabInstance:
       propertyPath: wagonLoader
       value: 
       objectReference: {fileID: 1001564316}
+    - target: {fileID: 150181292184318810, guid: bf5d24fa9c913f844b96827ab84d80e7, type: 3}
+      propertyPath: doorOpenSound
+      value: 
+      objectReference: {fileID: 8300000, guid: c3aa6e31cd0c87d48be14bb1fdc118ac, type: 3}
     - target: {fileID: 2540548566599941887, guid: bf5d24fa9c913f844b96827ab84d80e7, type: 3}
       propertyPath: m_Name
       value: DoorsStandard
@@ -4917,7 +5022,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 2540548566599941887, guid: bf5d24fa9c913f844b96827ab84d80e7, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1825172133}
   m_SourcePrefab: {fileID: 100100000, guid: bf5d24fa9c913f844b96827ab84d80e7, type: 3}
 --- !u!1001 &8082236371764265514
 PrefabInstance:
@@ -4988,6 +5096,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 8300000, guid: 057cfeecb5e101b488a46669c19de83b, type: 3}
     - target: {fileID: 2532068802723518134, guid: 075f8d6af68f0a7468a7d6f4f9d9e722, type: 3}
+      propertyPath: GeneralHurt
+      value: 
+      objectReference: {fileID: 8300000, guid: feaf8bb96e04d9445a902fc84b735f7d, type: 3}
+    - target: {fileID: 2532068802723518134, guid: 075f8d6af68f0a7468a7d6f4f9d9e722, type: 3}
       propertyPath: FloatingTextPrefab
       value: 
       objectReference: {fileID: 4223490877550615990, guid: 89d0d17b310cf1144bde2a66a052f873, type: 3}
@@ -4995,6 +5107,10 @@ PrefabInstance:
       propertyPath: levelText
       value: 
       objectReference: {fileID: 1933771396}
+    - target: {fileID: 2690325723120065607, guid: 075f8d6af68f0a7468a7d6f4f9d9e722, type: 3}
+      propertyPath: LevelUpSound
+      value: 
+      objectReference: {fileID: 8300000, guid: a6ff67750da629b4b8675c449004cc43, type: 3}
     - target: {fileID: 2690325723120065607, guid: 075f8d6af68f0a7468a7d6f4f9d9e722, type: 3}
       propertyPath: experienceText
       value: 
@@ -5007,6 +5123,10 @@ PrefabInstance:
       propertyPath: attackMeleePanel
       value: 
       objectReference: {fileID: 385817020}
+    - target: {fileID: 2690325723120065607, guid: 075f8d6af68f0a7468a7d6f4f9d9e722, type: 3}
+      propertyPath: PickingPowerSound
+      value: 
+      objectReference: {fileID: 8300000, guid: aba516703e8bd214eb4c6fe34add2e29, type: 3}
     - target: {fileID: 2690325723120065607, guid: 075f8d6af68f0a7468a7d6f4f9d9e722, type: 3}
       propertyPath: defenseGeneralPanel
       value: 
