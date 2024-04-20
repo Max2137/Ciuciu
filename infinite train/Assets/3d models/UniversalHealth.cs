@@ -48,7 +48,7 @@ public class UniversalHealth : MonoBehaviour
         }
         else
         {
-            Debug.LogError("Nie ustawiono pliku audio lub obiekt AudioSource!");
+            Debug.LogError("Error w graniu: " + clip);
         }
     }
 
