@@ -106,7 +106,7 @@ MonoBehaviour:
   stoppingDistance: 1
   attackCooldown: 2
   attackDamage: 10
-  currentCooldown: 10
+  attackSound: {fileID: 8300000, guid: 80e3679f304b06d47a3df41de2ef991c, type: 3}
 --- !u!114 &8605321182498221806
 MonoBehaviour:
   m_ObjectHideFlags: 0
