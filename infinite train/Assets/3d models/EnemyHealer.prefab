@@ -4972,7 +4972,7 @@ MonoBehaviour:
   healingCooldown: 0.1
   healingAmount: 0.1
   switchTargetCooldown: 5
-  healingSound: {fileID: 8300000, guid: d2a5b742c133a7c45b1da748059b6684, type: 3}
+  healingSound: {fileID: 0}
   targetHealth: {fileID: 0}
   potentialTargets: []
 --- !u!54 &3637136298017708421
