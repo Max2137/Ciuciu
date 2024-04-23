@@ -18,6 +18,8 @@ public class EnemyHealerScript : MonoBehaviour
     private GameObject healingEffect;
     private AudioSource audioSource;
 
+    private Animator mAnimator;
+
     void Start()
     {
         healerRigidbody = GetComponent<Rigidbody>();
@@ -44,6 +46,9 @@ public class EnemyHealerScript : MonoBehaviour
         audioSource.clip = healingSound;
         audioSource.loop = false;
         audioSource.playOnAwake = false;
+
+
+        mAnimator = GetComponent<Animator>();
     }
 
     void Update()
