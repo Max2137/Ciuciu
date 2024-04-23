@@ -5,7 +5,8 @@ using UnityEngine;
 public class WeaponDaggerInput : MonoBehaviour
 {
     public Animator mAnimator;
-
+    public GameObject attackSource; // Obiekt AudioSource
+    public AudioClip attackClip; // DŸwiêk ataku
 
     public float raycastDistance = 5f;  // D³ugoœæ raycasta
     public int attackDamage;
@@ -33,6 +34,16 @@ public class WeaponDaggerInput : MonoBehaviour
         {
             Detect(attackDamage);
             lastAttackTime = Time.time;
+
+            // Odtwórz dŸwiêk ataku
+            if (attackSource != null && attackClip != null)
+            {
+                AudioSource audioSource = attackSource.GetComponent<AudioSource>();
+                if (audioSource != null)
+                {
+                    audioSource.PlayOneShot(attackClip);
+                }
+            }
         }
     }
 
