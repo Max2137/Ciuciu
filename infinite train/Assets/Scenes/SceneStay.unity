@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
+  m_IndirectSpecularColor: {r: 0.4508115, g: 0.4990229, b: 0.5654979, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1093,7 +1093,7 @@ MonoBehaviour:
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
   m_Interactable: 1
-  m_TargetGraphic: {fileID: 0}
+  m_TargetGraphic: {fileID: 385817025}
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
@@ -2783,7 +2783,7 @@ MonoBehaviour:
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
   m_Interactable: 1
-  m_TargetGraphic: {fileID: 0}
+  m_TargetGraphic: {fileID: 1410459920}
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
@@ -3217,7 +3217,7 @@ MonoBehaviour:
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
   m_Interactable: 1
-  m_TargetGraphic: {fileID: 0}
+  m_TargetGraphic: {fileID: 1558394857}
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
@@ -4840,6 +4840,18 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1933771396}
     - target: {fileID: 2690325723120065607, guid: 075f8d6af68f0a7468a7d6f4f9d9e722, type: 3}
+      propertyPath: Background1
+      value: 
+      objectReference: {fileID: 1928922079}
+    - target: {fileID: 2690325723120065607, guid: 075f8d6af68f0a7468a7d6f4f9d9e722, type: 3}
+      propertyPath: Background2
+      value: 
+      objectReference: {fileID: 332023899}
+    - target: {fileID: 2690325723120065607, guid: 075f8d6af68f0a7468a7d6f4f9d9e722, type: 3}
+      propertyPath: Background3
+      value: 
+      objectReference: {fileID: 429170620}
+    - target: {fileID: 2690325723120065607, guid: 075f8d6af68f0a7468a7d6f4f9d9e722, type: 3}
       propertyPath: LevelUpSound
       value: 
       objectReference: {fileID: 8300000, guid: a6ff67750da629b4b8675c449004cc43, type: 3}
@@ -4867,6 +4879,22 @@ PrefabInstance:
       propertyPath: experienceFillImage
       value: 
       objectReference: {fileID: 1928949881}
+    - target: {fileID: 2690325723120065607, guid: 075f8d6af68f0a7468a7d6f4f9d9e722, type: 3}
+      propertyPath: Decorations.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2690325723120065607, guid: 075f8d6af68f0a7468a7d6f4f9d9e722, type: 3}
+      propertyPath: Decorations.Array.data[0]
+      value: 
+      objectReference: {fileID: 922682221}
+    - target: {fileID: 2690325723120065607, guid: 075f8d6af68f0a7468a7d6f4f9d9e722, type: 3}
+      propertyPath: Decorations.Array.data[1]
+      value: 
+      objectReference: {fileID: 382165650}
+    - target: {fileID: 2690325723120065607, guid: 075f8d6af68f0a7468a7d6f4f9d9e722, type: 3}
+      propertyPath: Decorations.Array.data[2]
+      value: 
+      objectReference: {fileID: 429170620}
     - target: {fileID: 3045391220759171653, guid: 075f8d6af68f0a7468a7d6f4f9d9e722, type: 3}
       propertyPath: healthBar
       value: 

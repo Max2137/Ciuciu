@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using System.Collections.Generic;
 
 public class PlayerXpBar : MonoBehaviour
 {
@@ -14,6 +15,8 @@ public class PlayerXpBar : MonoBehaviour
     public TMP_Text levelText;
     public TMP_Text experienceText;
     public UnityEngine.UI.Image experienceFillImage;
+
+    public List<GameObject> Decorations;
 
     public PlayerStatsScript playerStatsScript;  // Reference to the PlayerStatsScript
 
@@ -33,6 +36,10 @@ public class PlayerXpBar : MonoBehaviour
         attackMeleePanel.SetActive(false);
         attackMagicPanel.SetActive(false);
         defenseGeneralPanel.SetActive(false);
+        foreach (GameObject obiekt in Decorations)
+        {
+            obiekt.SetActive(false);
+        }
 
         audioSource = GetComponent<AudioSource>(); // Assign audioSource here
         if (audioSource == null)
@@ -54,6 +61,10 @@ public class PlayerXpBar : MonoBehaviour
         attackMeleePanel.SetActive(false);
         attackMagicPanel.SetActive(false);
         defenseGeneralPanel.SetActive(false);
+        foreach (GameObject obiekt in Decorations)
+        {
+            obiekt.SetActive(false);
+        }
 
         // Dodaj nasłuchiwacze kliknięć do przycisków
         attackMeleePanel.GetComponent<Button>().onClick.AddListener(UpgradeAttackMelee);
@@ -68,6 +79,10 @@ public class PlayerXpBar : MonoBehaviour
         attackMeleePanel.SetActive(true);
         attackMagicPanel.SetActive(true);
         defenseGeneralPanel.SetActive(true);
+        foreach (GameObject obiekt in Decorations)
+        {
+            obiekt.SetActive(true);
+        }
     }
 
     void DisableUpgradeButtons()
@@ -82,6 +97,10 @@ public class PlayerXpBar : MonoBehaviour
         attackMeleePanel.SetActive(false);
         attackMagicPanel.SetActive(false);
         defenseGeneralPanel.SetActive(false);
+        foreach (GameObject obiekt in Decorations)
+        {
+            obiekt.SetActive(false);
+        }
     }
 
     public void GainExperience(int amount)
