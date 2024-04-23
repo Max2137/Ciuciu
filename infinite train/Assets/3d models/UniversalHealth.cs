@@ -33,6 +33,8 @@ public class UniversalHealth : MonoBehaviour
     private AudioSource audioSource; // Komponent AudioSource do odtwarzania dŸwiêku
     public GameObject deathEffectPrefab; // Dodaj publiczn¹ zmienn¹ przechowuj¹c¹ efekt œmierci
 
+    private Animator mAnimator; 
+
     // Metoda do odtwarzania dŸwiêku
     public void PlayAudio(AudioClip clip)
     {
@@ -123,6 +125,9 @@ public class UniversalHealth : MonoBehaviour
         {
             Debug.LogError("Nie znaleziono obiektu z tagiem 'audioPlayer' na scenie!");
         }
+
+
+        mAnimator = GetComponent<Animator>();
     }
 
     public void TakeDamage(float damage, GameObject attacker)
