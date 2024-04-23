@@ -17,6 +17,9 @@ public class EnemyFollowerScript : MonoBehaviour
     public AudioClip attackSound; // DŸwiêk ataku, ustaw w inspectorze
     private AudioSource audioSource;
 
+   
+
+
     void Start()
     {
         enemyRigidbody = GetComponent<Rigidbody>();
@@ -47,7 +50,10 @@ public class EnemyFollowerScript : MonoBehaviour
             // Dodaj komponent AudioSource, jeœli nie zosta³ jeszcze dodany
             audioSource = gameObject.AddComponent<AudioSource>();
         }
+
+        
     }
+    
 
     void Update()
     {
@@ -60,6 +66,8 @@ public class EnemyFollowerScript : MonoBehaviour
             Quaternion toRotation = Quaternion.LookRotation(direction.normalized, Vector3.up);
             toRotation = Quaternion.Euler(0f, toRotation.eulerAngles.y, 0f);
             enemyRigidbody.MoveRotation(Quaternion.RotateTowards(enemyRigidbody.rotation, toRotation, Time.deltaTime * 1000f));
+
+            
 
             if (distanceToTarget > stoppingDistance)
             {
