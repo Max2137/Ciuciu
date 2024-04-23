@@ -1,18 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.ComponentModel;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class UniversalHealth : MonoBehaviour
 {
     public GameObject FloatingTextPrefab;
     public float maxHealth;
     public float currentHealth;
-    public float blinkDuration = 0.2f; // Duration of the blink effect
-    public Color blinkColor = Color.red; // Color to blink on damage
-    public Color healBlinkColor = Color.green; // Color to blink while healing
-    public Color deathColor = Color.black; // Color when the object is about to die
-    public float deathDuration = 0.5f; // Duration of the death effect
+    public float blinkDuration = 0.2f;
+    public Color blinkColor = Color.red;
+    public Color healBlinkColor = Color.green;
+    public Color deathColor = Color.black;
+    public float deathDuration = 0.5f;
     public int experienceWorth;
 
     private HashSet<GameObject> attackers = new HashSet<GameObject>();
@@ -26,35 +26,109 @@ public class UniversalHealth : MonoBehaviour
     private Coroutine blinkCoroutine;
 
     private PlayerXpBar playerXpBar;
+    [SerializeField] private AudioSource audioSource; // Dodajemy pole przechowuj¹ce komponent AudioSource
 
-    public AudioClip audioClip; // Zmienna do przechowywania dŸwiêku
+    public AudioClip audioClip;
     public AudioClip PlayerHurt;
-    public List<AudioClip> GeneralHurtSounds; // List of general hurt sounds
-    private AudioSource audioSource; // Komponent AudioSource do odtwarzania dŸwiêku
-    public GameObject deathEffectPrefab; // Dodaj publiczn¹ zmienn¹ przechowuj¹c¹ efekt œmierci
+    public List<AudioClip> GeneralHurtSounds;
+    public GameObject deathEffectPrefab;
 
-    // Metoda do odtwarzania dŸwiêku
-    public void PlayAudio(AudioClip clip)
+    void Start()
     {
-        // SprawdŸ, czy dŸwiêk jest dostêpny
-        if (clip != null && audioSource != null)
-        {
-            // Ustaw dŸwiêk
-            audioSource.clip = clip;
+        currentHealth = maxHealth;
+        rend = GetComponent<Renderer>();
+        originalColor = rend.material.color;
 
-            // Odtwórz dŸwiêk
-            audioSource.Play();
-            Debug.Log("Zagrano DŸwiêk!");
-        }
-        else
+        meshFilter = GetComponent<MeshFilter>();
+        meshRenderer = GetComponent<MeshRenderer>();
+        objTransform = transform;
+
+        // Pobieramy nazwê bie¿¹cej sceny
+        string currentSceneName = SceneManager.GetActiveScene().name;
+
+        // Znajdujemy wszystkie obiekty z tagiem "AudioPlayer" na bie¿¹cej scenie
+        GameObject[] audioPlayers = GameObject.FindGameObjectsWithTag("AudioPlayer");
+
+        // Szukamy obiektu "AudioPlayer" na bie¿¹cej scenie
+        foreach (GameObject audioPlayer in audioPlayers)
         {
-            Debug.LogError("Error w graniu: " + clip);
+            if (audioPlayer.scene.name == currentSceneName)
+            {
+                // Jeœli znaleziono obiekt "AudioPlayer" na bie¿¹cej scenie, pobieramy jego komponent AudioSource
+                audioSource = audioPlayer.GetComponent<AudioSource>();
+                break; // Przerywamy pêtlê, gdy znaleziono odpowiedni obiekt
+            }
+        }
+
+        // Sprawdzamy, czy uda³o siê znaleŸæ obiekt "AudioPlayer" na bie¿¹cej scenie
+        if (audioSource == null)
+        {
+            Debug.LogError("Nie znaleziono komponentu AudioSource na obiekcie z tagiem 'AudioPlayer' na scenie " + currentSceneName + ".");
         }
     }
 
-    // Method to play a random audio clip from a list
+    public void PlayAudio(AudioClip clip)
+    {
+        // Pobieramy nazwê bie¿¹cej sceny
+        string currentSceneName = SceneManager.GetActiveScene().name;
+
+        // Znajdujemy wszystkie obiekty z tagiem "AudioPlayer" na bie¿¹cej scenie
+        GameObject[] audioPlayers = GameObject.FindGameObjectsWithTag("AudioPlayer");
+
+        // Szukamy obiektu "AudioPlayer" na bie¿¹cej scenie
+        foreach (GameObject audioPlayer in audioPlayers)
+        {
+            if (audioPlayer.scene.name == currentSceneName)
+            {
+                // Jeœli znaleziono obiekt "AudioPlayer" na bie¿¹cej scenie, pobieramy jego komponent AudioSource
+                audioSource = audioPlayer.GetComponent<AudioSource>();
+                break; // Przerywamy pêtlê, gdy znaleziono odpowiedni obiekt
+            }
+        }
+
+        // Sprawdzamy, czy uda³o siê znaleŸæ obiekt "AudioPlayer" na bie¿¹cej scenie
+        if (audioSource == null)
+        {
+            Debug.LogError("Nie znaleziono komponentu AudioSource na obiekcie z tagiem 'AudioPlayer' na scenie " + currentSceneName + ".");
+        }
+
+        if (clip != null && audioSource != null)
+        {
+            audioSource.clip = clip;
+            audioSource.Play();
+            Debug.Log("Zagrano DŸwiêk! " + clip + " audio source: " + audioSource);
+        }
+        else
+        {
+            Debug.LogError("B³¹d odtwarzania dŸwiêku: " + clip + " audio source: " + audioSource);
+        }
+    }
+
     public void PlayRandomAudio(List<AudioClip> clips)
     {
+        // Pobieramy nazwê bie¿¹cej sceny
+        string currentSceneName = SceneManager.GetActiveScene().name;
+
+        // Znajdujemy wszystkie obiekty z tagiem "AudioPlayer" na bie¿¹cej scenie
+        GameObject[] audioPlayers = GameObject.FindGameObjectsWithTag("AudioPlayer");
+
+        // Szukamy obiektu "AudioPlayer" na bie¿¹cej scenie
+        foreach (GameObject audioPlayer in audioPlayers)
+        {
+            if (audioPlayer.scene.name == currentSceneName)
+            {
+                // Jeœli znaleziono obiekt "AudioPlayer" na bie¿¹cej scenie, pobieramy jego komponent AudioSource
+                audioSource = audioPlayer.GetComponent<AudioSource>();
+                break; // Przerywamy pêtlê, gdy znaleziono odpowiedni obiekt
+            }
+        }
+
+        // Sprawdzamy, czy uda³o siê znaleŸæ obiekt "AudioPlayer" na bie¿¹cej scenie
+        if (audioSource == null)
+        {
+            Debug.LogError("Nie znaleziono komponentu AudioSource na obiekcie z tagiem 'AudioPlayer' na scenie " + currentSceneName + ".");
+        }
+
         if (clips != null && clips.Count > 0 && audioSource != null)
         {
             int randomIndex = UnityEngine.Random.Range(0, clips.Count);
@@ -68,81 +142,21 @@ public class UniversalHealth : MonoBehaviour
         }
     }
 
-    void Start()
-    {
-        currentHealth = maxHealth;
-        rend = GetComponent<Renderer>();
-        //originalColor = rend.material.color;
-
-        meshFilter = GetComponent<MeshFilter>();
-        meshRenderer = GetComponent<MeshRenderer>();
-        objTransform = transform;
-
-        // Automatyczne znalezienie obiektu z tagiem "Player" i uzyskanie komponentu PlayerXpBar
-        GameObject playerObject = GameObject.FindGameObjectWithTag("Player");
-        if (playerObject != null)
-        {
-            playerXpBar = playerObject.GetComponent<PlayerXpBar>();
-            if (playerXpBar == null)
-            {
-                Debug.LogError("Nie znaleziono komponentu PlayerXpBar na obiekcie z tagiem 'Player'.");
-            }
-        }
-        else
-        {
-            Debug.LogError("Nie znaleziono obiektu z tagiem 'Player'. Upewnij siê, ¿e obiekt gracza ma tag 'Player'.");
-        }
-
-        // ZnajdŸ obiekt na scenie z tagiem "audioPlayer"
-        GameObject audioPlayerObject = GameObject.FindGameObjectWithTag("AudioPlayer");
-
-        // SprawdŸ, czy obiekt Ÿród³a dŸwiêku zosta³ znaleziony
-        if (audioPlayerObject != null)
-        {
-            // Spróbuj pobraæ komponent AudioSource z obiektu Ÿród³a dŸwiêku
-            audioSource = audioPlayerObject.GetComponent<AudioSource>();
-
-            // Jeœli komponent AudioSource zosta³ znaleziony, ustaw dŸwiêk
-            if (audioSource != null)
-            {
-                if (audioClip != null)
-                {
-                    audioSource.clip = audioClip;
-                }
-                else
-                {
-                    Debug.LogError("Nie ustawiono pliku audio w inspektorze!");
-                }
-            }
-            else
-            {
-                Debug.LogError("Komponent AudioSource nie zosta³ znaleziony na obiekcie Ÿród³a dŸwiêku!");
-            }
-        }
-        else
-        {
-            Debug.LogError("Nie znaleziono obiektu z tagiem 'audioPlayer' na scenie!");
-        }
-    }
-
     public void TakeDamage(float damage, GameObject attacker)
     {
         Debug.Log(gameObject.name + " Taking damage from: " + attacker.name);
 
-        // Jeœli obiekt ma tag "Player", odtwórz dŸwiêk obra¿eñ gracza
         if (gameObject.CompareTag("Player"))
         {
             PlayAudio(PlayerHurt);
         }
         else
         {
-            // If not player, play a random general hurt sound
             PlayRandomAudio(GeneralHurtSounds);
         }
 
         currentHealth -= damage;
 
-        // Stop any ongoing blink coroutine before starting a new one
         if (blinkCoroutine != null)
         {
             StopCoroutine(blinkCoroutine);
@@ -155,7 +169,6 @@ public class UniversalHealth : MonoBehaviour
             if (!gameObject.CompareTag("Player"))
             {
                 PlayAudio(audioClip);
-
                 StartCoroutine(DieWithColorChange());
             }
         }
@@ -164,20 +177,12 @@ public class UniversalHealth : MonoBehaviour
 
         if (FloatingTextPrefab)
         {
-            // Spawnowanie tekstu bez przypisywania go jako dziecko
             var go = Instantiate(FloatingTextPrefab, transform.position, Quaternion.identity);
-
-            // Pobieranie referencji do komponentu TextMesh
             var textMesh = go.GetComponent<TextMesh>();
-
-            // Ustawianie tekstu
             textMesh.text = "-" + damage.ToString();
-
-            // Obracanie tekstu w kierunku kamery
             Camera mainCamera = Camera.main;
             if (mainCamera != null)
             {
-                // Ustawienie rotacji w kierunku kamery
                 go.transform.LookAt(go.transform.position + mainCamera.transform.rotation * Vector3.forward,
                                     mainCamera.transform.rotation * Vector3.up);
             }
@@ -190,7 +195,6 @@ public class UniversalHealth : MonoBehaviour
 
     public void Heal(float amount)
     {
-        // Stop any ongoing blink coroutine before starting a new one
         if (blinkCoroutine != null)
         {
             StopCoroutine(blinkCoroutine);
@@ -198,7 +202,6 @@ public class UniversalHealth : MonoBehaviour
 
         blinkCoroutine = StartCoroutine(BlinkOnDamage(healBlinkColor));
 
-        // Ustaw nowe zdrowie, ale nie przekraczaj maksymalnej wartoœci
         currentHealth = Mathf.Min(currentHealth + amount, maxHealth);
     }
 
@@ -207,8 +210,6 @@ public class UniversalHealth : MonoBehaviour
         rend.material.color = blinkColor;
         yield return new WaitForSeconds(blinkDuration);
         rend.material.color = originalColor;
-
-        // Reset blinkCoroutine to null when the blink is finished
         blinkCoroutine = null;
     }
 
@@ -218,17 +219,21 @@ public class UniversalHealth : MonoBehaviour
         rend.material.color = deathColor;
         yield return new WaitForSeconds(deathDuration);
 
-        playerXpBar.GainExperience(experienceWorth);
+        if (playerXpBar != null)
+        {
+            playerXpBar.GainExperience(experienceWorth);
+        }
+        else
+        {
+            Debug.LogWarning("PlayerXpBar is not assigned.");
+        }
 
         if (deathEffectPrefab != null)
         {
             Vector3 deathEffectPosition = transform.position;
-            deathEffectPosition.y = 0.25f; // Ustaw wysokoœæ na 0.25 na osi Y
-
-            Instantiate(deathEffectPrefab, deathEffectPosition, Quaternion.identity); // Instancjonuj efekt œmierci
+            deathEffectPosition.y = 0.25f;
+            Instantiate(deathEffectPrefab, deathEffectPosition, Quaternion.identity);
         }
-
-        
 
         Destroy(gameObject);
     }
@@ -255,7 +260,6 @@ public class UniversalHealth : MonoBehaviour
         return new List<GameObject>(attackers);
     }
 
-    // Dodana funkcja zwracaj¹ca bie¿¹ce zdrowie
     public float GetCurrentHealth()
     {
         return currentHealth;
