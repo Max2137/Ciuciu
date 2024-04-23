@@ -2166,6 +2166,10 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -4202798675411607032, guid: c5013734ad630474bbd9d4b7a616dbea, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: c5013734ad630474bbd9d4b7a616dbea, type: 3}
       propertyPath: m_Name
       value: sezamieotworzsie
@@ -5047,6 +5051,10 @@ PrefabInstance:
     - target: {fileID: 2540548566599941887, guid: bf5d24fa9c913f844b96827ab84d80e7, type: 3}
       propertyPath: m_Name
       value: DoorsStandard
+      objectReference: {fileID: 0}
+    - target: {fileID: 3761498684357374751, guid: bf5d24fa9c913f844b96827ab84d80e7, type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3761498684357374751, guid: bf5d24fa9c913f844b96827ab84d80e7, type: 3}
       propertyPath: m_Materials.Array.data[0]

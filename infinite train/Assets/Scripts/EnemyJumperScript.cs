@@ -66,16 +66,6 @@ public class EnemyJumper : MonoBehaviour
             {
                 AttackStandard();
                 lastAttackTime = Time.time; // Zaktualizuj czas ostatniego ataku
-
-                // Odtwórz dŸwiêk ataku
-                if (attackSource != null && attackClip != null)
-                {
-                    AudioSource audioSource = attackSource.GetComponent<AudioSource>();
-                    if (audioSource != null)
-                    {
-                        audioSource.PlayOneShot(attackClip);
-                    }
-                }
             }
         }
 
@@ -206,6 +196,17 @@ public class EnemyJumper : MonoBehaviour
 
             // Ustawienie wasRecentlyAttacked na true
             wasRecentlyAttacked = true;
+
+            // Odtwórz dŸwiêk ataku
+            if (attackSource != null && attackClip != null)
+            {
+                AudioSource audioSource = attackSource.GetComponent<AudioSource>();
+                if (audioSource != null)
+                {
+                    audioSource.PlayOneShot(attackClip);
+                    Debug.Log("Zagrano: " + attackClip + " Ÿród³em " + attackSource);
+                }
+            }
         }
     }
 
