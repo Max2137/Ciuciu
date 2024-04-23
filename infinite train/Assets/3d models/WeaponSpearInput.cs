@@ -4,7 +4,8 @@ using UnityEngine;
 public class WeaponSpearInput : MonoBehaviour
 {
     public Animator mAnimator;
-
+    public GameObject attackSource; // Obiekt AudioSource
+    public AudioClip attackClip; // DŸwiêk ataku
 
     public float raycastDistance = 5f;
     [SerializeField] public int attackDamage;
@@ -18,7 +19,6 @@ public class WeaponSpearInput : MonoBehaviour
     public void Start()
     {
         //mAnimator = GetComponent<Animator>();
-
 
         // Uzyskaj referencjê do WeaponInputManager z obiektu rêki (parent)
         inputManager = GetComponentInParent<WeaponInputManager>();
@@ -36,6 +36,16 @@ public class WeaponSpearInput : MonoBehaviour
             SpearDetect(attackDamage, attackPuncture);
             Debug.Log("ZadanoDamage");
             lastAttackTime = 0;
+
+            // Odtwórz dŸwiêk ataku
+            if (attackSource != null && attackClip != null)
+            {
+                AudioSource audioSource = attackSource.GetComponent<AudioSource>();
+                if (audioSource != null)
+                {
+                    audioSource.PlayOneShot(attackClip);
+                }
+            }
         }
 
         lastAttackTime += Time.deltaTime;
@@ -49,7 +59,6 @@ public class WeaponSpearInput : MonoBehaviour
             mAnimator.SetTrigger("TrAttack");
             Debug.Log("Animacja!");
         }
-
 
         // Wykonaj raycast
         RaycastHit[] hits = Physics.RaycastAll(transform.position, transform.forward, raycastDistance);
