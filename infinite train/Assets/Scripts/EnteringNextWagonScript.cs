@@ -80,10 +80,11 @@ public class EnteringNextWagonScript : MonoBehaviour
             if (doorOpenSound != null)
             {
                 audioSource.PlayOneShot(doorOpenSound); // Odtwarzanie dŸwiêku otwierania drzwi
-                
+                Debug.Log("Drzwi otwarto dŸwiêk");
+                //mAnimator.SetTrigger("open");
             }
         }
-        mAnimator.SetTrigger("open");
+        
         wasOpenedLastFrame = isOpened; // Aktualizacja stanu otwarcia drzwi w poprzedniej klatce
     }
 }
