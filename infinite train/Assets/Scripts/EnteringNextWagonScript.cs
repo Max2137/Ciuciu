@@ -10,6 +10,8 @@ public class EnteringNextWagonScript : MonoBehaviour
 
     private AudioSource audioSource;
 
+    private Animator mAnimator; 
+
     private void Start()
     {
         audioSource = GetComponent<AudioSource>();
@@ -29,6 +31,8 @@ public class EnteringNextWagonScript : MonoBehaviour
         }
 
         wasOpenedLastFrame = isOpened; // Inicjalizacja pola
+
+        mAnimator = GetComponent<Animator>();
     }
 
     private void OnTriggerEnter(Collider other)
@@ -76,9 +80,11 @@ public class EnteringNextWagonScript : MonoBehaviour
             if (doorOpenSound != null)
             {
                 audioSource.PlayOneShot(doorOpenSound); // Odtwarzanie dŸwiêku otwierania drzwi
+                Debug.Log("Drzwi otwarto dŸwiêk");
+                //mAnimator.SetTrigger("open");
             }
         }
-
+        
         wasOpenedLastFrame = isOpened; // Aktualizacja stanu otwarcia drzwi w poprzedniej klatce
     }
 }

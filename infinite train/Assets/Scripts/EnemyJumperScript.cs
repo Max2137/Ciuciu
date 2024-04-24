@@ -11,6 +11,8 @@ public class EnemyJumper : MonoBehaviour
     public float attackDamage;
     public float attackStandardDamage = 10f; // Dodane: standardowe obra¿enia
     public float attackStandardCooldown = 2f; // Dodane: standardowy czas odnowienia
+    public GameObject attackSource; // Obiekt AudioSource
+    public AudioClip attackClip; // DŸwiêk ataku
 
     private Rigidbody enemyRigidbody;
     [SerializeField] private bool isDashing;
@@ -21,8 +23,6 @@ public class EnemyJumper : MonoBehaviour
     private float dashStartTime; // New variable to store the dash start time
     private UniversalHealth playerHealth;
     private float lastAttackTime;
-    
-    
     private bool wasRecentlyAttacked;
 
     void Start()
@@ -60,7 +60,6 @@ public class EnemyJumper : MonoBehaviour
             //Debug.Log("Zresetowano");
         }
 
-
         if (isTouchingPlayer)
         {
             if (Time.time - lastAttackTime > attackStandardCooldown)
@@ -75,7 +74,6 @@ public class EnemyJumper : MonoBehaviour
         {
             //isDashing = false;
         }
-
 
         if (targetObject != null && enemyRigidbody != null)
         {
@@ -198,6 +196,17 @@ public class EnemyJumper : MonoBehaviour
 
             // Ustawienie wasRecentlyAttacked na true
             wasRecentlyAttacked = true;
+
+            // Odtwórz dŸwiêk ataku
+            if (attackSource != null && attackClip != null)
+            {
+                AudioSource audioSource = attackSource.GetComponent<AudioSource>();
+                if (audioSource != null)
+                {
+                    audioSource.PlayOneShot(attackClip);
+                    Debug.Log("Zagrano: " + attackClip + " Ÿród³em " + attackSource);
+                }
+            }
         }
     }
 

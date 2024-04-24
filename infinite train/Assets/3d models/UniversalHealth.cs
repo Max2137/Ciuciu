@@ -33,9 +33,42 @@ public class UniversalHealth : MonoBehaviour
     private AudioSource audioSource; // Komponent AudioSource do odtwarzania dŸwiêku
     public GameObject deathEffectPrefab; // Dodaj publiczn¹ zmienn¹ przechowuj¹c¹ efekt œmierci
 
+    private Animator mAnimator; 
+
     // Metoda do odtwarzania dŸwiêku
     public void PlayAudio(AudioClip clip)
     {
+        // ZnajdŸ obiekt na scenie z tagiem "audioPlayer"
+        GameObject audioPlayerObject = GameObject.FindGameObjectWithTag("AudioPlayer");
+
+        // SprawdŸ, czy obiekt Ÿród³a dŸwiêku zosta³ znaleziony
+        if (audioPlayerObject != null)
+        {
+            // Spróbuj pobraæ komponent AudioSource z obiektu Ÿród³a dŸwiêku
+            audioSource = audioPlayerObject.GetComponent<AudioSource>();
+
+            // Jeœli komponent AudioSource zosta³ znaleziony, ustaw dŸwiêk
+            if (audioSource != null)
+            {
+                if (audioClip != null)
+                {
+                    audioSource.clip = audioClip;
+                }
+                else
+                {
+                    Debug.LogError("Nie ustawiono pliku audio w inspektorze!");
+                }
+            }
+            else
+            {
+                Debug.LogError("Komponent AudioSource nie zosta³ znaleziony na obiekcie Ÿród³a dŸwiêku!");
+            }
+        }
+        else
+        {
+            Debug.LogError("Nie znaleziono obiektu z tagiem 'audioPlayer' na scenie!");
+        }
+
         // SprawdŸ, czy dŸwiêk jest dostêpny
         if (clip != null && audioSource != null)
         {
@@ -55,6 +88,37 @@ public class UniversalHealth : MonoBehaviour
     // Method to play a random audio clip from a list
     public void PlayRandomAudio(List<AudioClip> clips)
     {
+        // ZnajdŸ obiekt na scenie z tagiem "audioPlayer"
+        GameObject audioPlayerObject = GameObject.FindGameObjectWithTag("AudioPlayer");
+
+        // SprawdŸ, czy obiekt Ÿród³a dŸwiêku zosta³ znaleziony
+        if (audioPlayerObject != null)
+        {
+            // Spróbuj pobraæ komponent AudioSource z obiektu Ÿród³a dŸwiêku
+            audioSource = audioPlayerObject.GetComponent<AudioSource>();
+
+            // Jeœli komponent AudioSource zosta³ znaleziony, ustaw dŸwiêk
+            if (audioSource != null)
+            {
+                if (audioClip != null)
+                {
+                    audioSource.clip = audioClip;
+                }
+                else
+                {
+                    Debug.LogError("Nie ustawiono pliku audio w inspektorze!");
+                }
+            }
+            else
+            {
+                Debug.LogError("Komponent AudioSource nie zosta³ znaleziony na obiekcie Ÿród³a dŸwiêku!");
+            }
+        }
+        else
+        {
+            Debug.LogError("Nie znaleziono obiektu z tagiem 'audioPlayer' na scenie!");
+        }
+
         if (clips != null && clips.Count > 0 && audioSource != null)
         {
             int randomIndex = UnityEngine.Random.Range(0, clips.Count);
@@ -123,6 +187,9 @@ public class UniversalHealth : MonoBehaviour
         {
             Debug.LogError("Nie znaleziono obiektu z tagiem 'audioPlayer' na scenie!");
         }
+
+
+        mAnimator = GetComponent<Animator>();
     }
 
     public void TakeDamage(float damage, GameObject attacker)
