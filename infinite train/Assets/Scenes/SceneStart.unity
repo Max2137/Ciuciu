@@ -3057,6 +3057,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 90
       objectReference: {fileID: 0}
+    - target: {fileID: 4933397950781626404, guid: 383af72899ebd2141bf1978e200f9a00, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: cca15f8ca90aeff46869abe097946db7, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3127,6 +3131,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 7226436542247087963, guid: 7524b5355622457428d3664e058a7b62, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 4493585093827132993, guid: 2541bd5084faf524cae7cad707279bed, type: 3}
     - target: {fileID: 7820225779465803517, guid: 7524b5355622457428d3664e058a7b62, type: 3}
       propertyPath: m_LocalPosition.x
       value: -3.929
@@ -3228,6 +3236,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: WeaponStick
       objectReference: {fileID: 0}
+    - target: {fileID: 9005410280603127294, guid: 814881e569bac91449e575d4ee0e159e, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: b2c2bbfaaa3f8d24abba58384628f69f, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
