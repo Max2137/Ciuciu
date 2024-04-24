@@ -3074,6 +3074,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 292021610602491870, guid: 5b65b835d62a6c847ac34050e0e04676, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: e67150fa820cebf43b125ba862d0ae4f, type: 2}
     - target: {fileID: 3614776925894866446, guid: 5b65b835d62a6c847ac34050e0e04676, type: 3}
       propertyPath: m_Name
       value: WeaponSaber
