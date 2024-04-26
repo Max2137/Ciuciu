@@ -18,11 +18,11 @@ public class WeaponInputManager : MonoBehaviour
 
         if (parentName.Equals("Hand1"))
         {
-            attackMouseButton = MouseButton.Left;
+            attackMouseButton = MouseButton.Right;
         }
         else if (parentName.Equals("Hand2"))
         {
-            attackMouseButton = MouseButton.Right;
+            attackMouseButton = MouseButton.Left;
         }
     }
 

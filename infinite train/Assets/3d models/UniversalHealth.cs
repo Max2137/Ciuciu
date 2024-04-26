@@ -205,6 +205,31 @@ public class UniversalHealth : MonoBehaviour
         {
             // If not player, play a random general hurt sound
             PlayRandomAudio(GeneralHurtSounds);
+
+            if (FloatingTextPrefab)
+            {
+                // Spawnowanie tekstu bez przypisywania go jako dziecko
+                var go = Instantiate(FloatingTextPrefab, transform.position, Quaternion.identity);
+
+                // Pobieranie referencji do komponentu TextMesh
+                var textMesh = go.GetComponent<TextMesh>();
+
+                // Ustawianie tekstu
+                textMesh.text = "-" + damage.ToString();
+
+                // Obracanie tekstu w kierunku kamery
+                Camera mainCamera = Camera.main;
+                if (mainCamera != null)
+                {
+                    // Ustawienie rotacji w kierunku kamery
+                    go.transform.LookAt(go.transform.position + mainCamera.transform.rotation * Vector3.forward,
+                                        mainCamera.transform.rotation * Vector3.up);
+                }
+                else
+                {
+                    Debug.LogWarning("Main camera not found. Text rotation might not work correctly.");
+                }
+            }
         }
 
         currentHealth -= damage;
@@ -229,30 +254,7 @@ public class UniversalHealth : MonoBehaviour
 
         attackers.Add(attacker);
 
-        if (FloatingTextPrefab)
-        {
-            // Spawnowanie tekstu bez przypisywania go jako dziecko
-            var go = Instantiate(FloatingTextPrefab, transform.position, Quaternion.identity);
-
-            // Pobieranie referencji do komponentu TextMesh
-            var textMesh = go.GetComponent<TextMesh>();
-
-            // Ustawianie tekstu
-            textMesh.text = "-" + damage.ToString();
-
-            // Obracanie tekstu w kierunku kamery
-            Camera mainCamera = Camera.main;
-            if (mainCamera != null)
-            {
-                // Ustawienie rotacji w kierunku kamery
-                go.transform.LookAt(go.transform.position + mainCamera.transform.rotation * Vector3.forward,
-                                    mainCamera.transform.rotation * Vector3.up);
-            }
-            else
-            {
-                Debug.LogWarning("Main camera not found. Text rotation might not work correctly.");
-            }
-        }
+       
     }
 
     public void Heal(float amount)
