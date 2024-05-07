@@ -48,13 +48,7 @@ public class PlayerXpBar : MonoBehaviour
         }
     }
 
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.L))
-        {
-            //GainExperience(30);
-        }
-    }
+
 
     void SetupUpgradeButtons()
     {
@@ -72,18 +66,41 @@ public class PlayerXpBar : MonoBehaviour
         defenseGeneralPanel.GetComponent<Button>().onClick.AddListener(UpgradeDefenseGeneral);
     }
 
+    float decorationsActivationTime; // Dodajemy zmienną do przechowywania czasu aktywacji decorations
+    bool isWaiting;
+
     void EnableUpgradeButtons()
     {
         Time.timeScale = 0;
 
-        attackMeleePanel.SetActive(true);
-        attackMagicPanel.SetActive(true);
-        defenseGeneralPanel.SetActive(true);
+        isWaiting = true;
+
+        // Aktywacja decorations
         foreach (GameObject obiekt in Decorations)
         {
             obiekt.SetActive(true);
         }
     }
+
+    private void Update()
+    {
+        if (isWaiting)
+        {
+            decorationsActivationTime += 1;
+            {
+                if (decorationsActivationTime >= 20)
+                {
+                    attackMeleePanel.SetActive(true);
+                    attackMagicPanel.SetActive(true);
+                    defenseGeneralPanel.SetActive(true);
+
+                    isWaiting = false;
+                    decorationsActivationTime = 0;
+                }
+            }
+        }
+    }
+
 
     void DisableUpgradeButtons()
     {

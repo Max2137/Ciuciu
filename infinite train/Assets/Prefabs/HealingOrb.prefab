@@ -9,6 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 677934934982161100}
+  - component: {fileID: 895514005926146877}
+  - component: {fileID: 8358477523394420602}
   m_Layer: 0
   m_Name: HealingOrb
   m_TagString: Untagged
@@ -32,6 +34,42 @@ Transform:
   - {fileID: 2029373292669739218}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!136 &895514005926146877
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1347956398966576416}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Height: 2
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &8358477523394420602
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1347956398966576416}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 149dcb1613f136d4fa91af4134df60d6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healSound: {fileID: 8300000, guid: f05ea74e0c048474ba44bc8519a87f82, type: 3}
 --- !u!1001 &8162923922563675154
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -46,15 +84,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7881651531169961152, guid: d19523fd635b7de4a95a32e71c06ac25, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.292419
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7881651531169961152, guid: d19523fd635b7de4a95a32e71c06ac25, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 6.291576
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7881651531169961152, guid: d19523fd635b7de4a95a32e71c06ac25, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -4.138597
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7881651531169961152, guid: d19523fd635b7de4a95a32e71c06ac25, type: 3}
       propertyPath: m_LocalRotation.w
