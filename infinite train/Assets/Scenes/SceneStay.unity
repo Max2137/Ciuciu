@@ -5282,6 +5282,18 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: d10ccf965521622488804490e8b448a8, type: 2}
+    - target: {fileID: 4243263098194748753, guid: 075f8d6af68f0a7468a7d6f4f9d9e722, type: 3}
+      propertyPath: interactionDistance
+      value: 2.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 5481307564703395934, guid: 075f8d6af68f0a7468a7d6f4f9d9e722, type: 3}
+      propertyPath: interactionKey
+      value: 113
+      objectReference: {fileID: 0}
+    - target: {fileID: 5481307564703395934, guid: 075f8d6af68f0a7468a7d6f4f9d9e722, type: 3}
+      propertyPath: interactionDistance
+      value: 2.8
+      objectReference: {fileID: 0}
     - target: {fileID: 5487311006809628854, guid: 075f8d6af68f0a7468a7d6f4f9d9e722, type: 3}
       propertyPath: m_Enabled
       value: 0

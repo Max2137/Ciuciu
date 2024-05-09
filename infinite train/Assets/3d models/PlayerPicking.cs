@@ -1,16 +1,16 @@
-//using System.Diagnostics;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class PlayerPicking : MonoBehaviour
 {
+    public KeyCode interactionKey = KeyCode.E; // Klawisz do interakcji
     public float interactionDistance = 2f;
     private Transform heldItem;
-    private Collider[] originalColliders; // Dodano pole do przechowywania pierwotnych colliderów trzymanego obiektu
+    private Collider[] originalColliders;
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E))
+        if (Input.GetKeyDown(interactionKey)) // U¿ywanie pola interactionKey zamiast KeyCode.E
         {
             Collider[] colliders = Physics.OverlapSphere(transform.position, interactionDistance);
             Transform nearestObject = null;
@@ -40,20 +40,17 @@ public class PlayerPicking : MonoBehaviour
             {
                 if (heldItem != null)
                 {
-                    // Przywracanie colliderów, gdy trzymany obiekt jest odk³adany
                     EnableColliders(heldItem.gameObject);
                     DropItem();
                 }
 
                 PickUpItem(nearestObject);
-                // Wy³¹czanie colliderów po podniesieniu nowego obiektu
                 DisableColliders(nearestObject.gameObject);
             }
         }
 
         if (Input.GetKeyDown(KeyCode.R) && heldItem != null)
         {
-            // Przywracanie colliderów przedmiotu przed odk³adaniem
             EnableColliders(heldItem.gameObject);
             DropItem();
         }
@@ -64,10 +61,8 @@ public class PlayerPicking : MonoBehaviour
         heldItem = item;
         Debug.Log("Podnoszenie przedmiotu: " + heldItem.name);
 
-        // Przechowaj pierwotne collidery trzymanego obiektu
         originalColliders = heldItem.GetComponentsInChildren<Collider>();
 
-        // Wy³¹cz collidery trzymanego obiektu
         foreach (Collider collider in originalColliders)
         {
             collider.enabled = false;
@@ -82,13 +77,10 @@ public class PlayerPicking : MonoBehaviour
     {
         Debug.Log("Odk³adanie przedmiotu: " + heldItem.name);
 
-        // Odk³adamy przedmiot
         heldItem.parent = null;
 
-        // Przywracanie colliderów trzymanego obiektu
         EnableColliders(heldItem.gameObject);
 
-        // Przeniesienie obiektu do sceny
         MoveObjectToScene(heldItem.gameObject);
 
         heldItem = null;
@@ -96,7 +88,6 @@ public class PlayerPicking : MonoBehaviour
 
     void EnableColliders(GameObject obj)
     {
-        // Przywracanie colliderów obiektu
         Collider[] colliders = obj.GetComponentsInChildren<Collider>();
         foreach (Collider collider in colliders)
         {
@@ -106,7 +97,6 @@ public class PlayerPicking : MonoBehaviour
 
     void DisableColliders(GameObject obj)
     {
-        // Wy³¹czanie colliderów obiektu
         Collider[] colliders = obj.GetComponentsInChildren<Collider>();
         foreach (Collider collider in colliders)
         {
