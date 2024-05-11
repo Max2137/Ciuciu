@@ -17,6 +17,8 @@ public class EnemyFollowerScript : MonoBehaviour
     public AudioClip attackSound; // DŸwiêk ataku, ustaw w inspectorze
     private AudioSource audioSource;
 
+    private Animator mAnimator;
+
    
 
 
@@ -51,7 +53,7 @@ public class EnemyFollowerScript : MonoBehaviour
             audioSource = gameObject.AddComponent<AudioSource>();
         }
 
-        
+        mAnimator = GetComponentInChildren<Animator>();
     }
     
 
@@ -134,6 +136,8 @@ public class EnemyFollowerScript : MonoBehaviour
         if (playerHealth != null)
         {
             playerHealth.TakeDamage(attackDamage, gameObject);
+
+            mAnimator.SetTrigger("atak");
 
             if (attackSound != null && audioSource != null)
             {
