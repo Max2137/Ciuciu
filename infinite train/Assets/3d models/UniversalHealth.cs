@@ -189,7 +189,7 @@ public class UniversalHealth : MonoBehaviour
         }
 
 
-        mAnimator = GetComponent<Animator>();
+        mAnimator = GetComponentInChildren<Animator>();
     }
 
     public void TakeDamage(float damage, GameObject attacker)
@@ -205,6 +205,7 @@ public class UniversalHealth : MonoBehaviour
         {
             // If not player, play a random general hurt sound
             PlayRandomAudio(GeneralHurtSounds);
+            mAnimator.SetTrigger("hit");
 
             if (FloatingTextPrefab)
             {
@@ -298,7 +299,7 @@ public class UniversalHealth : MonoBehaviour
         }
 
         
-
+        mAnimator.SetTrigger("dead");
         Destroy(gameObject);
     }
 
