@@ -205,7 +205,15 @@ public class UniversalHealth : MonoBehaviour
         // Jeœli obiekt ma tag "Player", odtwórz dŸwiêk obra¿eñ gracza
         if (gameObject.CompareTag("Player"))
         {
-            currentHealth -= damageOutput / playerStats.DefenseGeneralStat;
+            if (playerStats.DefenseGeneralStat>0)
+            {
+                currentHealth -= damageOutput / playerStats.DefenseGeneralStat;
+            }
+            else
+            {
+                currentHealth -= damageOutput;
+            }
+            
             PlayAudio(PlayerHurt);
         }
         else
