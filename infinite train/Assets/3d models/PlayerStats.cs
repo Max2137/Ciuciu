@@ -3,9 +3,9 @@ using UnityEngine;
 public class PlayerStats : MonoBehaviour
 {
     // Statystyki gracza
-    private int attackMeleeStat;
-    private int attackMagicStat;
-    private int defenseGeneralStat;
+    public int attackMeleeStat;
+    public int attackMagicStat;
+    public int defenseGeneralStat;
 
     // W³aœciwoœci do dostêpu do statystyk
     public int AttackMeleeStat

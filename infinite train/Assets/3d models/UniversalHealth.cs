@@ -33,7 +33,9 @@ public class UniversalHealth : MonoBehaviour
     private AudioSource audioSource; // Komponent AudioSource do odtwarzania dŸwiêku
     public GameObject deathEffectPrefab; // Dodaj publiczn¹ zmienn¹ przechowuj¹c¹ efekt œmierci
 
-    private Animator mAnimator; 
+    private Animator mAnimator;
+
+    private PlayerStats playerStats;  // Referencja do skryptu PlayerStats
 
     // Metoda do odtwarzania dŸwiêku
     public void PlayAudio(AudioClip clip)
@@ -134,6 +136,8 @@ public class UniversalHealth : MonoBehaviour
 
     void Start()
     {
+        playerStats = FindObjectOfType<PlayerStats>();
+
         currentHealth = maxHealth;
         rend = GetComponent<Renderer>();
         //originalColor = rend.material.color;
@@ -196,13 +200,17 @@ public class UniversalHealth : MonoBehaviour
     {
         Debug.Log(gameObject.name + " Taking damage from: " + attacker.name);
 
+        float damageOutput = damage + playerStats.AttackMeleeStat;
+
         // Jeœli obiekt ma tag "Player", odtwórz dŸwiêk obra¿eñ gracza
         if (gameObject.CompareTag("Player"))
         {
+            currentHealth -= damageOutput / playerStats.DefenseGeneralStat;
             PlayAudio(PlayerHurt);
         }
         else
         {
+            currentHealth -= damageOutput;
             // If not player, play a random general hurt sound
             PlayRandomAudio(GeneralHurtSounds);
             mAnimator.SetTrigger("hit");
@@ -216,7 +224,7 @@ public class UniversalHealth : MonoBehaviour
                 var textMesh = go.GetComponent<TextMesh>();
 
                 // Ustawianie tekstu
-                textMesh.text = "-" + damage.ToString();
+                textMesh.text = "-" + damageOutput.ToString();
 
                 // Obracanie tekstu w kierunku kamery
                 Camera mainCamera = Camera.main;
@@ -233,7 +241,7 @@ public class UniversalHealth : MonoBehaviour
             }
         }
 
-        currentHealth -= damage;
+        
 
         // Stop any ongoing blink coroutine before starting a new one
         if (blinkCoroutine != null)
