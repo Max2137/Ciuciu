@@ -104,13 +104,12 @@ MonoBehaviour:
   FloatingTextPrefab: {fileID: 4223490877550615990, guid: 89d0d17b310cf1144bde2a66a052f873, type: 3}
   maxHealth: 10
   currentHealth: 0
-  blinkDuration: 0.2
+  blinkDuration: 2
   blinkColor: {r: 1, g: 0, b: 0, a: 1}
   healBlinkColor: {r: 0, g: 1, b: 0, a: 1}
   deathColor: {r: 0, g: 0, b: 0, a: 1}
   deathDuration: 0.5
   experienceWorth: 50
-  audioSource: {fileID: 0}
   audioClip: {fileID: 8300000, guid: fa1eb5eaf596d6a42be96857c272a8f2, type: 3}
   PlayerHurt: {fileID: 0}
   GeneralHurtSounds:
