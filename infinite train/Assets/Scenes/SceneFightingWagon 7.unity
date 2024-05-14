@@ -966,6 +966,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: EnemyShooter
       objectReference: {fileID: 0}
+    - target: {fileID: 8782790300247409006, guid: 78a19b44fe29c314c9caabdb0060266d, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1492,10 +1496,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1053179758191247288, guid: 78a19b44fe29c314c9caabdb0060266d, type: 3}
-      propertyPath: m_RootOrder
-      value: 10
-      objectReference: {fileID: 0}
     - target: {fileID: 1053179758191247288, guid: 78a19b44fe29c314c9caabdb0060266d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 7.5274615

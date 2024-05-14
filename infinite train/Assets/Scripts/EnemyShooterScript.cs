@@ -23,6 +23,8 @@ public class EnemyShooterScript : MonoBehaviour
     private AudioSource audioSource;
     public AudioClip shootingSound;
 
+    private Animator mAnimator;
+
     private void Start()
     {
         audioSource = GetComponent<AudioSource>();
@@ -60,6 +62,8 @@ public class EnemyShooterScript : MonoBehaviour
         {
             CreateFirePoint();
         }
+
+        mAnimator = GetComponentInChildren<Animator>();
     }
 
     void Update()
@@ -157,6 +161,8 @@ public class EnemyShooterScript : MonoBehaviour
         if (projectilePrefab != null && firePoint != null)
         {
             audioSource.PlayOneShot(shootingSound);
+
+            mAnimator.SetTrigger("atak");
 
             GameObject projectile = Instantiate(projectilePrefab, firePoint.position, firePoint.rotation);
             projectile.GetComponent<ProjectileStandardScript>().SetOwner(gameObject);
