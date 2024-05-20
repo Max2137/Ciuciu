@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using System.Collections;
 
 public class EnteringNextWagonScript : MonoBehaviour
 {
@@ -39,6 +40,7 @@ public class EnteringNextWagonScript : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+
         if (other.CompareTag("Player") && isOpened)
         {
             Debug.Log("Doors detected a player and no enemies are present in the room.");
@@ -56,17 +58,24 @@ public class EnteringNextWagonScript : MonoBehaviour
             if (wagonLoader != null)
             {
                 wagonLoader.LoadNextWagon();
-
-                Scene currentScene = SceneManager.GetSceneAt(1);
-                if (currentScene.name == "SceneFightingWagonPlain")
-                {
-                    mAnimator.SetTrigger("close");
-                }
+                StartCoroutine(ExecuteWithDelay());
             }
             else
             {
                 Debug.LogError("WagonLoader reference not set in EnteringNextWagonScript.");
             }
+        }
+    }
+
+    private IEnumerator ExecuteWithDelay()
+    {
+        yield return new WaitForSeconds(0.1f);
+
+        Scene currentScene = SceneManager.GetSceneAt(1);
+        Debug.Log(currentScene.name);
+        if (currentScene.name == "SceneFightingWagonPlain")
+        {
+            mAnimator.SetTrigger("close");
         }
     }
 

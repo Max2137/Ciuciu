@@ -2057,6 +2057,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   basicWagons:
   - SceneFightingWagonPlain
+  - SceneFightingWagonRun
   specialWagons:
   - SceneTreasureWagon
   specialWagonFrequency: 2
@@ -2113,6 +2114,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08b2d6ca1fc19864d9259e32a8f051ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  runModeModifier: 1.5
   difficultyScore: 0
   scoreScript: {fileID: 1001564320}
   elements:

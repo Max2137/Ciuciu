@@ -21,6 +21,7 @@ public class ListElement
 
 public class EnemiesSpawnScript : MonoBehaviour
 {
+    public float runModeModifier;
     public float difficultyScore;
     public ScoreScript scoreScript;
 
@@ -43,21 +44,33 @@ public class EnemiesSpawnScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     public void NewWagon()
     {
+        // Usuwanie wszystkich poprzednio zespawnowanych przeciwników
+        GameObject[] existingEnemies = GameObject.FindGameObjectsWithTag("Enemy");
+        foreach (GameObject enemy in existingEnemies)
+        {
+            Destroy(enemy);
+        }
+
         Scene currentScene = SceneManager.GetSceneAt(1);
         Debug.Log("Aktualna scena: " + currentScene.name);
 
-        if (currentScene.name == "SceneFightingWagonPlain")
+        if (currentScene.name == "SceneFightingWagonPlain" || currentScene.name == "SceneFightingWagonRun")
         {
             // Implementacja logiki tworzenia nowego wagonu
             List<GameObject> newWagonPrefabs = new List<GameObject>();
-
             difficultyScore = scoreScript.BeatenWagons * 10;
             float remainingDifficulty = difficultyScore;
+
+            if (currentScene.name == "SceneFightingWagonRun")
+            {
+                remainingDifficulty = remainingDifficulty * runModeModifier;
+            }
+
             Debug.Log(remainingDifficulty);
 
             int beatenWagons = scoreScript.BeatenWagons;
