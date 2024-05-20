@@ -88,7 +88,7 @@ public class PlayerXpBar : MonoBehaviour
         {
             decorationsActivationTime += 1;
             {
-                if (decorationsActivationTime >= 20)
+                if (decorationsActivationTime >= 500)
                 {
                     attackMeleePanel.SetActive(true);
                     attackMagicPanel.SetActive(true);
@@ -155,8 +155,8 @@ public class PlayerXpBar : MonoBehaviour
 
     void UpdateUI()
     {
-        levelText.text = "Level: " + level;
-        experienceText.text = "Experience: " + experience;
+        levelText.text = "" + level;
+        experienceText.text = "" + experience;
 
         experienceFillImage.fillAmount = GetExperienceRatio();
     }

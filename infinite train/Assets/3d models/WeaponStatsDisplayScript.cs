@@ -1,13 +1,14 @@
 using UnityEngine;
 using TMPro;
 using System.Collections.Generic;
+using UnityEngine.UI;
 
 public class WeaponStatsDisplayScript : MonoBehaviour
 {
     public TextMeshProUGUI displayText;
     public TextMeshProUGUI NameSpace;
     public TextMeshProUGUI DescriptionSpace;
-    public UnityEngine.UI.Image uiImage; // Dodane pole Image
+    public RawImage uiRawImage;
     public string itemTag = "Item";
     public float searchingDistance = 10f;
 
@@ -115,10 +116,10 @@ public class WeaponStatsDisplayScript : MonoBehaviour
     void UpdateUIImage()
     {
         // Sprawdü, czy obiekt Image zosta≥ przypisany
-        if (uiImage != null)
+        if (uiRawImage != null)
         {
             // Ustaw stan aktywnoúci obiektu Image w zaleønoúci od obecnoúci currentWeaponStatsData
-            uiImage.gameObject.SetActive(currentWeaponStatsData != null);
+            uiRawImage.gameObject.SetActive(currentWeaponStatsData != null);
         }
     }
 }

@@ -47,4 +47,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/SceneStart.unity
     guid: e3efb6a4ffea72e469bf18ba67d87ce7
+  - enabled: 1
+    path: Assets/Scenes/SceneFightingWagonPlain.unity
+    guid: e8c3d943698d5a54387745f2ef36ceac
   m_configObjects: {}

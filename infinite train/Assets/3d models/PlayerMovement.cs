@@ -45,8 +45,7 @@ public class PlayerMovement : MonoBehaviour
 
         if (movement != Vector3.zero)
         {
-            //Quaternion toRotation = Quaternion.LookRotation(movement.normalized, Vector3.up);
-            //rb.MoveRotation(Quaternion.RotateTowards(rb.rotation, toRotation, Time.deltaTime * 1000f));
+            // Tutaj mo¿esz dodatkowo obs³u¿yæ obrót gracza, jeœli chcesz
         }
 
         if (isDashing)
@@ -55,16 +54,16 @@ public class PlayerMovement : MonoBehaviour
         }
         else
         {
-            rb.velocity = new Vector3(movement.x * speed, rb.velocity.y, movement.z * speed);
-        }
-
-        if (movement == Vector3.zero)
-        {
-            rb.velocity = new Vector3(Mathf.Lerp(rb.velocity.x, 0f, deceleration * Time.fixedDeltaTime),
-                rb.velocity.y,
-                Mathf.Lerp(rb.velocity.z, 0f, deceleration * Time.fixedDeltaTime));
-
-            rb.angularVelocity = Vector3.zero;
+            // Jeœli gracz nie porusza siê, zatrzymaj go
+            if (movement == Vector3.zero)
+            {
+                rb.velocity = Vector3.zero;
+            }
+            else
+            {
+                // W przeciwnym razie nadaj mu prêdkoœæ zgodnie z wektorem ruchu
+                rb.velocity = new Vector3(movement.x * speed, rb.velocity.y, movement.z * speed);
+            }
         }
 
         // Aktywuj/dezaktywuj kolizje w zale¿noœci od tego, czy trwa dash
@@ -73,6 +72,8 @@ public class PlayerMovement : MonoBehaviour
             //collider.enabled = !isDashing;
         }
     }
+
+
 
     IEnumerator Dash()
     {

@@ -6,6 +6,7 @@ public class ScoreScript : MonoBehaviour
 {
     public int BeatenWagons = 0;
     public TextMeshProUGUI scoreText;
+    private EnemiesSpawnScript enemiesSpawnScript;
 
     void Start()
     {
@@ -18,6 +19,8 @@ public class ScoreScript : MonoBehaviour
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
+        enemiesSpawnScript = FindObjectOfType<EnemiesSpawnScript>();
+
         // SprawdŸ, czy za³adowana scena to "SceneStart", jeœli tak, zresetuj liczbê wagonów
         if (scene.name == "SceneStart")
         {
@@ -36,6 +39,7 @@ public class ScoreScript : MonoBehaviour
         BeatenWagons++;
         UpdateScoreText();
         Debug.Log(BeatenWagons);
+        enemiesSpawnScript.NewWagon();
     }
 
     private void UpdateScoreText()
