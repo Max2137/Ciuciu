@@ -20,9 +20,9 @@ public class PlayerStatsScript : MonoBehaviour
     void UpdateUITexts()
     {
         // Aktualizuj teksty UI z wartoœciami statystyk
-        attackMeleeText.text = "Attack Melee: " + playerStats.AttackMeleeStat.ToString();
-        attackMagicText.text = "Attack Magic: " + playerStats.AttackMagicStat.ToString();
-        defenseGeneralText.text = "Defense General: " + playerStats.DefenseGeneralStat.ToString();
+        attackMeleeText.text = "Attack Melee:  " + playerStats.AttackMeleeStat.ToString();
+        attackMagicText.text = "Attack Magic:  " + playerStats.AttackMagicStat.ToString();
+        defenseGeneralText.text = "Defense Gnr:   " + playerStats.DefenseGeneralStat.ToString();
     }
 
     public void UpgradeAttackMelee()

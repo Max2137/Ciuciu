@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class EnteringNextWagonScript : MonoBehaviour
 {
@@ -55,7 +56,12 @@ public class EnteringNextWagonScript : MonoBehaviour
             if (wagonLoader != null)
             {
                 wagonLoader.LoadNextWagon();
-                mAnimator.SetTrigger("close");
+
+                Scene currentScene = SceneManager.GetSceneAt(1);
+                if (currentScene.name == "SceneFightingWagonPlain")
+                {
+                    mAnimator.SetTrigger("close");
+                }
             }
             else
             {
@@ -67,13 +73,14 @@ public class EnteringNextWagonScript : MonoBehaviour
     private void Update()
     {
         GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
-        if (enemies.Length == 0)
+        Scene currentScene = SceneManager.GetSceneAt(1);
+        if (enemies.Length != 0 && currentScene.name == "SceneFightingWagonPlain")
         {
-            isOpened = true;
+            isOpened = false;
         }
         else
         {
-            isOpened = false;
+            isOpened = true;
         }
 
         // Sprawdzenie, czy stan otwarcia drzwi w³aœnie zmieni³ siê z false na true
