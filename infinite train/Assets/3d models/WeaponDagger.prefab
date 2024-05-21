@@ -126,6 +126,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: caeb3061a71a967489cba6071bad3563, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isBurning: 0
+  burningScript: EffectBurningScript
 --- !u!114 &4519624598694543932
 MonoBehaviour:
   m_ObjectHideFlags: 0

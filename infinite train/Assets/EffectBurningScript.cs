@@ -3,42 +3,27 @@ using UnityEngine;
 
 public class EffectBurningScript : MonoBehaviour
 {
-    private float damagePerTick; // Damage per tick
-    private float tickCooldown; // Time between ticks in seconds
+    public float damagePerTick = 1; // Damage per tick
+    public float tickCooldown = 3f; // Time between ticks in seconds
     private UniversalHealth targetHealth;
-    private Coroutine burningCoroutine;
 
-    private void Awake()
+    private void Start()
     {
         // Find the UniversalHealth component on this object
         targetHealth = GetComponent<UniversalHealth>();
 
         // Check if targetHealth was found
-        if (targetHealth == null)
+        if (targetHealth != null)
+        {
+            // Start applying the burning effect
+            StartCoroutine(ApplyBurningEffect());
+            // Start the coroutine to remove this script after 5 seconds
+            StartCoroutine(RemoveScriptAfterTime(10f));
+        }
+        else
         {
             Debug.LogError("No UniversalHealth component found on object " + gameObject.name);
         }
-    }
-
-    public void StartBurningEffect(float damagePerTick, float tickCooldown)
-    {
-        if (targetHealth == null)
-        {
-            Debug.LogError("No UniversalHealth component found on object " + gameObject.name);
-            return;
-        }
-
-        this.damagePerTick = damagePerTick;
-        this.tickCooldown = tickCooldown;
-
-        // If a burning effect is already active, stop it before starting a new one
-        if (burningCoroutine != null)
-        {
-            StopCoroutine(burningCoroutine);
-        }
-
-        // Start applying the burning effect
-        burningCoroutine = StartCoroutine(ApplyBurningEffect());
     }
 
     private IEnumerator ApplyBurningEffect()
@@ -62,5 +47,13 @@ public class EffectBurningScript : MonoBehaviour
             // Wait for cooldown
             yield return new WaitForSeconds(tickCooldown);
         }
+    }
+
+    private IEnumerator RemoveScriptAfterTime(float delay)
+    {
+        // Wait for the specified delay
+        yield return new WaitForSeconds(delay);
+        // Remove this script from the game object
+        Destroy(this);
     }
 }

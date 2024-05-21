@@ -35,7 +35,8 @@ public class EnteringNextWagonScript : MonoBehaviour
         wasOpenedLastFrame = isOpened; // Inicjalizacja pola
 
         mAnimator = GetComponentInChildren<Animator>();
-        
+
+        mAnimator.SetTrigger("open");
     }
 
     private void OnTriggerEnter(Collider other)
