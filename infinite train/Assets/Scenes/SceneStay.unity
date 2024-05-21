@@ -2133,9 +2133,15 @@ MonoBehaviour:
   - prefab: {fileID: 7665356814262336193, guid: 01bafe4a0f6eac64e841a8ee814f6bba, type: 3}
     difficulty: 20
     spectrum:
-      from: 10
+      from: 7
       to: 15
     limit: 2
+  - prefab: {fileID: 7665356814262336193, guid: ae6ec80d560513f4686ea44bba564596, type: 3}
+    difficulty: 50
+    spectrum:
+      from: 10
+      to: 15
+    limit: 3
 --- !u!1 &1069835774
 GameObject:
   m_ObjectHideFlags: 0
@@ -10412,8 +10418,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f94ba3c36e77833438ac05dd25f241ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damagePerTick: 10
-  tickCooldown: 1
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
