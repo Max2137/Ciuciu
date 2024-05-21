@@ -9689,7 +9689,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &2054048641
 Transform:
   m_ObjectHideFlags: 0
@@ -10391,12 +10391,29 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 8867545689970261612, guid: 075f8d6af68f0a7468a7d6f4f9d9e722, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1361957957}
+    - targetCorrespondingSourceObject: {fileID: 8867545689970261612, guid: 075f8d6af68f0a7468a7d6f4f9d9e722, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8082236371764265516}
   m_SourcePrefab: {fileID: 100100000, guid: 075f8d6af68f0a7468a7d6f4f9d9e722, type: 3}
 --- !u!4 &8082236371764265515 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2222356936792061246, guid: 075f8d6af68f0a7468a7d6f4f9d9e722, type: 3}
   m_PrefabInstance: {fileID: 8082236371764265514}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &8082236371764265516
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1361957940}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f94ba3c36e77833438ac05dd25f241ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damagePerTick: 10
+  tickCooldown: 1
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

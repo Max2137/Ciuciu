@@ -1,55 +1,66 @@
 using System.Collections;
-using System.Collections.Generic;
-using System.ComponentModel;
 using UnityEngine;
 
 public class EffectBurningScript : MonoBehaviour
 {
-    public float damagePerTick = 10f; // Iloœæ obra¿eñ na tick
-    public float tickCooldown = 1f; // Czas pomiêdzy tickami w sekundach
+    private float damagePerTick; // Damage per tick
+    private float tickCooldown; // Time between ticks in seconds
     private UniversalHealth targetHealth;
+    private Coroutine burningCoroutine;
 
-    private void Start()
+    private void Awake()
     {
-        // ZnajdŸ komponent UniversalHealth na tym obiekcie
-        targetHealth = FindObjectOfType<UniversalHealth>();
+        // Find the UniversalHealth component on this object
+        targetHealth = GetComponent<UniversalHealth>();
 
-        // SprawdŸ, czy targetHealth zosta³ znaleziony
-        if (targetHealth != null)
+        // Check if targetHealth was found
+        if (targetHealth == null)
         {
-            // Zadaj obra¿enia
-            targetHealth.TakeDamage(damagePerTick, gameObject);
-
-            // Rozpocznij zadawanie obra¿eñ
-            //StartCoroutine(ApplyBurningEffect());
-        }
-        else
-        {
-            Debug.LogError("Brak komponentu UniversalHealth na obiekcie " + gameObject.name);
+            Debug.LogError("No UniversalHealth component found on object " + gameObject.name);
         }
     }
 
+    public void StartBurningEffect(float damagePerTick, float tickCooldown)
+    {
+        if (targetHealth == null)
+        {
+            Debug.LogError("No UniversalHealth component found on object " + gameObject.name);
+            return;
+        }
 
-    //private IEnumerator ApplyBurningEffect()
-    //{
-    //    // Repeat the burning effect
-    //    while (true)
-    //    {
-    //        // SprawdŸ, czy targetHealth nie jest nullem
-    //        if (targetHealth != null)
-    //        {
+        this.damagePerTick = damagePerTick;
+        this.tickCooldown = tickCooldown;
 
-    //        }
-    //        else
-    //        {
-    //            // Log an error and break the loop if targetHealth is null
-    //            Debug.LogError("targetHealth is null during ApplyBurningEffect on " + gameObject.name);
-    //            yield break; // Exit the coroutine
-    //        }
+        // If a burning effect is already active, stop it before starting a new one
+        if (burningCoroutine != null)
+        {
+            StopCoroutine(burningCoroutine);
+        }
 
-    //        // Poczekaj na cooldown
-    //        yield return new WaitForSeconds(tickCooldown);
-    //    }
-    //}
+        // Start applying the burning effect
+        burningCoroutine = StartCoroutine(ApplyBurningEffect());
+    }
 
+    private IEnumerator ApplyBurningEffect()
+    {
+        // Repeat the burning effect
+        while (true)
+        {
+            // Check if targetHealth is not null
+            if (targetHealth != null)
+            {
+                // Apply damage
+                targetHealth.TakeDamage(damagePerTick, gameObject);
+            }
+            else
+            {
+                // Log an error and break the loop if targetHealth is null
+                Debug.LogError("targetHealth is null during ApplyBurningEffect on " + gameObject.name);
+                yield break; // Exit the coroutine
+            }
+
+            // Wait for cooldown
+            yield return new WaitForSeconds(tickCooldown);
+        }
+    }
 }
