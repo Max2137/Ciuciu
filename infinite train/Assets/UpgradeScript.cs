@@ -7,6 +7,7 @@ public class UpgradeScript : MonoBehaviour
 {
     public bool isActive;
     private GameObject detectedObject;
+    public ParticleSystem upgradeEffect;
 
     // Nazwa zmiennej bool pobrana z Inspectora
     public string boolVariableName;
@@ -26,6 +27,7 @@ public class UpgradeScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        upgradeEffect.Stop();
         isActive = false;
         FindItemsListScript();
     }
@@ -80,6 +82,16 @@ public class UpgradeScript : MonoBehaviour
                                     }
                                     field.SetValue(weaponAttackScript, true);
                                     Debug.Log($"Broñ ulepszona! Zmienna bool '{boolVariableName}' zosta³a ustawiona na true w skrypcie WeaponAttack.");
+
+                                    if (!upgradeEffect.isPlaying)
+                                    {
+                                        upgradeEffect.Play();
+                                    }
+                                    else
+                                    {
+                                        upgradeEffect.Stop();
+                                        upgradeEffect.Play();
+                                    }
                                 }
                                 else
                                 {
