@@ -101,6 +101,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fef8ea42d3a7b6d419e3b71c8e5ef18e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lootOnDeath:
+  - itemName: Eyes
+    minQuantity: 2
+    maxQuantity: 3
   FloatingTextPrefab: {fileID: 4223490877550615990, guid: 89d0d17b310cf1144bde2a66a052f873, type: 3}
   maxHealth: 10
   currentHealth: 0

@@ -2,6 +2,16 @@ using UnityEngine;
 using TMPro;
 using System.Collections.Generic;
 using UnityEngine.UI;
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
+
+[System.Serializable]
+public class BoolDisplayNamePair
+{
+    public string boolName;
+    public string displayName;
+}
 
 public class WeaponStatsDisplayScript : MonoBehaviour
 {
@@ -9,16 +19,35 @@ public class WeaponStatsDisplayScript : MonoBehaviour
     public TextMeshProUGUI NameSpace;
     public TextMeshProUGUI DescriptionSpace;
     public RawImage uiRawImage;
+    public TextMeshProUGUI effects;
     public string itemTag = "Item";
     public float searchingDistance = 10f;
+    public List<BoolDisplayNamePair> boolDisplayNamePairs = new List<BoolDisplayNamePair>();
 
     private WeaponStatsData currentWeaponStatsData;
+    private WeaponAttack currentWeaponAttack;
+    private Dictionary<string, string> boolDisplayNameMap = new Dictionary<string, string>();
+
+    void Start()
+    {
+        InitializeBoolDisplayNameMap();
+    }
 
     void Update()
     {
         SearchForNearestItem();
         UpdateUI();
-        UpdateUIImage(); // Nowa funkcja do aktualizacji Image
+        UpdateUIImage();
+        UpdateEffectsText();
+    }
+
+    public void InitializeBoolDisplayNameMap()
+    {
+        boolDisplayNameMap.Clear();
+        foreach (var pair in boolDisplayNamePairs)
+        {
+            boolDisplayNameMap[pair.boolName] = pair.displayName;
+        }
     }
 
     void SearchForNearestItem()
@@ -26,19 +55,13 @@ public class WeaponStatsDisplayScript : MonoBehaviour
         GameObject nearestItem = null;
         float nearestDistance = float.MaxValue;
 
-        // ZnajdŸ wszystkie obiekty z tagiem "Item" w okreœlonym promieniu
         Collider[] colliders = Physics.OverlapSphere(transform.position, searchingDistance);
         foreach (var collider in colliders)
         {
             if (collider.CompareTag(itemTag))
             {
-                // Pobierz œrodek collidera obiektu "Item"
                 Vector3 itemCenter = collider.bounds.center;
-
-                // Oblicz odleg³oœæ pomiêdzy œrodkiem tego obiektu a œrodkiem collidera obiektu "Item"
                 float distance = Vector3.Distance(transform.position, itemCenter);
-
-                // SprawdŸ, czy to jest najbli¿szy obiekt
                 if (distance < nearestDistance)
                 {
                     nearestDistance = distance;
@@ -47,7 +70,6 @@ public class WeaponStatsDisplayScript : MonoBehaviour
             }
         }
 
-        // Jeœli znaleziono najbli¿szy obiekt, pobierz WeaponStatsData z niego
         if (nearestItem != null)
         {
             WeaponStatsData weaponStatsData = nearestItem.GetComponent<WeaponStatsData>();
@@ -55,30 +77,32 @@ public class WeaponStatsDisplayScript : MonoBehaviour
             {
                 currentWeaponStatsData = weaponStatsData;
             }
+
+            WeaponAttack weaponAttack = nearestItem.GetComponent<WeaponAttack>();
+            if (weaponAttack != null)
+            {
+                currentWeaponAttack = weaponAttack;
+            }
         }
         else
         {
-            // Jeœli nie znaleziono ¿adnego obiektu, zresetuj aktualne WeaponStatsData
             currentWeaponStatsData = null;
+            currentWeaponAttack = null;
         }
     }
 
     void UpdateUI()
     {
-        // SprawdŸ, czy obiekt TextMeshProUGUI zosta³ przypisany
         if (displayText == null)
         {
             Debug.LogError("Nie przypisano obiektu TextMeshProUGUI.");
             return;
         }
 
-        // Wyczyœæ tekst przed dodaniem nowych informacji
         displayText.text = "";
 
-        // SprawdŸ, czy obiekt WeaponStatsData zosta³ znaleziony
         if (currentWeaponStatsData != null)
         {
-            // Aktualizuj treœæ obiektu TextMeshProUGUI na podstawie zmiennych z WeaponStatsData
             if (NameSpace != null)
             {
                 NameSpace.text = currentWeaponStatsData.Name;
@@ -89,10 +113,8 @@ public class WeaponStatsDisplayScript : MonoBehaviour
                 DescriptionSpace.text = currentWeaponStatsData.Description;
             }
 
-            // Uzyskaj statystyki z WeaponStatsData
             Dictionary<string, object> stats = currentWeaponStatsData.GetStats();
 
-            // Aktualizuj tekst na podstawie uzyskanych statystyk
             foreach (var stat in stats)
             {
                 displayText.text += stat.Key + ": " + stat.Value + "\n";
@@ -100,7 +122,6 @@ public class WeaponStatsDisplayScript : MonoBehaviour
         }
         else
         {
-            // Jeœli currentWeaponStatsData jest null, ustaw teksty na puste
             if (NameSpace != null)
             {
                 NameSpace.text = "";
@@ -115,11 +136,80 @@ public class WeaponStatsDisplayScript : MonoBehaviour
 
     void UpdateUIImage()
     {
-        // SprawdŸ, czy obiekt Image zosta³ przypisany
         if (uiRawImage != null)
         {
-            // Ustaw stan aktywnoœci obiektu Image w zale¿noœci od obecnoœci currentWeaponStatsData
             uiRawImage.gameObject.SetActive(currentWeaponStatsData != null);
         }
     }
+
+    void UpdateEffectsText()
+    {
+        if (effects == null)
+        {
+            Debug.LogError("Nie przypisano obiektu TextMeshProUGUI dla efektów.");
+            return;
+        }
+
+        effects.text = "";
+
+        if (currentWeaponAttack != null)
+        {
+            List<string> trueEffects = new List<string>();
+
+            foreach (var field in currentWeaponAttack.GetType().GetFields())
+            {
+                if (field.FieldType == typeof(bool))
+                {
+                    bool value = (bool)field.GetValue(currentWeaponAttack);
+                    if (value)
+                    {
+                        // SprawdŸ, czy pole boola ma przypisany displayName
+                        string displayName;
+                        if (boolDisplayNameMap.TryGetValue(field.Name, out displayName))
+                        {
+                            trueEffects.Add(displayName);
+                        }
+                    }
+                }
+            }
+
+            if (trueEffects.Count > 0)
+            {
+                effects.text = "Effects:\n";
+                foreach (var effect in trueEffects)
+                {
+                    effects.text += "- " + effect + "\n";
+                }
+            }
+        }
+    }
 }
+
+#if UNITY_EDITOR
+[CustomEditor(typeof(WeaponStatsDisplayScript))]
+public class WeaponStatsDisplayScriptEditor : Editor
+{
+    SerializedProperty boolDisplayNamePairs;
+
+    private void OnEnable()
+    {
+        boolDisplayNamePairs = serializedObject.FindProperty("boolDisplayNamePairs");
+    }
+
+    public override void OnInspectorGUI()
+    {
+        serializedObject.Update();
+
+        WeaponStatsDisplayScript weaponStatsDisplayScript = (WeaponStatsDisplayScript)target;
+
+        EditorGUILayout.PropertyField(boolDisplayNamePairs, true);
+
+        serializedObject.ApplyModifiedProperties();
+
+        if (GUILayout.Button("Refresh Bool -> DisplayName Map"))
+        {
+            weaponStatsDisplayScript.InitializeBoolDisplayNameMap();
+        }
+    }
+}
+#endif

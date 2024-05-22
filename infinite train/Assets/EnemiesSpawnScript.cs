@@ -8,6 +8,7 @@ public class SpectrumRange
 {
     public float from;
     public float to;
+    public bool toInfinity; // Nowe pole - czy spawnowaæ do nieskoñczonoœci
 }
 
 [System.Serializable]
@@ -76,7 +77,9 @@ public class EnemiesSpawnScript : MonoBehaviour
             int beatenWagons = scoreScript.BeatenWagons;
 
             // Filtrujemy elementy, które s¹ w zakresie spectrum bazuj¹c na beatenWagons
-            List<ListElement> validElements = elements.FindAll(e => e.spectrum.from <= beatenWagons && e.spectrum.to >= beatenWagons);
+            List<ListElement> validElements = elements.FindAll(e =>
+                (e.spectrum.from <= beatenWagons && e.spectrum.to >= beatenWagons) ||
+                (e.spectrum.toInfinity && e.spectrum.from <= beatenWagons));
 
             while (remainingDifficulty > 0 && validElements.Count > 0)
             {
