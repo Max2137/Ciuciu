@@ -1,24 +1,25 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class WeaponHammerInput : MonoBehaviour
 {
     public Animator mAnimator;
-
+    public GameObject hitEffectPrefab;
     public float raycastDistance = 5f;
     public int attackDamage;
     public float attackCooldown = 1.0f;
     public float attackPrepTime = 1.5f;
-
-    public AudioClip hitSound; // Dodaj pole dla dŸwiêku
-
+    public AudioClip hitSound;
     private float lastAttackTime;
     private float attackPrepTimer;
     private bool isReadyForAttack;
-
     private Vector3 lastPlayerPosition;
     private WeaponInputManager inputManager;
+    private WeaponAttack weaponAttack;
+    private Vector3 spawnPosition;
+    private List<GameObject> spawnedHitEffects = new List<GameObject>();
 
     void Start()
     {
@@ -28,6 +29,31 @@ public class WeaponHammerInput : MonoBehaviour
         {
             Debug.LogError("WeaponInputManager not found in the parent objects.");
         }
+
+        weaponAttack = GetComponent<WeaponAttack>();
+        if (weaponAttack == null)
+        {
+            Debug.LogError("WeaponAttack component not found on the object.");
+        }
+
+        // Subscribe to the scene unloaded event
+        SceneManager.sceneUnloaded += OnSceneUnloaded;
+    }
+
+    void OnDestroy()
+    {
+        // Unsubscribe from the scene unloaded event
+        SceneManager.sceneUnloaded -= OnSceneUnloaded;
+    }
+
+    void OnSceneUnloaded(Scene scene)
+    {
+        // Destroy all spawned hitEffectPrefabs when a scene is unloaded
+        foreach (GameObject hitEffect in spawnedHitEffects)
+        {
+            Destroy(hitEffect);
+        }
+        spawnedHitEffects.Clear();
     }
 
     void Update()
@@ -92,19 +118,45 @@ public class WeaponHammerInput : MonoBehaviour
         Debug.DrawRay(ray.origin, ray.direction * raycastDistance, Color.green);
         Debug.Log("raycastowano");
 
+        // Nowa logika dla ustalenia spawnPosition
+        spawnPosition = ray.origin + ray.direction * (raycastDistance - 1);
+
         if (Physics.Raycast(ray, out hit, raycastDistance))
         {
+            spawnPosition = hit.point; // If hit, use hit point as spawn position
             if (hit.collider.CompareTag("Enemy"))
             {
                 Debug.Log("Wykryto wroga");
                 UniversalHealth enemyHealth = hit.collider.gameObject.GetComponent<UniversalHealth>();
                 if (enemyHealth != null)
                 {
-                    GetComponent<WeaponAttack>().DealDamage(hit.collider.gameObject, attackDamage);
+                    weaponAttack.DealDamage(hit.collider.gameObject, attackDamage);
                     Debug.Log("zadano damage");
                 }
             }
         }
+
+        Debug.Log(weaponAttack.isBurning);
+
+        // Spawn hit effect prefab only if isBurning is true
+        if (hitEffectPrefab != null && weaponAttack != null && weaponAttack.isBurning)
+        {
+            // Spawn the hit effect
+            GameObject newHitEffect = Instantiate(hitEffectPrefab, spawnPosition, Quaternion.identity);
+            spawnedHitEffects.Add(newHitEffect);
+        }
+    }
+
+    void CallSpawnHitEffect()
+    {
+        // Wywo³aj metodê SpawnHitEffect przekazuj¹c informacjê o miejscu spawnu
+        SpawnHitEffect(spawnPosition);
+    }
+
+    void SpawnHitEffect(Vector3 position)
+    {
+        // Kod wczeœniejszy pozostaje bez zmian
+        Instantiate(hitEffectPrefab, position, Quaternion.identity);
     }
 
     private bool CanAttack()

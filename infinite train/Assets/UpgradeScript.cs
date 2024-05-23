@@ -2,12 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class UpgradeScript : MonoBehaviour
 {
     public bool isActive;
     private GameObject detectedObject;
     public ParticleSystem upgradeEffect;
+
+    public bool isExclusive;
+    private bool wasUsed;
 
     // Nazwa zmiennej bool pobrana z Inspectora
     public string boolVariableName;
@@ -24,12 +28,24 @@ public class UpgradeScript : MonoBehaviour
 
     private itemsListScript itemsList;
 
+    // Inspector fields for TextMeshPro and colors
+    public TextMeshProUGUI upgradeText;
+    public Color colorNormal;
+    public Color colorUsed;
+
     // Start is called before the first frame update
     void Start()
     {
         upgradeEffect.Stop();
         isActive = false;
         FindItemsListScript();
+
+        // Set the initial color of the upgradeText to colorNormal with alpha value 1
+        if (upgradeText != null)
+        {
+            colorNormal.a = 1f;
+            upgradeText.color = colorNormal;
+        }
     }
 
     // Update is called once per frame
@@ -76,21 +92,35 @@ public class UpgradeScript : MonoBehaviour
                             {
                                 if (AreRequirementsMet())
                                 {
-                                    foreach (var requirement in itemRequirements)
+                                    if (isExclusive == false || wasUsed == false)
                                     {
-                                        itemsList.Pay(requirement.itemName, requirement.amount);
-                                    }
-                                    field.SetValue(weaponAttackScript, true);
-                                    Debug.Log($"Broñ ulepszona! Zmienna bool '{boolVariableName}' zosta³a ustawiona na true w skrypcie WeaponAttack.");
+                                        if (isExclusive == true)
+                                        {
+                                            wasUsed = true;
+                                            // Change text color to colorUsed with alpha value 1
+                                            if (upgradeText != null)
+                                            {
+                                                colorUsed.a = 1f;
+                                                upgradeText.color = colorUsed;
+                                            }
+                                        }
 
-                                    if (!upgradeEffect.isPlaying)
-                                    {
-                                        upgradeEffect.Play();
-                                    }
-                                    else
-                                    {
-                                        upgradeEffect.Stop();
-                                        upgradeEffect.Play();
+                                        foreach (var requirement in itemRequirements)
+                                        {
+                                            itemsList.Pay(requirement.itemName, requirement.amount);
+                                        }
+                                        field.SetValue(weaponAttackScript, true);
+                                        Debug.Log($"Broñ ulepszona! Zmienna bool '{boolVariableName}' zosta³a ustawiona na true w skrypcie WeaponAttack.");
+
+                                        if (!upgradeEffect.isPlaying)
+                                        {
+                                            upgradeEffect.Play();
+                                        }
+                                        else
+                                        {
+                                            upgradeEffect.Stop();
+                                            upgradeEffect.Play();
+                                        }
                                     }
                                 }
                                 else

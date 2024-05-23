@@ -135,7 +135,7 @@ public class EnemyFollowerScript : MonoBehaviour
         Debug.Log("Attacking player");
         if (playerHealth != null)
         {
-            playerHealth.TakeDamage(attackDamage, gameObject);
+            playerHealth.TakeDamage(attackDamage, gameObject, EDamageType.OTHER);
 
             mAnimator.SetTrigger("atak");
 

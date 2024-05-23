@@ -133,7 +133,7 @@ public class AdditionalFollowingPlayerFromAbove : MonoBehaviour
         Debug.Log("Attacking player");
         if (playerHealth != null)
         {
-            playerHealth.TakeDamage(attackDamage, gameObject);
+            playerHealth.TakeDamage(attackDamage, gameObject, EDamageType.OTHER);
         }
     }
 }

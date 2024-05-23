@@ -48,7 +48,7 @@ public class WeaponAttack : MonoBehaviour
         if (enemyHealth != null)
         {
             // Zadaj obra¿enia obiektowi
-            enemyHealth.TakeDamage(attackDamage, gameObject);
+            enemyHealth.TakeDamage(attackDamage, gameObject, EDamageType.MELEE);
         }
     }
 }

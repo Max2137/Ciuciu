@@ -63,7 +63,7 @@ public class EffectBurningScript : MonoBehaviour
             if (targetHealth != null)
             {
                 // Apply damage
-                targetHealth.TakeDamage(damagePerTick, gameObject);
+                targetHealth.TakeDamage(damagePerTick, gameObject, EDamageType.OTHER);
                 Debug.Log("spalono " + damagePerTick);
             }
             else

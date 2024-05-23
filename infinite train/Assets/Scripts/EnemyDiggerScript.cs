@@ -246,7 +246,7 @@ public class EnemyDiggerScript : MonoBehaviour
                 UniversalHealth playerHealth = targetObject.GetComponent<UniversalHealth>();
                 if (playerHealth != null)
                 {
-                    playerHealth.TakeDamage(damageAmount, gameObject);
+                    playerHealth.TakeDamage(damageAmount, gameObject, EDamageType.OTHER);
                 }
             }
         }

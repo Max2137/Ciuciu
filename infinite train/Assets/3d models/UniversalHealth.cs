@@ -10,6 +10,12 @@ public class LootItem
     public int maxQuantity;
 }
 
+public enum EDamageType
+{
+    MELEE,
+    OTHER
+}
+
 public class UniversalHealth : MonoBehaviour
 {
     public List<LootItem> lootOnDeath = new List<LootItem>();
@@ -107,11 +113,24 @@ public class UniversalHealth : MonoBehaviour
         mAnimator = GetComponentInChildren<Animator>();
     }
 
-    public void TakeDamage(float damage, GameObject attacker)
+    public void TakeDamage(float damage, GameObject attacker, EDamageType dmgType)
     {
         Debug.Log(gameObject.name + " Taking damage from: " + attacker.name);
 
-        float damageOutput = damage + playerStats.AttackMeleeStat;
+        float damageOutput = damage;
+
+        switch (dmgType)
+        {
+            case EDamageType.MELEE:
+                {
+                    damageOutput += playerStats.AttackMeleeStat;
+                    break;
+                }
+            case EDamageType.OTHER:
+                {
+                    break;
+                }
+        }
 
         if (gameObject.CompareTag("Player"))
         {

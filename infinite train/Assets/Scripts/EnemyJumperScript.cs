@@ -169,7 +169,7 @@ public class EnemyJumper : MonoBehaviour
         if (wasRecentlyAttacked == false)
         {
             Debug.Log("Attacking player");
-            playerHealth.TakeDamage(attackDamage, gameObject);
+            playerHealth.TakeDamage(attackDamage, gameObject, EDamageType.OTHER);
         }
         wasRecentlyAttacked = true;
     }
@@ -177,7 +177,7 @@ public class EnemyJumper : MonoBehaviour
     private void AttackStandard()
     {
         Debug.Log("Attacking player");
-        playerHealth.TakeDamage(attackStandardDamage, gameObject);
+        playerHealth.TakeDamage(attackStandardDamage, gameObject, EDamageType.OTHER);
     }
 
     void OnCollisionEnter(Collision collision)
@@ -191,7 +191,7 @@ public class EnemyJumper : MonoBehaviour
                 //playerHealth.TakeDamage(attackDamage, gameObject);
                 //isDashing = false;
             }
-            playerHealth.TakeDamage(attackDamage, gameObject);
+            playerHealth.TakeDamage(attackDamage, gameObject, EDamageType.OTHER);
             isDashing = false;
 
             // Ustawienie wasRecentlyAttacked na true

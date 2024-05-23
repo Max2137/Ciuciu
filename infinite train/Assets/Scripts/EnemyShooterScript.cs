@@ -196,7 +196,7 @@ public class EnemyShooterScript : MonoBehaviour
         Debug.Log("Attacking player");
         if (playerHealth != null)
         {
-            playerHealth.TakeDamage(attackDamagePhysical, gameObject);
+            playerHealth.TakeDamage(attackDamagePhysical, gameObject, EDamageType.OTHER);
         }
     }
 }

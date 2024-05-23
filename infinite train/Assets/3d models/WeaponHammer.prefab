@@ -103,7 +103,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: caeb3061a71a967489cba6071bad3563, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isBurning: 0
+  isBurning: 1
   burningScript: EffectBurningScript
 --- !u!114 &5823308682747116250
 MonoBehaviour:
@@ -118,11 +118,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mAnimator: {fileID: 4993607567101053982}
+  hitEffectPrefab: {fileID: 3439207643200381459, guid: 56f36b4b8d181614691bc2c5598b5b50, type: 3}
   raycastDistance: 3.8
   attackDamage: 10
   attackCooldown: 1
   attackPrepTime: 1
   hitSound: {fileID: 8300000, guid: 5f8b510adb2befe4f8f11b21fca89388, type: 3}
+  weaponAttack: {fileID: 0}
 --- !u!114 &2078455771724125232
 MonoBehaviour:
   m_ObjectHideFlags: 0

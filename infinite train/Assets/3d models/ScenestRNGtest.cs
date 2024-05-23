@@ -61,7 +61,7 @@ public class WagonLoader : MonoBehaviour
         if (Input.GetKeyUp(KeyCode.LeftControl) || Input.GetKey(KeyCode.RightControl))
         {
             // Wywo³anie funkcji LoadNextWagon po naciœniêciu klawisza CTRL
-            LoadNextWagon();
+            //LoadNextWagon();
         }
     }
 }
