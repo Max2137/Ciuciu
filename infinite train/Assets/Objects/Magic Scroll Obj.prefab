@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 2312918205083762559}
   - component: {fileID: 6799187087196851326}
   - component: {fileID: 4371988015696563650}
+  - component: {fileID: -7958571673172964174}
   m_Layer: 0
   m_Name: Magic Scroll Obj
   m_TagString: Item
@@ -146,6 +147,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackMouseButton: 0
+--- !u!114 &-7958571673172964174
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2903822279142901264}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95860941e1c85d04b93ef5e155eebdca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemType: 0
 --- !u!1001 &2991517841505410420
 PrefabInstance:
   m_ObjectHideFlags: 0

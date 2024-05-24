@@ -318,7 +318,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 779ecc4ad0189f74a966e0d0f45b4689, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  interactionKeys: 6500000071000000
+  interactionKeys: 66000000
   interactionDistance: 2.6
   allowedItemTypes: 04000000
 --- !u!1 &142307161 stripped

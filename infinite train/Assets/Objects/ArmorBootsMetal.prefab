@@ -10,9 +10,12 @@ GameObject:
   m_Component:
   - component: {fileID: 628920509684365349}
   - component: {fileID: -3149034176773474845}
+  - component: {fileID: 3791898514016197513}
+  - component: {fileID: 7681175068033275394}
+  - component: {fileID: 5040185252397935967}
   m_Layer: 0
   m_Name: ArmorBootsMetal
-  m_TagString: Untagged
+  m_TagString: Item
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -47,7 +50,58 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: Iron Boots
   Description: Give some protection
-  BasicStats: []
+  BasicStats:
+  - BasicStatName: damageAbsortion
+    BasicStatDisplay: Defense
+--- !u!114 &3791898514016197513
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8981881990213373340}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4747846cb871cbc4e84f5c2681c0b8c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damageAbsortion: 2
+--- !u!136 &7681175068033275394
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8981881990213373340}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.040933914
+  m_Height: 0.2783746
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &5040185252397935967
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8981881990213373340}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95860941e1c85d04b93ef5e155eebdca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemType: 4
 --- !u!1001 &8253520834037426409
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -58,27 +112,27 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 35a93902a526bc14cbcd99a31650d1fd, type: 3}
       propertyPath: m_LocalScale.x
-      value: 50
+      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 35a93902a526bc14cbcd99a31650d1fd, type: 3}
       propertyPath: m_LocalScale.y
-      value: 50
+      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 35a93902a526bc14cbcd99a31650d1fd, type: 3}
       propertyPath: m_LocalScale.z
-      value: 50
+      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 35a93902a526bc14cbcd99a31650d1fd, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.0774906
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 35a93902a526bc14cbcd99a31650d1fd, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 6.104405
+      value: 0.061
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 35a93902a526bc14cbcd99a31650d1fd, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -1.0911871
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 35a93902a526bc14cbcd99a31650d1fd, type: 3}
       propertyPath: m_LocalRotation.w
