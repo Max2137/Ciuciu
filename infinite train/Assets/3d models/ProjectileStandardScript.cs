@@ -31,7 +31,7 @@ public class ProjectileStandardScript : MonoBehaviour
                 if (health != null)
                 {
                     // Zadaj obra¿enia obiektowi
-                    health.TakeDamage(damage, owner, EDamageType.OTHER);
+                    health.TakeDamage(damage, owner, EDamageType.MAGIC);
                 }
 
                 // Zniszcz pocisk po trafieniu

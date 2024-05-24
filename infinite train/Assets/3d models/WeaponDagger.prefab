@@ -18,6 +18,7 @@ GameObject:
   - component: {fileID: 8531165353773519053}
   - component: {fileID: 8514973368092189630}
   - component: {fileID: 1151396782194254505}
+  - component: {fileID: -5340892575437327993}
   m_Layer: 0
   m_Name: WeaponDagger
   m_TagString: Item
@@ -128,6 +129,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isBurning: 0
   burningScript: EffectBurningScript
+  isDizzing: 0
+  dizzyScript: 
 --- !u!114 &4519624598694543932
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -286,6 +289,18 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &-5340892575437327993
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 842366105222026008}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95860941e1c85d04b93ef5e155eebdca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &6032403396484924576
 PrefabInstance:
   m_ObjectHideFlags: 0

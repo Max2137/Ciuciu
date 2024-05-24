@@ -141,10 +141,15 @@ public class WeaponHammerInput : MonoBehaviour
         // Spawn hit effect prefab only if isBurning is true
         if (hitEffectPrefab != null && weaponAttack != null && weaponAttack.isBurning)
         {
-            // Spawn the hit effect
-            GameObject newHitEffect = Instantiate(hitEffectPrefab, spawnPosition, Quaternion.identity);
-            spawnedHitEffects.Add(newHitEffect);
+            // OpóŸnij spawn hit effect o 0,6 sekundy
+            Invoke("DelayedSpawnHitEffect", 0.6f);
         }
+    }
+
+    void DelayedSpawnHitEffect()
+    {
+        GameObject newHitEffect = Instantiate(hitEffectPrefab, spawnPosition, Quaternion.identity);
+        spawnedHitEffects.Add(newHitEffect);
     }
 
     void CallSpawnHitEffect()

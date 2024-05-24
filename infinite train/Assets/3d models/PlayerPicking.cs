@@ -1,16 +1,18 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using System.Collections.Generic;
 
 public class PlayerPicking : MonoBehaviour
 {
-    public KeyCode interactionKey = KeyCode.E; // Klawisz do interakcji
+    public List<KeyCode> interactionKeys = new List<KeyCode> { KeyCode.E }; // List of keys to interact
     public float interactionDistance = 2f;
+    public List<ItemTypeInfo.ItemType> allowedItemTypes; // List of allowed item types
     private Transform heldItem;
     private Collider[] originalColliders;
 
     void Update()
     {
-        if (Input.GetKeyDown(interactionKey)) // U¿ywanie pola interactionKey zamiast KeyCode.E
+        if (IsInteractionKeyPressed())
         {
             Collider[] colliders = Physics.OverlapSphere(transform.position, interactionDistance);
             Transform nearestObject = null;
@@ -18,6 +20,12 @@ public class PlayerPicking : MonoBehaviour
             {
                 if (collider.CompareTag("Item"))
                 {
+                    ItemTypeInfo itemTypeInfo = collider.GetComponent<ItemTypeInfo>();
+                    if (itemTypeInfo == null || !allowedItemTypes.Contains(itemTypeInfo.itemType))
+                    {
+                        continue;
+                    }
+
                     if (heldItem == collider.transform)
                     {
                         continue;
@@ -54,6 +62,18 @@ public class PlayerPicking : MonoBehaviour
             EnableColliders(heldItem.gameObject);
             DropItem();
         }
+    }
+
+    bool IsInteractionKeyPressed()
+    {
+        foreach (KeyCode key in interactionKeys)
+        {
+            if (Input.GetKeyDown(key))
+            {
+                return true;
+            }
+        }
+        return false;
     }
 
     void PickUpItem(Transform item)

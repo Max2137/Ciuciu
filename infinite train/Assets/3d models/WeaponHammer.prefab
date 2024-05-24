@@ -18,6 +18,7 @@ GameObject:
   - component: {fileID: 169573374001743080}
   - component: {fileID: 6100752900602815198}
   - component: {fileID: 3792363751239695147}
+  - component: {fileID: -8925336828856474062}
   m_Layer: 0
   m_Name: WeaponHammer
   m_TagString: Item
@@ -105,6 +106,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isBurning: 1
   burningScript: EffectBurningScript
+  isDizzing: 0
+  dizzyScript: 
 --- !u!114 &5823308682747116250
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -124,7 +127,6 @@ MonoBehaviour:
   attackCooldown: 1
   attackPrepTime: 1
   hitSound: {fileID: 8300000, guid: 5f8b510adb2befe4f8f11b21fca89388, type: 3}
-  weaponAttack: {fileID: 0}
 --- !u!114 &2078455771724125232
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -202,6 +204,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2ec31a04bc53f1a4ca38f1f1e512002b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &-8925336828856474062
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2500005920866960155}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95860941e1c85d04b93ef5e155eebdca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &5716178854678065712

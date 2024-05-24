@@ -13,6 +13,7 @@ public class LootItem
 public enum EDamageType
 {
     MELEE,
+    MAGIC,
     OTHER
 }
 
@@ -123,7 +124,23 @@ public class UniversalHealth : MonoBehaviour
         {
             case EDamageType.MELEE:
                 {
-                    damageOutput += playerStats.AttackMeleeStat;
+                    if (attacker.CompareTag("Player"))
+                    {
+                        damageOutput += playerStats.AttackMeleeStat;
+                    }
+                    else if (attacker.CompareTag("Enemy"))
+                    {
+                        // Sprawdü, czy gracz ma obiekt z komponentem ArmorDefensePassive
+                        ArmorDefensePassive armorDefense = GetComponentInChildren<ArmorDefensePassive>();
+                        if (armorDefense != null)
+                        {
+                            damageOutput -= armorDefense.damageAbsortion;
+                        }
+                    }
+                    break;
+                }
+            case EDamageType.MAGIC:
+                {
                     break;
                 }
             case EDamageType.OTHER:

@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 3949401721607731207}
   - component: {fileID: 7776881963904416509}
   - component: {fileID: -5092501597210824729}
+  - component: {fileID: -370200111886613524}
   m_Layer: 0
   m_Name: WeaponStick
   m_TagString: Item
@@ -104,6 +105,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isBurning: 0
   burningScript: EffectBurningScript
+  isDizzing: 0
+  dizzyScript: EffectDizzingScript
 --- !u!114 &1861063024769751098
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -189,6 +192,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackMouseButton: 0
+--- !u!114 &-370200111886613524
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8376720767005889026}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95860941e1c85d04b93ef5e155eebdca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &7725979388250067322
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -256,7 +271,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 0be6eda9e1643204e8ed1613667e8323, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: dd70ec5723efe0a4780b4ef76890b2fa, type: 2}
+      objectReference: {fileID: 2100000, guid: b2c2bbfaaa3f8d24abba58384628f69f, type: 2}
     - target: {fileID: 919132149155446097, guid: 0be6eda9e1643204e8ed1613667e8323, type: 3}
       propertyPath: m_Name
       value: pala
