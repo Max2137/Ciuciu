@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 3791898514016197513}
   - component: {fileID: 7681175068033275394}
   - component: {fileID: 5040185252397935967}
+  - component: {fileID: 3500466567218358373}
   m_Layer: 0
   m_Name: ArmorBootsMetal
   m_TagString: Item
@@ -102,6 +103,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemType: 4
+  isRaycasting: 1
+--- !u!114 &3500466567218358373
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8981881990213373340}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d80392f525e0744bb365145cf49236d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isBurning: 0
+  prefabToSpawn: {fileID: 2953194327958574474, guid: 2dab8c6be0ce7154a918400b63c6e6aa, type: 3}
 --- !u!1001 &8253520834037426409
 PrefabInstance:
   m_ObjectHideFlags: 0

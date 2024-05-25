@@ -9,6 +9,7 @@ TagManager:
   - 1stSlot
   - Ground
   - AudioPlayer
+  - AirMovable
   layers:
   - Default
   - TransparentFX

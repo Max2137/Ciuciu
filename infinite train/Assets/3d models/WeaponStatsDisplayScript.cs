@@ -60,12 +60,28 @@ public class WeaponStatsDisplayScript : MonoBehaviour
         {
             if (collider.CompareTag(itemTag))
             {
-                Vector3 itemCenter = collider.bounds.center;
-                float distance = Vector3.Distance(transform.position, itemCenter);
-                if (distance < nearestDistance)
+                Transform itemTransform = collider.transform;
+                bool isParentPlayer = false;
+
+                while (itemTransform.parent != null)
                 {
-                    nearestDistance = distance;
-                    nearestItem = collider.gameObject;
+                    itemTransform = itemTransform.parent;
+                }
+
+                if (itemTransform.CompareTag("Player"))
+                {
+                    isParentPlayer = true;
+                }
+
+                if (!isParentPlayer)
+                {
+                    Vector3 itemCenter = collider.bounds.center;
+                    float distance = Vector3.Distance(transform.position, itemCenter);
+                    if (distance < nearestDistance)
+                    {
+                        nearestDistance = distance;
+                        nearestItem = collider.gameObject;
+                    }
                 }
             }
         }

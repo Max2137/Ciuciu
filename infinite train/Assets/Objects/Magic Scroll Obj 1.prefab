@@ -11,14 +11,14 @@ GameObject:
   - component: {fileID: 3520973431775593657}
   - component: {fileID: 2558872466927452053}
   - component: {fileID: 1873377819640228115}
-  - component: {fileID: 172238665441070579}
   - component: {fileID: 3688635070802220425}
   - component: {fileID: 2312918205083762559}
   - component: {fileID: 6799187087196851326}
   - component: {fileID: 4371988015696563650}
   - component: {fileID: -7958571673172964174}
+  - component: {fileID: 709752712964889375}
   m_Layer: 0
-  m_Name: Magic Scroll Obj
+  m_Name: Magic Scroll Obj 1
   m_TagString: Item
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -75,27 +75,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d188174b48c04e74f9113fc015a54467, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Name: Scroll of Fire
-  Description: Summons the circle of fire
+  Name: Scroll of Air
+  Description: Pushes enemies back
   BasicStats:
   - BasicStatName: cooldown
     BasicStatDisplay: Cooldown
---- !u!114 &172238665441070579
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2903822279142901264}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 302e36a1bfe02e94b88940daf265ec34, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  objectPrefab: {fileID: 2953194327958574474, guid: 2dab8c6be0ce7154a918400b63c6e6aa, type: 3}
-  radius: 2.5
-  density: 10
-  destroyAfter: 4
 --- !u!114 &3688635070802220425
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -108,7 +92,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1271fefb345714e49b0bd27e7356b7b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cooldown: 5
+  cooldown: 2
 --- !u!114 &2312918205083762559
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -161,6 +145,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemType: 0
   isRaycasting: 1
+--- !u!114 &709752712964889375
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2903822279142901264}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6181c73a58a400845be6e9f50f8a67b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pushForce: 70
+  pushRadius: 5
+  rayCount: 10
+  rayAngle: 60
+  pushDuration: 0.5
 --- !u!1001 &2991517841505410420
 PrefabInstance:
   m_ObjectHideFlags: 0

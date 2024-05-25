@@ -13,6 +13,9 @@ public class FireObjScript : MonoBehaviour
     // Okreœla, czy obiekty z wykluczonymi tagami s¹ "bezpieczne"
     public bool isSafe = true;
 
+    // Typ obra¿eñ, który chcemy przypisaæ do dodawanego skryptu
+    public EDamageType damageType;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -37,8 +40,10 @@ public class FireObjScript : MonoBehaviour
         // Sprawdzamy, czy obiekt nie ma ju¿ tego skryptu
         if (other.gameObject.GetComponent(System.Type.GetType(scriptToAdd)) == null)
         {
-            // Dodajemy skrypt do wykrywanego obiektu
             other.gameObject.AddComponent(System.Type.GetType(scriptToAdd));
+            EffectBurningScript burningScript = other.gameObject.GetComponent<EffectBurningScript>();
+            burningScript.damageType = damageType; // lub EDamageType.MAGIC w zale¿noœci od potrzeb
+
         }
     }
 }

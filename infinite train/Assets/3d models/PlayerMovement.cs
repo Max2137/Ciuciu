@@ -8,7 +8,7 @@ public class PlayerMovement : MonoBehaviour
     public float dashCooldown = 5f;
     public float dashForce = 2000f;
     public float deceleration = 8f;
-    private bool isDashing = false;
+    public bool isDashing = false;
     private float currentDashCooldown = 0f;
     private Rigidbody rb;
 

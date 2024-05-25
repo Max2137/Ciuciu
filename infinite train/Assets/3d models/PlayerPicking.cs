@@ -85,7 +85,11 @@ public class PlayerPicking : MonoBehaviour
 
         foreach (Collider collider in originalColliders)
         {
-            collider.enabled = false;
+            ItemTypeInfo itemTypeInfo = collider.GetComponent<ItemTypeInfo>();
+            if (itemTypeInfo != null && itemTypeInfo.isRaycasting)
+            {
+                collider.enabled = false;
+            }
         }
 
         heldItem.parent = transform;
@@ -120,7 +124,11 @@ public class PlayerPicking : MonoBehaviour
         Collider[] colliders = obj.GetComponentsInChildren<Collider>();
         foreach (Collider collider in colliders)
         {
-            collider.enabled = false;
+            ItemTypeInfo itemTypeInfo = collider.GetComponent<ItemTypeInfo>();
+            if (itemTypeInfo != null && itemTypeInfo.isRaycasting)
+            {
+                collider.enabled = false;
+            }
         }
     }
 

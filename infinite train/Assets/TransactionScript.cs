@@ -5,11 +5,17 @@ using UnityEngine.SceneManagement;
 
 public class TransactionScript : MonoBehaviour
 {
+    public enum RewardType
+    {
+        Item,
+        Prefab
+    }
+
     [System.Serializable]
     public class TransactionOffer
     {
         public List<ItemQuantity> costItems;
-        public List<ItemQuantity> rewardItems;
+        public List<ItemReward> rewardItems;
     }
 
     [System.Serializable]
@@ -19,8 +25,18 @@ public class TransactionScript : MonoBehaviour
         public int quantity;
     }
 
+    [System.Serializable]
+    public class ItemReward
+    {
+        public RewardType rewardType;
+        public string itemName;
+        public int quantity;
+        public GameObject rewardPrefab;
+    }
+
     public List<TransactionOffer> transactionOffers;
     public TextMeshProUGUI transactionText;
+    public Transform RewardSpawnPositioner;  // Dodane pole
 
     private bool isActive;
     private int selectedTransactionIndex;
@@ -82,13 +98,35 @@ public class TransactionScript : MonoBehaviour
                 text += $"{i + 1}. Cost: ";
                 foreach (var costItem in transactionOffers[i].costItems)
                 {
-                    text += $"{costItem.quantity}x {costItem.itemName}, ";
+                    if (costItem.quantity > 0 && !string.IsNullOrEmpty(costItem.itemName))
+                    {
+                        text += $"{costItem.quantity}x {costItem.itemName}, ";
+                    }
                 }
                 text += "Reward: ";
                 foreach (var rewardItem in transactionOffers[i].rewardItems)
                 {
-                    text += $"{rewardItem.quantity}x {rewardItem.itemName}, ";
+                    if (rewardItem.rewardType == RewardType.Item)
+                    {
+                        if (rewardItem.quantity > 0 && !string.IsNullOrEmpty(rewardItem.itemName))
+                        {
+                            text += $"{rewardItem.quantity}x {rewardItem.itemName}, ";
+                        }
+                    }
+                    else if (rewardItem.rewardType == RewardType.Prefab && rewardItem.rewardPrefab != null)
+                    {
+                        WeaponStatsData weaponStats = rewardItem.rewardPrefab.GetComponent<WeaponStatsData>();
+                        if (weaponStats != null)
+                        {
+                            text += $"{weaponStats.Name}, ";
+                        }
+                        else
+                        {
+                            text += $"{rewardItem.rewardPrefab.name}, ";
+                        }
+                    }
                 }
+                text = text.TrimEnd(',', ' '); // Usuniêcie zbêdnego przecinka i spacji
                 text += "\n";
             }
             transactionText.text = text;
@@ -125,7 +163,15 @@ public class TransactionScript : MonoBehaviour
                 }
                 foreach (var rewardItem in transactionOffers[index].rewardItems)
                 {
-                    itemsList.Gain(rewardItem.itemName, rewardItem.quantity);
+                    if (rewardItem.rewardType == RewardType.Item)
+                    {
+                        itemsList.Gain(rewardItem.itemName, rewardItem.quantity);
+                    }
+                    else if (rewardItem.rewardType == RewardType.Prefab && rewardItem.rewardPrefab != null)
+                    {
+                        Instantiate(rewardItem.rewardPrefab, RewardSpawnPositioner.position, RewardSpawnPositioner.rotation);
+                        Debug.Log($"Spawned reward prefab: {rewardItem.rewardPrefab.name}");
+                    }
                 }
 
                 Debug.Log("Transaction successful!");

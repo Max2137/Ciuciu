@@ -11,9 +11,10 @@ GameObject:
   - component: {fileID: 2467974583981633430}
   - component: {fileID: 1405945686096920766}
   - component: {fileID: 3107763193121419909}
+  - component: {fileID: -6195594174178614614}
   m_Layer: 0
   m_Name: FireObj
-  m_TagString: Untagged
+  m_TagString: AirMovable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -72,6 +73,19 @@ MonoBehaviour:
   scriptToAdd: EffectBurningScript
   excludedTags: []
   isSafe: 0
+  damageType: 2
+--- !u!114 &-6195594174178614614
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3439207643200381459}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e0b543b9b12693e4ba5778a86dc9d2f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &6934169564177554466
 PrefabInstance:
   m_ObjectHideFlags: 0

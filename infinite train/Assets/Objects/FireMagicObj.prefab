@@ -12,9 +12,10 @@ GameObject:
   - component: {fileID: 111660672133186347}
   - component: {fileID: 5385081306202815794}
   - component: {fileID: 310589480696843158}
+  - component: {fileID: 4907005033196057809}
   m_Layer: 0
   m_Name: FireMagicObj
-  m_TagString: Untagged
+  m_TagString: AirMovable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -74,6 +75,7 @@ MonoBehaviour:
   excludedTags:
   - Player
   isSafe: 1
+  damageType: 1
 --- !u!114 &310589480696843158
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -86,6 +88,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e0b543b9b12693e4ba5778a86dc9d2f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &4907005033196057809
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2953194327958574474}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 52cfae59a1518cf4ea4f91b1bbb8c088, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  destructionTime: 2
 --- !u!1001 &487094702726996633
 PrefabInstance:
   m_ObjectHideFlags: 0

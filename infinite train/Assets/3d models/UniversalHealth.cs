@@ -135,12 +135,33 @@ public class UniversalHealth : MonoBehaviour
                         if (armorDefense != null)
                         {
                             damageOutput -= armorDefense.damageAbsortion;
+                            if (armorDefense.isThorns)
+                            {
+                                // Oblicz obra¿enia Thorns
+                                float thornsDamage = damage * armorDefense.ThornsFraction;
+                                // Zadaj obra¿enia przeciwnikowi
+                                UniversalHealth enemyHealth = attacker.GetComponent<UniversalHealth>();
+                                if (enemyHealth != null)
+                                {
+                                    enemyHealth.TakeDamage(thornsDamage, gameObject, EDamageType.OTHER);
+                                }
+                            }
                         }
                     }
                     break;
                 }
             case EDamageType.MAGIC:
                 {
+                    Debug.Log("Atakuje " + attacker.name);
+                    if (attacker.CompareTag("Player") || attacker == gameObject)
+                    {
+                        damageOutput += playerStats.AttackMagicStat;
+                        Debug.Log("Dodano AttackMagicStat do damageOutput.");
+                    }
+                    else
+                    {
+                        Debug.Log("Atakuj¹cy nie jest graczem ani nie atakuje samego siebie.");
+                    }
                     break;
                 }
             case EDamageType.OTHER:

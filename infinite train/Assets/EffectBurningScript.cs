@@ -8,6 +8,8 @@ public class EffectBurningScript : MonoBehaviour
     public float tickCooldown = 3f; // Time between ticks in seconds
     private UniversalHealth targetHealth;
     private GameObject burningParticle; // Renamed variable
+    public EDamageType damageType;
+
 
     private void Start()
     {
@@ -62,9 +64,10 @@ public class EffectBurningScript : MonoBehaviour
             // Check if targetHealth is not null
             if (targetHealth != null)
             {
-                // Apply damage
-                targetHealth.TakeDamage(damagePerTick, gameObject, EDamageType.OTHER);
+                // Apply damage using damageType
+                targetHealth.TakeDamage(damagePerTick, gameObject, damageType);
                 Debug.Log("spalono " + damagePerTick);
+                Debug.Log("pali: " + damageType);
             }
             else
             {

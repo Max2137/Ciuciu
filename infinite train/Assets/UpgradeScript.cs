@@ -62,6 +62,10 @@ public class UpgradeScript : MonoBehaviour
             {
                 HandleKeyPress("Hand1");
             }
+            if (Input.GetKeyDown(KeyCode.F))
+            {
+                HandleKeyPress("Boots Slot");
+            }
         }
     }
 
@@ -81,67 +85,7 @@ public class UpgradeScript : MonoBehaviour
                     Transform secondChild = handTransform.GetChild(1); // Indeks 1 oznacza drugiego childa
                     Debug.Log($"Nazwa drugiego childa obiektu '{handName}': {secondChild.name}");
 
-                    WeaponAttack weaponAttackScript = secondChild.GetComponent<WeaponAttack>();
-                    if (weaponAttackScript != null)
-                    {
-                        System.Reflection.FieldInfo field = weaponAttackScript.GetType().GetField(boolVariableName);
-                        if (field != null && field.FieldType == typeof(bool))
-                        {
-                            bool isAlreadyUpgraded = (bool)field.GetValue(weaponAttackScript);
-                            if (!isAlreadyUpgraded)
-                            {
-                                if (AreRequirementsMet())
-                                {
-                                    if (isExclusive == false || wasUsed == false)
-                                    {
-                                        if (isExclusive == true)
-                                        {
-                                            wasUsed = true;
-                                            // Change text color to colorUsed with alpha value 1
-                                            if (upgradeText != null)
-                                            {
-                                                colorUsed.a = 1f;
-                                                upgradeText.color = colorUsed;
-                                            }
-                                        }
-
-                                        foreach (var requirement in itemRequirements)
-                                        {
-                                            itemsList.Pay(requirement.itemName, requirement.amount);
-                                        }
-                                        field.SetValue(weaponAttackScript, true);
-                                        Debug.Log($"Broñ ulepszona! Zmienna bool '{boolVariableName}' zosta³a ustawiona na true w skrypcie WeaponAttack.");
-
-                                        if (!upgradeEffect.isPlaying)
-                                        {
-                                            upgradeEffect.Play();
-                                        }
-                                        else
-                                        {
-                                            upgradeEffect.Stop();
-                                            upgradeEffect.Play();
-                                        }
-                                    }
-                                }
-                                else
-                                {
-                                    Debug.Log("Nie masz wystarczaj¹cej iloœci wymaganych przedmiotów do ulepszenia broni.");
-                                }
-                            }
-                            else
-                            {
-                                Debug.Log("Broñ jest ju¿ ulepszona.");
-                            }
-                        }
-                        else
-                        {
-                            Debug.Log($"Nie znaleziono zmiennej bool o nazwie '{boolVariableName}' w skrypcie WeaponAttack.");
-                        }
-                    }
-                    else
-                    {
-                        Debug.Log("Nie znaleziono skryptu WeaponAttack na drugim childzie.");
-                    }
+                    CheckForBoolVariable(secondChild.gameObject);
                 }
                 else
                 {
@@ -153,6 +97,65 @@ public class UpgradeScript : MonoBehaviour
                 Debug.Log($"Nie znaleziono obiektu '{handName}' jako childa wykrytego obiektu.");
             }
         }
+    }
+
+    private void CheckForBoolVariable(GameObject obj)
+    {
+        MonoBehaviour[] scripts = obj.GetComponents<MonoBehaviour>();
+        foreach (MonoBehaviour script in scripts)
+        {
+            System.Reflection.FieldInfo field = script.GetType().GetField(boolVariableName);
+            if (field != null && field.FieldType == typeof(bool))
+            {
+                bool isAlreadyUpgraded = (bool)field.GetValue(script);
+                if (!isAlreadyUpgraded)
+                {
+                    if (AreRequirementsMet())
+                    {
+                        if (isExclusive == false || wasUsed == false)
+                        {
+                            if (isExclusive == true)
+                            {
+                                wasUsed = true;
+                                // Change text color to colorUsed with alpha value 1
+                                if (upgradeText != null)
+                                {
+                                    colorUsed.a = 1f;
+                                    upgradeText.color = colorUsed;
+                                }
+                            }
+
+                            foreach (var requirement in itemRequirements)
+                            {
+                                itemsList.Pay(requirement.itemName, requirement.amount);
+                            }
+                            field.SetValue(script, true);
+                            Debug.Log($"Zmienna bool '{boolVariableName}' zosta³a ustawiona na true w skrypcie: {script.GetType().Name}");
+
+                            if (!upgradeEffect.isPlaying)
+                            {
+                                upgradeEffect.Play();
+                            }
+                            else
+                            {
+                                upgradeEffect.Stop();
+                                upgradeEffect.Play();
+                            }
+                        }
+                    }
+                    else
+                    {
+                        Debug.Log("Nie masz wystarczaj¹cej iloœci wymaganych przedmiotów do ulepszenia broni.");
+                    }
+                }
+                else
+                {
+                    Debug.Log("Broñ jest ju¿ ulepszona.");
+                }
+                return;
+            }
+        }
+        Debug.Log($"Nie znaleziono zmiennej bool o nazwie '{boolVariableName}' w skryptach obiektu {obj.name}.");
     }
 
     private bool AreRequirementsMet()

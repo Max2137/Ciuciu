@@ -20,6 +20,7 @@ GameObject:
   - component: {fileID: 3901172804209593793}
   - component: {fileID: 4580066152465503203}
   - component: {fileID: 764683842383603820}
+  - component: {fileID: 2886699474410171296}
   m_Layer: 0
   m_Name: WeaponCudgel
   m_TagString: Item
@@ -292,6 +293,20 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &2886699474410171296
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1146766863815775954}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95860941e1c85d04b93ef5e155eebdca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemType: 0
+  isRaycasting: 1
 --- !u!1001 &4602445111574993663
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -218,6 +218,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95860941e1c85d04b93ef5e155eebdca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  itemType: 0
+  isRaycasting: 1
 --- !u!1001 &5716178854678065712
 PrefabInstance:
   m_ObjectHideFlags: 0
