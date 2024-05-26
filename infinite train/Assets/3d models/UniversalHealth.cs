@@ -119,14 +119,21 @@ public class UniversalHealth : MonoBehaviour
         Debug.Log(gameObject.name + " Taking damage from: " + attacker.name);
 
         float damageOutput = damage;
+        Debug.Log(damageOutput);
 
         switch (dmgType)
         {
             case EDamageType.MELEE:
                 {
-                    if (attacker.CompareTag("Player"))
+                    Debug.Log(damageOutput);
+
+                    Transform rootTransform = attacker.transform.root;
+
+                    if (rootTransform.CompareTag("Player"))
                     {
+                        Debug.Log(damageOutput);
                         damageOutput += playerStats.AttackMeleeStat;
+                        Debug.Log(damageOutput);
                     }
                     else if (attacker.CompareTag("Enemy"))
                     {

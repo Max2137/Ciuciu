@@ -4,23 +4,25 @@ using UnityEngine;
 
 public class WeaponHoldManager : MonoBehaviour
 {
-    public int attackDamage = 10;
+    public float attackDamage = 10;
     public string holdingEffectScriptName; // Nazwa skryptu efektu trzymania
 
     private WeaponAudioVisual weaponAudioVisual;
     private ParentCheckScript parentCheckScript;
     private WeaponInputManager inputManager;
-    private WeaponDetectionCollider detectionCollider;
+    private WeaponDetection detection;
     private MonoBehaviour holdingEffect; // Zmienna do przechowywania komponentu skryptu
 
     private bool isHolding = false;
+    private HashSet<GameObject> enemiesHitThisFrame = new HashSet<GameObject>(); // Zestaw przechowuj¹cy przeciwników trafionych w bie¿¹cej ramce
+    private HashSet<GameObject> enemiesHitDuringHold = new HashSet<GameObject>(); // Zestaw przechowuj¹cy przeciwników trafionych podczas trzymania
 
     void Start()
     {
         weaponAudioVisual = GetComponentInChildren<WeaponAudioVisual>();
         parentCheckScript = GetComponent<ParentCheckScript>();
         inputManager = GetComponent<WeaponInputManager>();
-        detectionCollider = GetComponentInChildren<WeaponDetectionCollider>();
+        detection = GetComponentInChildren<WeaponDetection>();
 
         if (weaponAudioVisual == null)
         {
@@ -34,13 +36,9 @@ public class WeaponHoldManager : MonoBehaviour
         {
             Debug.LogError("WeaponInputManager not found on the object.");
         }
-        if (detectionCollider == null)
+        if (detection == null)
         {
-            Debug.LogError("WeaponDetectionCollider not found on the object.");
-        }
-        else
-        {
-            detectionCollider.holdManager = this;
+            Debug.LogError("WeaponDetection not found on the child objects.");
         }
 
         if (string.IsNullOrEmpty(holdingEffectScriptName))
@@ -68,6 +66,14 @@ public class WeaponHoldManager : MonoBehaviour
         {
             StopHolding();
         }
+
+        if (isHolding)
+        {
+            DetectAndReportHits();
+        }
+
+        // Clear the set of enemies hit this frame after processing
+        enemiesHitThisFrame.Clear();
     }
 
     void StartHolding()
@@ -75,6 +81,7 @@ public class WeaponHoldManager : MonoBehaviour
         if (!isHolding)
         {
             isHolding = true;
+            enemiesHitDuringHold.Clear(); // Wyczyœæ zestaw trafionych przeciwników na pocz¹tku trzymania
             if (holdingEffect != null)
             {
                 holdingEffect.enabled = true;
@@ -93,10 +100,33 @@ public class WeaponHoldManager : MonoBehaviour
 
     public void ReportHit(GameObject enemy)
     {
-        if (isHolding)
+        if (isHolding && !enemiesHitDuringHold.Contains(enemy)) // SprawdŸ, czy przeciwnik nie by³ ju¿ trafiony
         {
+            enemiesHitDuringHold.Add(enemy); // Dodaj przeciwnika do zestawu trafionych podczas trzymania
             GetComponentInParent<WeaponAttack>().DealDamage(enemy, attackDamage);
             Debug.Log("Damage dealt");
         }
+    }
+
+    private void DetectAndReportHits()
+    {
+        RaycastHit[] hits = detection.Detect();
+        foreach (RaycastHit hit in hits)
+        {
+            GameObject enemy = hit.collider.gameObject;
+            UniversalHealth enemyHealth = enemy.GetComponent<UniversalHealth>();
+            if (enemyHealth != null)
+            {
+                // Jeœli przeciwnik nie by³ ju¿ trafiony w bie¿¹cej ramce
+                if (!enemiesHitThisFrame.Contains(enemy))
+                {
+                    ReportHit(enemy);
+                    enemiesHitThisFrame.Add(enemy); // Dodaj przeciwnika do zestawu trafionych w bie¿¹cej ramce
+                }
+            }
+        }
+
+        // Usuñ przeciwników, którzy nie zostali trafieni w tej ramce z zestawu trafionych podczas trzymania
+        enemiesHitDuringHold.RemoveWhere(enemy => !enemiesHitThisFrame.Contains(enemy));
     }
 }

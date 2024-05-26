@@ -10,6 +10,7 @@ TagManager:
   - Ground
   - AudioPlayer
   - AirMovable
+  - BurningParticle
   layers:
   - Default
   - TransparentFX

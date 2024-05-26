@@ -158,6 +158,8 @@ MonoBehaviour:
   raycastDistance: 2.5
   numberOfRays: 3
   fanAngle: 47.8
+  puncture: 1
+  raycastDirection: 0
 --- !u!114 &6981149686523673712
 MonoBehaviour:
   m_ObjectHideFlags: 0

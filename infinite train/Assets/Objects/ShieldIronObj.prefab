@@ -89,7 +89,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemType: 0
-  isRaycasting: 0
+  isRaycasting: 1
 --- !u!114 &5330347716467562238
 MonoBehaviour:
   m_ObjectHideFlags: 0

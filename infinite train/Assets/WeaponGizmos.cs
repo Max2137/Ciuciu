@@ -18,6 +18,7 @@ public class WeaponGizmos : MonoBehaviour
         int numberOfRays = weaponDetection.numberOfRays;
         float fanAngle = weaponDetection.fanAngle;
         float raycastDistance = weaponDetection.raycastDistance;
+        float raycastDirection = weaponDetection.raycastDirection;
 
         // Oblicz k¹t pomiêdzy promieniami w wachlarzu
         float angleStep = fanAngle / (numberOfRays - 1);
@@ -25,8 +26,10 @@ public class WeaponGizmos : MonoBehaviour
         // Rysuj ka¿dy promieñ w wachlarzu
         for (int i = 0; i < numberOfRays; i++)
         {
+            // Oblicz kierunek promienia wachlarza
             Quaternion rotation = Quaternion.AngleAxis(-fanAngle / 2 + i * angleStep, transform.up);
-            Vector3 direction = rotation * transform.forward;
+            Quaternion adjustedRotation = Quaternion.Euler(0f, raycastDirection, 0f) * rotation; // Dodaj 90 stopni rotacji w osi Y
+            Vector3 direction = adjustedRotation * transform.forward;
             Gizmos.color = Color.red;
             Gizmos.DrawRay(transform.position, direction * raycastDistance);
         }

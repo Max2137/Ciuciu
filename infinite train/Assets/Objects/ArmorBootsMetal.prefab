@@ -67,6 +67,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damageAbsortion: 2
+  isThorns: 0
+  ThornsFraction: 0
 --- !u!136 &7681175068033275394
 CapsuleCollider:
   m_ObjectHideFlags: 0
