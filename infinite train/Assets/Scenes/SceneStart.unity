@@ -3873,6 +3873,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 323657880645937723, guid: 383af72899ebd2141bf1978e200f9a00, type: 3}
+      propertyPath: isBloodPoisoning
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 842366105222026008, guid: 383af72899ebd2141bf1978e200f9a00, type: 3}
       propertyPath: m_Name
       value: WeaponDagger

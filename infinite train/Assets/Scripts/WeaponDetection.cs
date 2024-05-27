@@ -14,6 +14,8 @@ public class WeaponDetection : MonoBehaviour
 
     public RaycastHit[] Detect()
     {
+        Debug.Log("Odebrano");
+
         List<RaycastHit> hits = new List<RaycastHit>();
 
         // Oblicz k¹t pomiêdzy promieniami w wachlarzu
@@ -40,6 +42,7 @@ public class WeaponDetection : MonoBehaviour
                 {
                     hits.Add(hit);
                     enemiesHitThisAttack.Add(hit.collider.gameObject);  // Dodaj obiekt do listy, aby unikn¹æ wielokrotnego zadawania obra¿eñ
+                    Debug.Log("Wykryto" + hit.collider.gameObject.name);
                     punctureCount++;
 
                     // Zatrzymaj, jeœli osi¹gniêto maksymaln¹ liczbê trafionych obiektów

@@ -13,9 +13,6 @@ public class UpgradeScript : MonoBehaviour
     public bool isExclusive;
     private bool wasUsed;
 
-    // Nazwa zmiennej bool pobrana z Inspectora
-    public string boolVariableName;
-
     [System.Serializable]
     public class ItemRequirement
     {
@@ -23,28 +20,39 @@ public class UpgradeScript : MonoBehaviour
         public int amount;
     }
 
-    // Lista wymaganych przedmiotów do ulepszenia
-    public List<ItemRequirement> itemRequirements;
+    [System.Serializable]
+    public class Upgrade
+    {
+        public string boolVariableName; // Name of the boolean variable to be set to true
+        public string description; // Description of the upgrade
+        public List<ItemRequirement> itemRequirements; // Requirements for the upgrade
+        public string upgradeText; // Text to display for the upgrade
+    }
 
+    // List of available upgrades
+    public List<Upgrade> upgrades;
+
+    private Upgrade selectedUpgrade;
     private itemsListScript itemsList;
 
     // Inspector fields for TextMeshPro and colors
-    public TextMeshProUGUI upgradeText;
+    public TextMeshProUGUI upgradeTextUI;
     public Color colorNormal;
     public Color colorUsed;
 
     // Start is called before the first frame update
     void Start()
     {
+        SelectRandomUpgrade();
         upgradeEffect.Stop();
         isActive = false;
         FindItemsListScript();
 
-        // Set the initial color of the upgradeText to colorNormal with alpha value 1
-        if (upgradeText != null)
+        // Set the initial color of the upgradeTextUI to colorNormal with alpha value 1
+        if (upgradeTextUI != null)
         {
             colorNormal.a = 1f;
-            upgradeText.color = colorNormal;
+            upgradeTextUI.color = colorNormal;
         }
     }
 
@@ -104,7 +112,7 @@ public class UpgradeScript : MonoBehaviour
         MonoBehaviour[] scripts = obj.GetComponents<MonoBehaviour>();
         foreach (MonoBehaviour script in scripts)
         {
-            System.Reflection.FieldInfo field = script.GetType().GetField(boolVariableName);
+            System.Reflection.FieldInfo field = script.GetType().GetField(selectedUpgrade.boolVariableName);
             if (field != null && field.FieldType == typeof(bool))
             {
                 bool isAlreadyUpgraded = (bool)field.GetValue(script);
@@ -118,19 +126,19 @@ public class UpgradeScript : MonoBehaviour
                             {
                                 wasUsed = true;
                                 // Change text color to colorUsed with alpha value 1
-                                if (upgradeText != null)
+                                if (upgradeTextUI != null)
                                 {
                                     colorUsed.a = 1f;
-                                    upgradeText.color = colorUsed;
+                                    upgradeTextUI.color = colorUsed;
                                 }
                             }
 
-                            foreach (var requirement in itemRequirements)
+                            foreach (var requirement in selectedUpgrade.itemRequirements)
                             {
                                 itemsList.Pay(requirement.itemName, requirement.amount);
                             }
                             field.SetValue(script, true);
-                            Debug.Log($"Zmienna bool '{boolVariableName}' zosta³a ustawiona na true w skrypcie: {script.GetType().Name}");
+                            Debug.Log($"Zmienna bool '{selectedUpgrade.boolVariableName}' zosta³a ustawiona na true w skrypcie: {script.GetType().Name}");
 
                             if (!upgradeEffect.isPlaying)
                             {
@@ -140,6 +148,12 @@ public class UpgradeScript : MonoBehaviour
                             {
                                 upgradeEffect.Stop();
                                 upgradeEffect.Play();
+                            }
+
+                            // Update the upgradeTextUI with the new upgrade text
+                            if (upgradeTextUI != null)
+                            {
+                                upgradeTextUI.text = selectedUpgrade.upgradeText;
                             }
                         }
                     }
@@ -155,12 +169,12 @@ public class UpgradeScript : MonoBehaviour
                 return;
             }
         }
-        Debug.Log($"Nie znaleziono zmiennej bool o nazwie '{boolVariableName}' w skryptach obiektu {obj.name}.");
+        Debug.Log($"Nie znaleziono zmiennej bool o nazwie '{selectedUpgrade.boolVariableName}' w skryptach obiektu {obj.name}.");
     }
 
     private bool AreRequirementsMet()
     {
-        foreach (var requirement in itemRequirements)
+        foreach (var requirement in selectedUpgrade.itemRequirements)
         {
             if (itemsList.GetQuantity(requirement.itemName) < requirement.amount)
             {
@@ -190,6 +204,25 @@ public class UpgradeScript : MonoBehaviour
         }
     }
 
+    private void SelectRandomUpgrade()
+    {
+        if (upgrades.Count > 0)
+        {
+            selectedUpgrade = upgrades[Random.Range(0, upgrades.Count)];
+            Debug.Log($"Wybrano losowe ulepszenie: {selectedUpgrade.boolVariableName}");
+
+            // Update the upgradeTextUI with the new upgrade text
+            if (upgradeTextUI != null)
+            {
+                upgradeTextUI.text = selectedUpgrade.upgradeText;
+            }
+        }
+        else
+        {
+            Debug.LogError("Brak dostêpnych ulepszeñ do losowania.");
+        }
+    }
+
     private void FindItemsListScript()
     {
         int sceneCount = SceneManager.sceneCount;
@@ -211,5 +244,10 @@ public class UpgradeScript : MonoBehaviour
         }
 
         Debug.LogError("Nie znaleziono skryptu ItemsListScript w ¿adnej za³adowanej scenie.");
+    }
+
+    public Upgrade GetSelectedUpgrade()
+    {
+        return selectedUpgrade;
     }
 }

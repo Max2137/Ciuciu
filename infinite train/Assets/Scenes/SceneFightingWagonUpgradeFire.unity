@@ -914,6 +914,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3285330397854374cae4fcb27004f9c8, type: 3}
+--- !u!114 &767307278 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8881616282729575603, guid: 5440497890a68fc4998cacc79ef27c58, type: 3}
+  m_PrefabInstance: {fileID: 2843215588189563283}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &830434961
 GameObject:
   m_ObjectHideFlags: 0
@@ -2645,6 +2656,86 @@ PrefabInstance:
     - target: {fileID: 3608279864035670442, guid: 5440497890a68fc4998cacc79ef27c58, type: 3}
       propertyPath: colorNormal.r
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3608279864035670442, guid: 5440497890a68fc4998cacc79ef27c58, type: 3}
+      propertyPath: upgradeTextUI
+      value: 
+      objectReference: {fileID: 767307278}
+    - target: {fileID: 3608279864035670442, guid: 5440497890a68fc4998cacc79ef27c58, type: 3}
+      propertyPath: upgrades.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3608279864035670442, guid: 5440497890a68fc4998cacc79ef27c58, type: 3}
+      propertyPath: upgrades.Array.data[0].description
+      value: Burns enemies after hitting it
+      objectReference: {fileID: 0}
+    - target: {fileID: 3608279864035670442, guid: 5440497890a68fc4998cacc79ef27c58, type: 3}
+      propertyPath: upgrades.Array.data[0].upgradeText
+      value: Fire
+      objectReference: {fileID: 0}
+    - target: {fileID: 3608279864035670442, guid: 5440497890a68fc4998cacc79ef27c58, type: 3}
+      propertyPath: upgrades.Array.data[1].description
+      value: Hitted enemy hurts nearby ones after its death
+      objectReference: {fileID: 0}
+    - target: {fileID: 3608279864035670442, guid: 5440497890a68fc4998cacc79ef27c58, type: 3}
+      propertyPath: upgrades.Array.data[1].upgradeText
+      value: Poison
+      objectReference: {fileID: 0}
+    - target: {fileID: 3608279864035670442, guid: 5440497890a68fc4998cacc79ef27c58, type: 3}
+      propertyPath: upgrades.Array.data[2].description
+      value: Enemies nearby hitted one are electrocuted
+      objectReference: {fileID: 0}
+    - target: {fileID: 3608279864035670442, guid: 5440497890a68fc4998cacc79ef27c58, type: 3}
+      propertyPath: upgrades.Array.data[2].upgradeText
+      value: Electricity
+      objectReference: {fileID: 0}
+    - target: {fileID: 3608279864035670442, guid: 5440497890a68fc4998cacc79ef27c58, type: 3}
+      propertyPath: upgrades.Array.data[0].boolVariableName
+      value: isBurning
+      objectReference: {fileID: 0}
+    - target: {fileID: 3608279864035670442, guid: 5440497890a68fc4998cacc79ef27c58, type: 3}
+      propertyPath: upgrades.Array.data[1].boolVariableName
+      value: isBloodPoisoning
+      objectReference: {fileID: 0}
+    - target: {fileID: 3608279864035670442, guid: 5440497890a68fc4998cacc79ef27c58, type: 3}
+      propertyPath: upgrades.Array.data[2].boolVariableName
+      value: isElectrifying
+      objectReference: {fileID: 0}
+    - target: {fileID: 3608279864035670442, guid: 5440497890a68fc4998cacc79ef27c58, type: 3}
+      propertyPath: upgrades.Array.data[0].itemRequirements.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3608279864035670442, guid: 5440497890a68fc4998cacc79ef27c58, type: 3}
+      propertyPath: upgrades.Array.data[1].itemRequirements.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3608279864035670442, guid: 5440497890a68fc4998cacc79ef27c58, type: 3}
+      propertyPath: upgrades.Array.data[2].itemRequirements.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3608279864035670442, guid: 5440497890a68fc4998cacc79ef27c58, type: 3}
+      propertyPath: upgrades.Array.data[0].itemRequirements.Array.data[0].amount
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 3608279864035670442, guid: 5440497890a68fc4998cacc79ef27c58, type: 3}
+      propertyPath: upgrades.Array.data[1].itemRequirements.Array.data[0].amount
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3608279864035670442, guid: 5440497890a68fc4998cacc79ef27c58, type: 3}
+      propertyPath: upgrades.Array.data[2].itemRequirements.Array.data[0].amount
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3608279864035670442, guid: 5440497890a68fc4998cacc79ef27c58, type: 3}
+      propertyPath: upgrades.Array.data[0].itemRequirements.Array.data[0].itemName
+      value: Bones
+      objectReference: {fileID: 0}
+    - target: {fileID: 3608279864035670442, guid: 5440497890a68fc4998cacc79ef27c58, type: 3}
+      propertyPath: upgrades.Array.data[1].itemRequirements.Array.data[0].itemName
+      value: Eyes
+      objectReference: {fileID: 0}
+    - target: {fileID: 3608279864035670442, guid: 5440497890a68fc4998cacc79ef27c58, type: 3}
+      propertyPath: upgrades.Array.data[2].itemRequirements.Array.data[0].itemName
+      value: Rings
       objectReference: {fileID: 0}
     - target: {fileID: 6695739644016220484, guid: 5440497890a68fc4998cacc79ef27c58, type: 3}
       propertyPath: m_LocalPosition.x

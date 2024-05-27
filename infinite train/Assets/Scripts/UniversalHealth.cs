@@ -160,7 +160,7 @@ public class UniversalHealth : MonoBehaviour
             case EDamageType.MAGIC:
                 {
                     Debug.Log("Atakuje " + attacker.name);
-                    if (attacker.CompareTag("Player") || attacker == gameObject)
+                    if (attacker.CompareTag("Player") || attacker == gameObject || attacker.CompareTag("EnemiesAttacker"))
                     {
                         damageOutput += playerStats.AttackMagicStat;
                         Debug.Log("Dodano AttackMagicStat do damageOutput.");

@@ -1,0 +1,72 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &463311191230745240
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 9204634308443126403}
+  - component: {fileID: 8841604780819898310}
+  - component: {fileID: 7611946076366746801}
+  m_Layer: 0
+  m_Name: ElectrifyingObj
+  m_TagString: EnemiesAttacker
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &9204634308443126403
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 463311191230745240}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.0724304, y: -1.5988636, z: 2.0625982}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8841604780819898310
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 463311191230745240}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9335973b7b5e7884785bcc258018f73f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  electrifyingEffectPrefab: {fileID: 6753169465905306155, guid: fb3a21078cc64cb4797def70ac674b9c, type: 3}
+  range: 2
+  damage: 1
+  enemyTag: Enemy
+--- !u!114 &7611946076366746801
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 463311191230745240}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: caeb3061a71a967489cba6071bad3563, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isBurning: 0
+  burningScript: 
+  isDizzing: 0
+  dizzyScript: 
+  isBloodPoisoning: 0
+  bloodPoisoningScript: 
+  isElectrifying: 0
+  electrifyingObjectName: 
+  damageType: 1

@@ -7,12 +7,15 @@ public class ProjectileStandardScript : MonoBehaviour
     public float damage = 10f;         // Obra¿enia zadawane przez pocisk
 
     private GameObject owner;          // W³aœciciel pocisku (przeciwnik, który go wystrzeli³)
+    private WeaponAttack weaponAttack; // Odniesienie do skryptu WeaponAttack
 
     void Start()
     {
         // Ustawienie pocz¹tkowej prêdkoœci poruszania siê pocisku
         Rigidbody rb = GetComponent<Rigidbody>();
         rb.velocity = transform.forward * speed;
+
+        weaponAttack = GetComponent<WeaponAttack>();
 
         // Zniszczenie pocisku po okreœlonym czasie
         Destroy(gameObject, lifetime);
@@ -26,12 +29,14 @@ public class ProjectileStandardScript : MonoBehaviour
             // SprawdŸ, czy obiekt, z którym koliduje, ma tag "Player"
             if (other.CompareTag("Player"))
             {
-                // SprawdŸ, czy obiekt, z którym koliduje, ma komponent zdrowia
-                UniversalHealth health = other.GetComponent<UniversalHealth>();
-                if (health != null)
+                // Zadaj obra¿enia i efekty obiektowi za pomoc¹ WeaponAttack
+                if (weaponAttack != null)
                 {
-                    // Zadaj obra¿enia obiektowi
-                    health.TakeDamage(damage, owner, EDamageType.MAGIC);
+                    weaponAttack.DealDamage(other.gameObject, damage);
+                }
+                else
+                {
+                    Debug.LogWarning("WeaponAttack component not found on owner.");
                 }
 
                 // Zniszcz pocisk po trafieniu
@@ -44,5 +49,12 @@ public class ProjectileStandardScript : MonoBehaviour
     public void SetOwner(GameObject newOwner)
     {
         owner = newOwner;
+        weaponAttack = owner.GetComponent<WeaponAttack>(); // Przypisanie WeaponAttack z w³aœciciela
+
+        // SprawdŸ, czy w³aœciciel ma komponent WeaponAttack
+        if (weaponAttack == null)
+        {
+            Debug.LogError("Owner does not have a WeaponAttack component.");
+        }
     }
 }
