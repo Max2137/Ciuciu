@@ -74,6 +74,7 @@ public class WeaponHammerInput : MonoBehaviour
         if (Input.GetMouseButton((int)inputManager.attackMouseButton) && attackPrepTimer < attackPrepTime)
         {
             attackPrepTimer += Time.deltaTime;
+            mAnimator.SetTrigger("charge");
 
             if (attackPrepTimer >= attackPrepTime)
             {
