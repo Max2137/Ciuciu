@@ -2283,6 +2283,7 @@ MonoBehaviour:
   - {fileID: 8085558433790207537, guid: ff01593d00935334aa97894131d153bc, type: 3}
   - {fileID: 6537849550996753851, guid: 15fd7d7d2a428c444850192a00e2d2a3, type: 3}
   - {fileID: 2903822279142901264, guid: 25dae72e012d27b43ac35bd4550d23df, type: 3}
+  - {fileID: 2903822279142901264, guid: 9cf0a135b88cfac46be1aadebd22dab7, type: 3}
   LootPlaces:
   - {fileID: 4152955799895557302}
   - {fileID: 1348948053}

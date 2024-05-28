@@ -241,6 +241,11 @@ MonoBehaviour:
   burningScript: 
   isDizzing: 0
   dizzyScript: 
+  isBloodPoisoning: 0
+  bloodPoisoningScript: 
+  isElectrifying: 0
+  electrifyingObjectName: 
+  damageType: 0
 --- !u!114 &1923427181007105578
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -254,7 +259,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackDamage: 0.5
-  holdingEffectScriptName: WeaponSpinning
+  holdingEffectScriptsNames:
+  - WeaponSpinning
 --- !u!114 &2980950444808791890
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -28,8 +28,12 @@ public class TreasureRoomLootRNG : MonoBehaviour
         List<GameObject> remainingLoot = new List<GameObject>(LootTable);
 
         // Losowanie i dystrybucja lootu na obiektach empty
-        for (int i = 0; i < Mathf.Min(remainingLoot.Count, LootPlaces.Count); i++)
+        for (int i = 0; i < LootPlaces.Count; i++)
         {
+            // SprawdŸ, czy jeszcze mamy loot do rozmieszczenia
+            if (remainingLoot.Count == 0)
+                break;
+
             // Losowanie prefabu z pozosta³ych w LootTable
             int randomIndex = Random.Range(0, remainingLoot.Count);
             GameObject lootPrefab = remainingLoot[randomIndex];
