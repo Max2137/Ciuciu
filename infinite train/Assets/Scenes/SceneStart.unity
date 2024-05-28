@@ -2817,26 +2817,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 175364362686980031, guid: da9aa875e3b84ce4486ccea3d62312d1, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.47771448
-      objectReference: {fileID: 0}
-    - target: {fileID: 175364362686980031, guid: da9aa875e3b84ce4486ccea3d62312d1, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0.030843541
-      objectReference: {fileID: 0}
-    - target: {fileID: 175364362686980031, guid: da9aa875e3b84ce4486ccea3d62312d1, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0.5213338
-      objectReference: {fileID: 0}
-    - target: {fileID: 175364362686980031, guid: da9aa875e3b84ce4486ccea3d62312d1, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0.70643383
-      objectReference: {fileID: 0}
-    - target: {fileID: 175364362686980031, guid: da9aa875e3b84ce4486ccea3d62312d1, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 45
-      objectReference: {fileID: 0}
     - target: {fileID: 1639425876461056283, guid: da9aa875e3b84ce4486ccea3d62312d1, type: 3}
       propertyPath: m_Name
       value: Pedastal
