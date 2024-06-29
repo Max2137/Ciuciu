@@ -3,6 +3,9 @@ using UnityEngine.SceneManagement;
 
 public class DestroyOnSceneChange : MonoBehaviour
 {
+    public int destroyAfterSceneChanges = 1; // Liczba zmian sceny przed zniszczeniem obiektu
+    private int sceneChangeCount = 0;
+
     void Awake()
     {
         // Rejestracja funkcji OnSceneLoaded do zdarzenia ³adowania sceny
@@ -17,7 +20,13 @@ public class DestroyOnSceneChange : MonoBehaviour
 
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        // Zniszcz ten obiekt, gdy nowa scena zostanie za³adowana
-        Destroy(gameObject);
+        // Zwiêksz licznik zmian sceny
+        sceneChangeCount++;
+
+        // Zniszcz ten obiekt po okreœlonej liczbie zmian sceny
+        if (sceneChangeCount >= destroyAfterSceneChanges)
+        {
+            Destroy(gameObject);
+        }
     }
 }
