@@ -732,11 +732,8 @@ MonoBehaviour:
   isActive: 0
   upgradeEffect: {fileID: 2333666036007727946}
   isExclusive: 1
-  boolVariableName: isBurning
-  itemRequirements:
-  - itemName: Bones
-    amount: 5
-  upgradeText: {fileID: 8881616282729575603}
+  upgrades: []
+  upgradeTextUI: {fileID: 0}
   colorNormal: {r: 0.9921569, g: 0.3137255, b: 0.13333334, a: 0}
   colorUsed: {r: 0.23529413, g: 0.27450982, b: 0.31764707, a: 0}
 --- !u!65 &470376038185548142
@@ -796,7 +793,6 @@ MonoBehaviour:
   upgradeScript: {fileID: 3608279864035670442}
   costText: {fileID: 1966024248566425382}
   descriptionText: {fileID: 5992892767120838093}
-  descriptionContent: Sets enemies on fire; 1dmg per 3s
   uiRawImage: {fileID: 2879247502989875776}
 --- !u!1001 &4228451355392692445
 PrefabInstance:

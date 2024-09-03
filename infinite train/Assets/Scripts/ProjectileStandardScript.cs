@@ -9,6 +9,8 @@ public class ProjectileStandardScript : MonoBehaviour
     private GameObject owner;          // W³aœciciel pocisku (przeciwnik, który go wystrzeli³)
     private WeaponAttack weaponAttack; // Odniesienie do skryptu WeaponAttack
 
+    public string TargetTag;
+
     void Start()
     {
         // Ustawienie pocz¹tkowej prêdkoœci poruszania siê pocisku
@@ -27,7 +29,7 @@ public class ProjectileStandardScript : MonoBehaviour
         if (other.gameObject != owner)
         {
             // SprawdŸ, czy obiekt, z którym koliduje, ma tag "Player"
-            if (other.CompareTag("Player"))
+            if (other.CompareTag(TargetTag))
             {
                 // Zadaj obra¿enia i efekty obiektowi za pomoc¹ WeaponAttack
                 if (weaponAttack != null)

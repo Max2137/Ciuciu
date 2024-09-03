@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: -7209454615972323199}
   - component: {fileID: -4786687776757052461}
   m_Layer: 0
-  m_Name: ProjectileStandard
+  m_Name: ProjectileStandardRedNeg
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -65,7 +65,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a3e8676d9ff27934a8666b3ece70e52c, type: 2}
+  - {fileID: 2100000, guid: 584af02b9ad2a2d4084325f9f4822a41, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -102,6 +102,7 @@ MonoBehaviour:
   speed: 10
   lifetime: 0.5
   damage: 10
+  TargetTag: Player
 --- !u!65 &742770894844465284
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -166,4 +167,8 @@ MonoBehaviour:
   burningScript: 
   isDizzing: 0
   dizzyScript: 
+  isBloodPoisoning: 0
+  bloodPoisoningScript: 
+  isElectrifying: 0
+  electrifyingObjectName: 
   damageType: 1

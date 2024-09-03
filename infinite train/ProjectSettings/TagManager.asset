@@ -12,6 +12,7 @@ TagManager:
   - AirMovable
   - BurningParticle
   - EnemiesAttacker
+  - EntryPositioner
   layers:
   - Default
   - TransparentFX

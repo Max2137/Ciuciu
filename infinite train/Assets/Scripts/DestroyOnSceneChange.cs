@@ -3,7 +3,14 @@ using UnityEngine.SceneManagement;
 
 public class DestroyOnSceneChange : MonoBehaviour
 {
-    public int destroyAfterSceneChanges = 1; // Liczba zmian sceny przed zniszczeniem obiektu
+    public enum ActionOnSceneChange
+    {
+        Destruction,
+        PosReset
+    }
+
+    public ActionOnSceneChange actionOnSceneChange = ActionOnSceneChange.Destruction; // Domyœlnie ustawione na Destruction
+    public int destroyAfterSceneChanges = 1; // Liczba zmian sceny przed podjêciem akcji
     private int sceneChangeCount = 0;
 
     void Awake()
@@ -23,10 +30,27 @@ public class DestroyOnSceneChange : MonoBehaviour
         // Zwiêksz licznik zmian sceny
         sceneChangeCount++;
 
-        // Zniszcz ten obiekt po okreœlonej liczbie zmian sceny
+        // Podjêcie wybranej akcji po okreœlonej liczbie zmian sceny
         if (sceneChangeCount >= destroyAfterSceneChanges)
         {
-            Destroy(gameObject);
+            switch (actionOnSceneChange)
+            {
+                case ActionOnSceneChange.Destruction:
+                    Destroy(gameObject);
+                    break;
+
+                case ActionOnSceneChange.PosReset:
+                    GameObject entryPositioner = GameObject.FindWithTag("EntryPositioner");
+                    if (entryPositioner != null)
+                    {
+                        transform.position = entryPositioner.transform.position;
+                    }
+                    else
+                    {
+                        Debug.LogWarning("EntryPositioner tag not found!");
+                    }
+                    break;
+            }
         }
     }
 }

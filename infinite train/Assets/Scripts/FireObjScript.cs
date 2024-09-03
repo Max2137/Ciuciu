@@ -41,9 +41,15 @@ public class FireObjScript : MonoBehaviour
         if (other.gameObject.GetComponent(System.Type.GetType(scriptToAdd)) == null)
         {
             other.gameObject.AddComponent(System.Type.GetType(scriptToAdd));
-            EffectBurningScript burningScript = other.gameObject.GetComponent<EffectBurningScript>();
-            burningScript.damageType = damageType; // lub EDamageType.MAGIC w zale¿noœci od potrzeb
 
+            // U¿ywamy refleksji, aby sprawdziæ, czy dodany skrypt ma pole damageType
+            var addedScript = other.gameObject.GetComponent(System.Type.GetType(scriptToAdd));
+            var damageTypeField = System.Type.GetType(scriptToAdd).GetField("damageType");
+
+            if (damageTypeField != null)
+            {
+                damageTypeField.SetValue(addedScript, damageType);
+            }
         }
     }
 }
