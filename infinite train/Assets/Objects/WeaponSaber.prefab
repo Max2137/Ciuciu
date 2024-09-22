@@ -147,7 +147,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00509d3e5def80747bc7921d571fd979, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mAnimator: {fileID: 0}
+  mAnimator: {fileID: 8459219384969496130}
   hitSound: {fileID: 8300000, guid: b36cd16021a89be419364f2a9b1d0c4b, type: 3}
   raycastDistance: 2.3
   attackDamage: 3

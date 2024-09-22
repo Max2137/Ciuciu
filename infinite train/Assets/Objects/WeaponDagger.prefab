@@ -148,7 +148,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38bf6da3b02a40b49b5d2cbe22359540, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mAnimator: {fileID: 0}
+  mAnimator: {fileID: 1896526692409368790}
   attackSource: {fileID: 842366105222026008}
   attackClip: {fileID: 8300000, guid: b36cd16021a89be419364f2a9b1d0c4b, type: 3}
   raycastDistance: 2.5

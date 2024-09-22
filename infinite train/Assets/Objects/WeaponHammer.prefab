@@ -125,7 +125,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c70bf3ac042ff949b4f2a7dd0d7a129, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mAnimator: {fileID: 0}
+  mAnimator: {fileID: 6455110473842652196}
   hitEffectPrefab: {fileID: 3439207643200381459, guid: 56f36b4b8d181614691bc2c5598b5b50, type: 3}
   raycastDistance: 3.8
   attackDamage: 10

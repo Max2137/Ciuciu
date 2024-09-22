@@ -128,7 +128,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 036664da5f14e8f49830536ed59286bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mAnimator: {fileID: 0}
+  mAnimator: {fileID: 6157878212815072924}
   attackSource: {fileID: 8880890778134909794}
   attackClip: {fileID: 8300000, guid: 1b437d9c853250247be17b914b92259d, type: 3}
   raycastDistance: 5
