@@ -56,7 +56,7 @@ public class UniversalHealth : MonoBehaviour
 
     private PlayerStats playerStats;
 
-    //public CameraShake cameraShake;
+    public CameraShake cameraShake;
 
     void Start()
     {
@@ -192,10 +192,10 @@ public class UniversalHealth : MonoBehaviour
                 currentHealth -= damageOutput;
             }
             
-             // if (cameraShake != null)
-            //{
-              //  cameraShake.Shake(0.5f, 0.2f); // Adjust duration and magnitude as needed
-            //}
+              if (cameraShake != null)
+            {
+                cameraShake.Shake(0.5f, 0.2f); // Adjust duration and magnitude as needed
+            }
 
             PlayAudio(PlayerHurt);
 

@@ -951,6 +951,7 @@ GameObject:
   - component: {fileID: 199008488}
   - component: {fileID: 199008493}
   - component: {fileID: 199008494}
+  - component: {fileID: 199008495}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1105,6 +1106,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   actionOnSceneChange: 0
   destroyAfterSceneChanges: 3
+--- !u!114 &199008495
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 199008487}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f27dbb939d01ee4e993fc11b43fbceb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shakeDuration: 0
+  shakeMagnitude: 0.1
+  dampingSpeed: 1
 --- !u!1001 &240888872
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7487,6 +7503,10 @@ PrefabInstance:
       propertyPath: PlayerHurt
       value: 
       objectReference: {fileID: 8300000, guid: 057cfeecb5e101b488a46669c19de83b, type: 3}
+    - target: {fileID: 2532068802723518134, guid: 075f8d6af68f0a7468a7d6f4f9d9e722, type: 3}
+      propertyPath: cameraShake
+      value: 
+      objectReference: {fileID: 199008495}
     - target: {fileID: 2690325723120065607, guid: 075f8d6af68f0a7468a7d6f4f9d9e722, type: 3}
       propertyPath: levelText
       value: 
