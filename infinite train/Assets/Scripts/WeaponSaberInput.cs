@@ -19,6 +19,18 @@ public class WeaponSaberInput : MonoBehaviour
 
     private WeaponInputManager inputManager;
 
+    // Klasa efektów ataku
+    [System.Serializable]
+    public class AttackEffect
+    {
+        public GameObject effectObject;  // Obiekt efektu
+        public float effectDelay;  // OpóŸnienie przed aktywacj¹ efektu
+        public float effectTime;  // Czas dzia³ania efektu
+    }
+
+    // Lista efektów ataku
+    public List<AttackEffect> attackEffects = new List<AttackEffect>();
+
     //INPUT
     public void Start()
     {
@@ -29,6 +41,9 @@ public class WeaponSaberInput : MonoBehaviour
         {
             Debug.LogError("WeaponInputManager not found in the parent objects.");
         }
+
+        // Deaktywuj wszystkie efekty na starcie
+        DeactivateAllEffects();
     }
 
     //INPUT
@@ -36,9 +51,12 @@ public class WeaponSaberInput : MonoBehaviour
     {
         if (Input.GetMouseButtonDown((int)inputManager.attackMouseButton) && CanAttack() && IsChildOfFirstSlot())
         {
-                FanDetect(attackDamage);
-                lastAttackTime = Time.time;
-                enemiesHitThisAttack.Clear();  // Wyczyœæ listê po ka¿dym ataku
+            FanDetect(attackDamage);
+            lastAttackTime = Time.time;
+            enemiesHitThisAttack.Clear();  // Wyczyœæ listê po ka¿dym ataku
+
+            // Aktywuj efekty ataku z opóŸnieniem
+            ActivateAttackEffectsWithDelay();
         }
     }
 
@@ -73,13 +91,13 @@ public class WeaponSaberInput : MonoBehaviour
 
             if (Physics.Raycast(ray, out hit, raycastDistance))
             {
-                // SprawdŸ czy trafiony obiekt ma tag "Enemy" i nie otrzyma³ jeszcze obra¿eñ w ramach tego ataku
+                // SprawdŸ, czy trafiony obiekt ma tag "Enemy" i nie otrzyma³ jeszcze obra¿eñ w ramach tego ataku
                 if (hit.collider.CompareTag("Enemy") && !enemiesHitThisAttack.Contains(hit.collider.gameObject))
                 {
                     // Dodaj obiekt do listy, aby unikn¹æ wielokrotnego zadawania obra¿eñ
                     enemiesHitThisAttack.Add(hit.collider.gameObject);
 
-                    // SprawdŸ czy obiekt ma skrypt UniversalHealth
+                    // SprawdŸ, czy obiekt ma skrypt UniversalHealth
                     UniversalHealth enemyHealth = hit.collider.gameObject.GetComponent<UniversalHealth>();
 
                     if (enemyHealth != null)
@@ -92,7 +110,51 @@ public class WeaponSaberInput : MonoBehaviour
         }
     }
 
-    // SprawdŸ czy mo¿na wykonaæ atak z uwzglêdnieniem cooldownu
+    // Aktywuj efekty ataku z opóŸnieniem
+    private void ActivateAttackEffectsWithDelay()
+    {
+        foreach (var effect in attackEffects)
+        {
+            if (effect.effectObject != null)
+            {
+                // Uruchom Coroutine, aby aktywowaæ efekt po opóŸnieniu
+                StartCoroutine(ActivateEffectAfterDelay(effect.effectObject, effect.effectDelay, effect.effectTime));
+            }
+        }
+    }
+
+    // Coroutine do aktywowania efektu po opóŸnieniu i deaktywacji po czasie trwania
+    private IEnumerator ActivateEffectAfterDelay(GameObject effectObject, float delay, float effectTime)
+    {
+        // Poczekaj na opóŸnienie
+        yield return new WaitForSeconds(delay);
+
+        // Aktywuj obiekt efektu
+        if (effectObject != null)
+        {
+            effectObject.SetActive(true);
+
+            // Poczekaj na czas trwania efektu
+            yield return new WaitForSeconds(effectTime);
+
+            // Deaktywuj obiekt efektu
+            effectObject.SetActive(false);
+        }
+    }
+
+    // Deaktywuj wszystkie efekty na starcie
+    private void DeactivateAllEffects()
+    {
+        foreach (var effect in attackEffects)
+        {
+            if (effect.effectObject != null)
+            {
+                effect.effectObject.SetActive(false);
+            }
+        }
+    }
+
+    // SprawdŸ, czy mo¿na wykonaæ atak z uwzglêdnieniem cooldownu
     private bool CanAttack()
     {
         return Time.time - lastAttackTime >= attackCooldown;

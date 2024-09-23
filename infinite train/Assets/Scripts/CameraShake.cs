@@ -15,6 +15,8 @@ public class CameraShake : MonoBehaviour
 
     private void Update()
     {
+        initialPosition = transform.position; // Store the camera's initial position
+
         if (shakeDuration > 0)
         {
             transform.position = initialPosition + Random.insideUnitSphere * shakeMagnitude;
@@ -30,6 +32,7 @@ public class CameraShake : MonoBehaviour
     // Call this method to start the shake effect
     public void Shake(float duration, float magnitude)
     {
+                initialPosition = transform.position; // Store the camera's initial position
         shakeDuration = duration;
         shakeMagnitude = magnitude;
     }
