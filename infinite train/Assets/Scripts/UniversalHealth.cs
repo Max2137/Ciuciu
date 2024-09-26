@@ -17,8 +17,6 @@ public enum EDamageType
     OTHER
 }
 
-
-
 public class UniversalHealth : MonoBehaviour
 {
     public List<LootItem> lootOnDeath = new List<LootItem>();
@@ -56,7 +54,7 @@ public class UniversalHealth : MonoBehaviour
 
     private PlayerStats playerStats;
 
-    public CameraShake cameraShake;
+    public CameraShake cameraShake;  // Referencja do CameraShake
 
     void Start()
     {
@@ -116,6 +114,13 @@ public class UniversalHealth : MonoBehaviour
         }
 
         mAnimator = GetComponentInChildren<Animator>();
+
+        // Automatyczne znajdowanie referencji do CameraShake
+        cameraShake = FindObjectOfType<CameraShake>();
+        if (cameraShake == null)
+        {
+            Debug.LogError("Nie znaleziono komponentu CameraShake w scenie!");
+        }
     }
 
     public void TakeDamage(float damage, GameObject attacker, EDamageType dmgType)
@@ -191,16 +196,13 @@ public class UniversalHealth : MonoBehaviour
             {
                 currentHealth -= damageOutput;
             }
-            
-              if (cameraShake != null)
+
+            if (cameraShake != null)
             {
                 cameraShake.Shake(0.5f, 0.2f); // Adjust duration and magnitude as needed
             }
 
             PlayAudio(PlayerHurt);
-
-           
-
         }
         else
         {
