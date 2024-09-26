@@ -20,12 +20,8 @@ public class EnviroSharp : MonoBehaviour
     // Funkcja wywo³ywana w momencie kolizji z innym obiektem
     private void OnCollisionEnter(Collision collision)
     {
-        // Sprawdzamy, czy obiekt, z którym kolidujemy, ma tag "Player"
-        if (collision.gameObject.CompareTag("Player"))
-        {
             // Zadajemy obra¿enia graczowi
             DealDamageToPlayer(collision.gameObject);
-        }
     }
 
     private void DealDamageToPlayer(GameObject player)
