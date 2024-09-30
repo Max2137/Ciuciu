@@ -22,7 +22,7 @@ Material:
   m_PrefabAsset: {fileID: 0}
   m_Name: WeaponsTestMaterial 1
   m_Shader: {fileID: 4800000, guid: 933532a4fcc9baf4fa0491de14d08ed7, type: 3}
-  m_Parent: {fileID: 2100000, guid: a3e8676d9ff27934a8666b3ece70e52c, type: 2}
+  m_Parent: {fileID: 2100000, guid: 79b89089b09e6e1419a9f580f78c07d8, type: 2}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
   m_InvalidKeywords: []
@@ -44,6 +44,6 @@ Material:
     - _GlossyReflections: 1
     - _Parallax: 0.02
     m_Colors:
-    - _BaseColor: {r: 0.4716981, g: 0.07342471, b: 0.07342471, a: 1}
-    - _Color: {r: 0.4716981, g: 0.07342471, b: 0.07342471, a: 1}
+    - _BaseColor: {r: 0, g: 0, b: 0, a: 1}
+    - _Color: {r: 0, g: 0, b: 0, a: 1}
   m_BuildTextureStacks: []

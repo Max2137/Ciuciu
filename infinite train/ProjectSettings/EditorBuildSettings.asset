@@ -12,7 +12,7 @@ EditorBuildSettings:
     path: Assets/Scenes/SceneTest.unity
     guid: 7b3f134fea36f6e4cb853132581fcfc1
   - enabled: 1
-    path: Assets/Scenes/SceneTreasureWagon.unity
+    path: Assets/Scenes/urzywane/SceneTreasureWagon.unity
     guid: 27f6a5aecaa58714f8da55edb4bcfd32
   - enabled: 0
     path: Assets/NowaScena.unity
@@ -24,36 +24,36 @@ EditorBuildSettings:
     path: NowaScena2
     guid: 00000000000000000000000000000000
   - enabled: 1
-    path: Assets/Scenes/SceneFightingWagon 1.unity
+    path: Assets/Scenes/urzywane/SceneFightingWagon 1.unity
     guid: b075b451962616544821d7557562d8f8
   - enabled: 1
-    path: Assets/Scenes/SceneFightingWagon 2.unity
+    path: Assets/Scenes/urzywane/SceneFightingWagon 2.unity
     guid: 786a30cace159da44ad955b3787c1d92
   - enabled: 1
-    path: Assets/Scenes/SceneFightingWagon 3.unity
+    path: Assets/Scenes/urzywane/SceneFightingWagon 3.unity
     guid: 30d74381ef2621b4790098ab01f26ebb
   - enabled: 1
-    path: Assets/Scenes/SceneFightingWagon 4.unity
+    path: Assets/Scenes/urzywane/SceneFightingWagon 4.unity
     guid: b0e4b182cc3f6ba4794c523f7060f545
   - enabled: 1
-    path: Assets/Scenes/SceneFightingWagon 5.unity
+    path: Assets/Scenes/urzywane/SceneFightingWagon 5.unity
     guid: 452ea2dd80170c142b0df6b901880dfb
   - enabled: 1
-    path: Assets/Scenes/SceneFightingWagon 6.unity
+    path: Assets/Scenes/urzywane/SceneFightingWagon 6.unity
     guid: 6425b4c4d9fc9d94983fb42642a76695
   - enabled: 1
-    path: Assets/Scenes/SceneFightingWagon 7.unity
+    path: Assets/Scenes/urzywane/SceneFightingWagon 7.unity
     guid: ac6f69f464d728c4995fc720cd81b9a7
   - enabled: 1
-    path: Assets/Scenes/SceneStart.unity
+    path: Assets/Scenes/urzywane/tymczasowy/SceneStart.unity
     guid: e3efb6a4ffea72e469bf18ba67d87ce7
   - enabled: 1
-    path: Assets/Scenes/SceneFightingWagonPlain.unity
+    path: Assets/Scenes/urzywane/tymczasowy/SceneFightingWagonPlain.unity
     guid: e8c3d943698d5a54387745f2ef36ceac
   - enabled: 1
-    path: Assets/Scenes/SceneFightingWagonRun.unity
+    path: Assets/Scenes/urzywane/SceneFightingWagonRun.unity
     guid: c9e524e06ec40ad47804fd92489a149a
   - enabled: 1
-    path: Assets/Scenes/SceneFightingWagonUpgradeFire.unity
+    path: Assets/Scenes/urzywane/SceneFightingWagonUpgradeFire.unity
     guid: 51dcfd9d38e7bed429ee9251e580e186
   m_configObjects: {}
