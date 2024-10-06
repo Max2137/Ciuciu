@@ -3543,6 +3543,13 @@ MonoBehaviour:
       to: 15
       toInfinity: 1
     limit: 3
+  - prefab: {fileID: 7665356814262336193, guid: 4bd8dbd19de6f9e499f307e3dd318f42, type: 3}
+    difficulty: 50
+    spectrum:
+      from: 1
+      to: 15
+      toInfinity: 1
+    limit: 3
 --- !u!114 &1001564322
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8351,7 +8358,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4871466224527517706, guid: 2340dc84f7a2f6240816412188228561, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 5.718999
+      value: 10.468999
       objectReference: {fileID: 0}
     - target: {fileID: 4871466224527517706, guid: 2340dc84f7a2f6240816412188228561, type: 3}
       propertyPath: m_LocalPosition.z
@@ -8384,6 +8391,14 @@ PrefabInstance:
     - target: {fileID: 4871466224527517706, guid: 2340dc84f7a2f6240816412188228561, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6744691679299764249, guid: 2340dc84f7a2f6240816412188228561, type: 3}
+      propertyPath: m_Center.y
+      value: -9
+      objectReference: {fileID: 0}
+    - target: {fileID: 6744691679299764249, guid: 2340dc84f7a2f6240816412188228561, type: 3}
+      propertyPath: m_Direction
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
