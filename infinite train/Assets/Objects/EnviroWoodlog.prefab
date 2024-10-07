@@ -49,6 +49,7 @@ MonoBehaviour:
   startRotation: {x: 0, y: 90, z: -30}
   endRotation: {x: 0, y: 90, z: 30}
   rotationDuration: 2
+  easeStrength: 2
 --- !u!136 &6744691679299764249
 CapsuleCollider:
   m_ObjectHideFlags: 0
