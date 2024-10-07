@@ -8012,18 +8012,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: EnviroThorns (1)
       objectReference: {fileID: 0}
-    - target: {fileID: 8345904154689007768, guid: b20f280d5cf0e1348af5f3c4c417af2f, type: 3}
-      propertyPath: m_Size.z
-      value: 0.30000004
-      objectReference: {fileID: 0}
-    - target: {fileID: 8345904154689007768, guid: b20f280d5cf0e1348af5f3c4c417af2f, type: 3}
-      propertyPath: m_Center.y
-      value: -3.9968017e-17
-      objectReference: {fileID: 0}
-    - target: {fileID: 8345904154689007768, guid: b20f280d5cf0e1348af5f3c4c417af2f, type: 3}
-      propertyPath: m_Center.z
-      value: 0.09999999
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
