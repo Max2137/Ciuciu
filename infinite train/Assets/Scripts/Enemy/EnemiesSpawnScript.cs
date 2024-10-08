@@ -50,6 +50,8 @@ public class EnemiesSpawnScript : MonoBehaviour
 
     public void NewWagon()
     {
+
+
         // Usuwanie wszystkich poprzednio zespawnowanych przeciwników
         GameObject[] existingEnemies = GameObject.FindGameObjectsWithTag("Enemy");
         foreach (GameObject enemy in existingEnemies)

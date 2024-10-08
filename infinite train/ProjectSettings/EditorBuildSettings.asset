@@ -56,4 +56,13 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/urzywane/SceneFightingWagonUpgradeFire.unity
     guid: 51dcfd9d38e7bed429ee9251e580e186
+  - enabled: 1
+    path: Assets/Scenes/urzywane/tymczasowy/SceneFightingWagonRunEnviro1.unity
+    guid: ad21e3da940ebef4ab45752c480fa434
+  - enabled: 1
+    path: Assets/Scenes/urzywane/tymczasowy/SceneFightingWagonRunEnviro2.unity
+    guid: 63e14fb59bf1af743af981432ec0d016
+  - enabled: 1
+    path: Assets/Scenes/urzywane/tymczasowy/SceneFightingWagonRunEnviro3.unity
+    guid: 887aaa607db67f048811224227e5f074
   m_configObjects: {}
