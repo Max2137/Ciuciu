@@ -3518,6 +3518,7 @@ MonoBehaviour:
   - SceneFightingWagonRunEnviro1
   - SceneFightingWagonRunEnviro2
   - SceneFightingWagonRunEnviro3
+  - SceneFightingWagonWalled
   specialWagons:
   - SceneTreasureWagon
   - SceneFightingWagonUpgradeFire

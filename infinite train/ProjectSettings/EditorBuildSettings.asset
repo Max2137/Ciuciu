@@ -65,4 +65,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/urzywane/tymczasowy/SceneFightingWagonRunEnviro3.unity
     guid: 887aaa607db67f048811224227e5f074
+  - enabled: 1
+    path: Assets/Scenes/urzywane/tymczasowy/SceneFightingWagonWalled.unity
+    guid: 8f29acb59a2e788428358b18b02d76db
   m_configObjects: {}
