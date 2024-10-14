@@ -1371,6 +1371,10 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -7635826562936255635, guid: 9404b589c67b0ca4eb974826d2fb9c99, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: fdf5b9f9ac59db547b415a46790aa5db, type: 2}
     - target: {fileID: 919132149155446097, guid: 9404b589c67b0ca4eb974826d2fb9c99, type: 3}
       propertyPath: m_Name
       value: SceneCarpetModel1 (3)
@@ -7414,6 +7418,10 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -7635826562936255635, guid: 9404b589c67b0ca4eb974826d2fb9c99, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: fdf5b9f9ac59db547b415a46790aa5db, type: 2}
     - target: {fileID: 919132149155446097, guid: 9404b589c67b0ca4eb974826d2fb9c99, type: 3}
       propertyPath: m_Name
       value: SceneCarpetModel1 (2)
@@ -7959,6 +7967,10 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -7635826562936255635, guid: 38cdbfc6310e2b2478569239dbacbcb1, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: fdf5b9f9ac59db547b415a46790aa5db, type: 2}
     - target: {fileID: 919132149155446097, guid: 38cdbfc6310e2b2478569239dbacbcb1, type: 3}
       propertyPath: m_Name
       value: SceneCarpetModel4 (1)
