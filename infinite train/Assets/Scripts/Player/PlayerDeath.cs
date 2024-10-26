@@ -2,7 +2,6 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.SearchService;
 
 public class PlayerDeath : MonoBehaviour
 {
