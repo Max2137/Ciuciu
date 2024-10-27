@@ -62,14 +62,14 @@ public class EnemiesSpawnScript : MonoBehaviour
         Scene currentScene = SceneManager.GetSceneAt(1);
         Debug.Log("Aktualna scena: " + currentScene.name);
 
-        if (currentScene.name == "SceneFightingWagonPlain" || currentScene.name == "SceneFightingWagonRun")
+        if (currentScene.name == "SceneFightingWagonPlain" || currentScene.name == "SceneFightingWagonRun" || currentScene.name == "SceneFightingWagonRunEnviro1" || currentScene.name == "SceneFightingWagonRunEnviro2" || currentScene.name == "SceneFightingWagonRunEnviro3")
         {
             // Implementacja logiki tworzenia nowego wagonu
             List<GameObject> newWagonPrefabs = new List<GameObject>();
             difficultyScore = scoreScript.BeatenWagons * 10;
             float remainingDifficulty = difficultyScore;
 
-            if (currentScene.name == "SceneFightingWagonRun")
+            if (currentScene.name == "SceneFightingWagonRun" || currentScene.name == "SceneFightingWagonRunEnviro1" || currentScene.name == "SceneFightingWagonRunEnviro2" || currentScene.name == "SceneFightingWagonRunEnviro3")
             {
                 remainingDifficulty = remainingDifficulty * runModeModifier;
             }
