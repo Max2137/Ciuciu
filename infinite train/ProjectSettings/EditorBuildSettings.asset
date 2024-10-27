@@ -6,9 +6,15 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/urzywane/tymczasowy/SceneStay.unity
+    guid: 9808ab4cae340534299e213c53a21d3b
+  - enabled: 1
+    path: Assets/Scenes/urzywane/tymczasowy/SceneStart.unity
+    guid: e3efb6a4ffea72e469bf18ba67d87ce7
+  - enabled: 1
     path: Assets/Scenes/SceneFightingWagon.unity
     guid: 5f65765b686d743459d5565d58bd0ab6
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/SceneTest.unity
     guid: 7b3f134fea36f6e4cb853132581fcfc1
   - enabled: 1
@@ -44,9 +50,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/urzywane/SceneFightingWagon 7.unity
     guid: ac6f69f464d728c4995fc720cd81b9a7
-  - enabled: 1
-    path: Assets/Scenes/urzywane/tymczasowy/SceneStart.unity
-    guid: e3efb6a4ffea72e469bf18ba67d87ce7
   - enabled: 1
     path: Assets/Scenes/urzywane/tymczasowy/SceneFightingWagonPlain.unity
     guid: e8c3d943698d5a54387745f2ef36ceac

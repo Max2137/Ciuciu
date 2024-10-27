@@ -1,5 +1,8 @@
 using UnityEngine;
+
+#if UNITY_EDITOR
 using UnityEditor;
+#endif
 
 public class EffectBloodPoisoning : MonoBehaviour
 {
@@ -30,6 +33,7 @@ public class EffectBloodPoisoning : MonoBehaviour
         }
     }
 
+    #if UNITY_EDITOR
     private GameObject FindPrefab(string name)
     {
         string[] guids = AssetDatabase.FindAssets(name);
@@ -44,4 +48,11 @@ public class EffectBloodPoisoning : MonoBehaviour
         }
         return null;
     }
+    #else
+    private GameObject FindPrefab(string name)
+    {
+        Debug.LogWarning("FindPrefab is only available in the editor.");
+        return null;
+    }
+    #endif
 }
