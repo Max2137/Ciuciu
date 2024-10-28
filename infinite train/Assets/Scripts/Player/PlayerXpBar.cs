@@ -88,7 +88,7 @@ public class PlayerXpBar : MonoBehaviour
         {
             decorationsActivationTime += 1;
             {
-                if (decorationsActivationTime >= 500)
+                if (decorationsActivationTime >= 150)
                 {
                     attackMeleePanel.SetActive(true);
                     attackMagicPanel.SetActive(true);
