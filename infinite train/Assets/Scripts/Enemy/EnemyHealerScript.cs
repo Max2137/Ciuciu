@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.AI;
 
 public class EnemyHealerScript : MonoBehaviour
 {
@@ -9,7 +10,7 @@ public class EnemyHealerScript : MonoBehaviour
     public float switchTargetCooldown = 5f;
     public AudioClip healingSound;
 
-    private Rigidbody healerRigidbody;
+    private NavMeshAgent navAgent;
     [SerializeField] private UniversalHealth targetHealth;
     [SerializeField] private GameObject[] potentialTargets;
     private bool isHealing;
@@ -22,11 +23,14 @@ public class EnemyHealerScript : MonoBehaviour
 
     void Start()
     {
-        healerRigidbody = GetComponent<Rigidbody>();
-        if (healerRigidbody == null)
+        navAgent = GetComponent<NavMeshAgent>();
+        if (navAgent == null)
         {
-            Debug.LogError("Skrypt wymaga komponentu Rigidbody. Dodaj Rigidbody do lecznika.");
+            Debug.LogError("Script requires a NavMeshAgent component. Add NavMeshAgent to the healer.");
         }
+
+        navAgent.stoppingDistance = stoppingDistance;
+        navAgent.speed = moveSpeed;
 
         potentialTargets = GameObject.FindGameObjectsWithTag("Enemy");
 
@@ -38,7 +42,7 @@ public class EnemyHealerScript : MonoBehaviour
         }
         else
         {
-            Debug.LogError("Nie znaleziono ¿adnych potomków (childów) tego obiektu.");
+            Debug.LogError("No child object found.");
         }
         healingEffect.SetActive(false);
 
@@ -47,30 +51,17 @@ public class EnemyHealerScript : MonoBehaviour
         audioSource.loop = false;
         audioSource.playOnAwake = false;
 
-
         mAnimator = GetComponent<Animator>();
     }
 
     void Update()
     {
         FindNextTarget();
-
         potentialTargets = GameObject.FindGameObjectsWithTag("Enemy");
 
-        if (targetHealth != null && targetHealth.gameObject.activeSelf && healerRigidbody != null)
+        if (targetHealth != null && targetHealth.gameObject.activeSelf)
         {
-            Vector3 direction = targetHealth.transform.position - transform.position;
-            float distanceToTarget = direction.magnitude;
-            direction.Normalize();
-
-            if (distanceToTarget > stoppingDistance)
-            {
-                healerRigidbody.velocity = direction * moveSpeed;
-            }
-            else
-            {
-                healerRigidbody.velocity = Vector3.zero;
-            }
+            navAgent.SetDestination(targetHealth.transform.position);
 
             if (!isHealing && currentHealingCooldown <= 0)
             {
@@ -95,22 +86,13 @@ public class EnemyHealerScript : MonoBehaviour
             }
         }
 
-        if (targetHealth != null)
-        {
-            FindNextTarget();
-        }
-        else
+        if (targetHealth == null)
         {
             healingEffect.SetActive(false);
             if (audioSource.isPlaying)
             {
                 audioSource.Stop();
             }
-        }
-
-        if (healingEffect != null)
-        {
-            //healingEffect.SetActive(isHealing);
         }
     }
 
@@ -148,13 +130,9 @@ public class EnemyHealerScript : MonoBehaviour
 
         foreach (GameObject potentialTarget in potentialTargets)
         {
-            if (potentialTarget == null)
-            {
-                continue;
-            }
+            if (potentialTarget == null) continue;
 
             UniversalHealth health = potentialTarget.GetComponent<UniversalHealth>();
-
             if (health != null && health.currentHealth < health.maxHealth * 0.9f && health.gameObject.activeSelf)
             {
                 targetHealth = health;
@@ -167,10 +145,7 @@ public class EnemyHealerScript : MonoBehaviour
 
     int CompareTargets(GameObject target1, GameObject target2)
     {
-        if (target1 == null || target2 == null)
-        {
-            return 0;
-        }
+        if (target1 == null || target2 == null) return 0;
 
         float distance1 = Vector3.Distance(transform.position, target1.transform.position);
         float distance2 = Vector3.Distance(transform.position, target2.transform.position);

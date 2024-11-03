@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.AI;
 
 public class EnemyShooterScript : MonoBehaviour
 {
@@ -11,7 +12,7 @@ public class EnemyShooterScript : MonoBehaviour
     public GameObject projectilePrefab;
     private Transform firePoint;
 
-    private Rigidbody enemyRigidbody;
+    private NavMeshAgent navMeshAgent;
     private UniversalHealth playerHealth;
     private float currentCooldown = 0f;
 
@@ -19,7 +20,7 @@ public class EnemyShooterScript : MonoBehaviour
     private float currentCooldownPhysical;
     public float attackCooldownPhysical;
     public float attackDamagePhysical;
-    
+
     private AudioSource audioSource;
     public AudioClip shootingSound;
 
@@ -35,11 +36,14 @@ public class EnemyShooterScript : MonoBehaviour
 
         isTouchingPlayer = false;
 
-        enemyRigidbody = GetComponent<Rigidbody>();
-
-        if (enemyRigidbody == null)
+        navMeshAgent = GetComponent<NavMeshAgent>();
+        if (navMeshAgent == null)
         {
-            Debug.LogError("Skrypt wymaga komponentu Rigidbody. Dodaj Rigidbody do wroga.");
+            Debug.LogError("Skrypt wymaga komponentu NavMeshAgent. Dodaj NavMeshAgent do wroga.");
+        }
+        else
+        {
+            navMeshAgent.speed = moveSpeed;
         }
 
         if (targetObject == null)
@@ -48,7 +52,6 @@ public class EnemyShooterScript : MonoBehaviour
         }
 
         GameObject player = GameObject.FindGameObjectWithTag("Player");
-
         if (player != null)
         {
             playerHealth = player.GetComponent<UniversalHealth>();
@@ -68,51 +71,33 @@ public class EnemyShooterScript : MonoBehaviour
 
     void Update()
     {
-        if (targetObject != null && enemyRigidbody != null)
+        if (targetObject != null && navMeshAgent != null)
         {
-            // Obliczanie kierunku, w którym wrogi obiekt powinien pod¹¿aæ
-            Vector3 direction = targetObject.position - transform.position;
-            float distanceToTarget = direction.magnitude;
-            direction.Normalize();
+            float distanceToTarget = Vector3.Distance(transform.position, targetObject.position);
 
-            Quaternion toRotation = Quaternion.LookRotation(direction.normalized, Vector3.up);
-
-            // Ustaw obrót tylko w osi Y
-            toRotation = Quaternion.Euler(0f, toRotation.eulerAngles.y, 0f);
-
-            enemyRigidbody.MoveRotation(Quaternion.RotateTowards(enemyRigidbody.rotation, toRotation, Time.deltaTime * 1000f));
-
-            // Przesuñ wrogi obiekt w kierunku celu, ale zatrzymaj siê na okreœlonej odleg³oœci
             if (distanceToTarget > stoppingDistance)
             {
-                enemyRigidbody.velocity = direction * moveSpeed;
+                navMeshAgent.SetDestination(targetObject.position);
                 currentCooldown = attackCooldown;
             }
             else if (distanceToTarget < escapingDistance)
             {
-                // Przeciwnik jest za blisko lub w EscapeDistance, udaæ siê na dystans uœredniony
-                float avgDistance = (stoppingDistance + escapingDistance) / 2f;
-                Vector3 avgPosition = targetObject.position + direction.normalized * avgDistance;
-                Vector3 avgDirection = avgPosition - transform.position;
-
-                enemyRigidbody.velocity = avgDirection.normalized * moveSpeed;
+                // Przeciwnik zbyt blisko, wycofanie
+                Vector3 escapeDirection = (transform.position - targetObject.position).normalized;
+                Vector3 escapePosition = targetObject.position + escapeDirection * ((stoppingDistance + escapingDistance) / 2f);
+                navMeshAgent.SetDestination(escapePosition);
                 currentCooldown = attackCooldown;
             }
             else
             {
-                enemyRigidbody.velocity = Vector3.zero;
+                navMeshAgent.ResetPath();
             }
 
-            // SprawdŸ czy przeciwnik mo¿e zaatakowaæ
             if (currentCooldown <= 0 && distanceToTarget <= stoppingDistance)
             {
                 AttackPlayer();
                 currentCooldown = attackCooldown;
             }
-        }
-        else
-        {
-            Debug.LogWarning("Brak obiektu celu lub komponentu Rigidbody. Przypisz obiekt celu i dodaj Rigidbody w inspektorze.");
         }
 
         if (currentCooldown > 0)
@@ -120,7 +105,6 @@ public class EnemyShooterScript : MonoBehaviour
             currentCooldown -= Time.deltaTime;
         }
 
-       
         if (currentCooldownPhysical > 0)
         {
             currentCooldownPhysical -= Time.deltaTime;
@@ -136,14 +120,13 @@ public class EnemyShooterScript : MonoBehaviour
     void FindPlayer()
     {
         GameObject playerObject = GameObject.FindGameObjectWithTag("Player");
-
         if (playerObject != null)
         {
             targetObject = playerObject.transform;
         }
         else
         {
-            Debug.LogWarning("Nie znaleziono obiektu gracza z tagiem 'Player'. Upewnij siê, ¿e obiekt gracz zosta³ oznaczony poprawnym tagiem.");
+            Debug.LogWarning("Nie znaleziono obiektu gracza z tagiem 'Player'.");
         }
     }
 
@@ -156,12 +139,9 @@ public class EnemyShooterScript : MonoBehaviour
 
     void AttackPlayer()
     {
-        Debug.Log("Attacking player");
-
         if (projectilePrefab != null && firePoint != null)
         {
             audioSource.PlayOneShot(shootingSound);
-
             mAnimator.SetTrigger("atak");
 
             GameObject projectile = Instantiate(projectilePrefab, firePoint.position, firePoint.rotation);
@@ -171,12 +151,9 @@ public class EnemyShooterScript : MonoBehaviour
 
     void OnCollisionEnter(Collision collision)
     {
-        // SprawdŸ, czy wrogi obiekt koliduje z graczem
         if (collision.gameObject.CompareTag("Player"))
         {
-            // Zatrzymaj wroga, mo¿na dodaæ dodatkowe dzia³ania, np. odejmowanie zdrowia gracza itp.
-            enemyRigidbody.velocity = Vector3.zero;
-
+            navMeshAgent.ResetPath();
             isTouchingPlayer = true;
         }
 
@@ -193,7 +170,6 @@ public class EnemyShooterScript : MonoBehaviour
 
     void AttackPlayerPhysical()
     {
-        Debug.Log("Attacking player");
         if (playerHealth != null)
         {
             playerHealth.TakeDamage(attackDamagePhysical, gameObject, EDamageType.OTHER);
