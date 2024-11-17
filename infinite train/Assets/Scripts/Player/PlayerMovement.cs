@@ -30,8 +30,8 @@ public class PlayerMovement : MonoBehaviour
             currentDashCooldown -= Time.deltaTime;
         }
 
-        horizontalInput = Input.GetAxis("Horizontal");
-        verticalInput = Input.GetAxis("Vertical");
+        horizontalInput = Input.GetAxisRaw("Horizontal");
+        verticalInput = Input.GetAxisRaw("Vertical");
 
         if (Input.GetKeyDown(KeyCode.Space) && currentDashCooldown <= 0f)
         {
@@ -43,37 +43,28 @@ public class PlayerMovement : MonoBehaviour
     {
         Vector3 movement = new Vector3(horizontalInput, 0f, verticalInput).normalized;
 
-        if (movement != Vector3.zero)
-        {
-            // Tutaj mo¿esz dodatkowo obs³u¿yæ obrót gracza, jeœli chcesz
-        }
-
         if (isDashing)
         {
             rb.AddForce(movement * dashForce * dashMultiplier * Time.fixedDeltaTime, ForceMode.Impulse);
         }
         else
         {
-            // Jeœli gracz nie porusza siê, zatrzymaj go
             if (movement == Vector3.zero)
             {
-                rb.velocity = Vector3.zero;
+                rb.velocity = new Vector3(0, rb.velocity.y, 0); // Zerowanie prêdkoœci poziomej
             }
             else
             {
-                // W przeciwnym razie nadaj mu prêdkoœæ zgodnie z wektorem ruchu
                 rb.velocity = new Vector3(movement.x * speed, rb.velocity.y, movement.z * speed);
             }
         }
 
-        // Aktywuj/dezaktywuj kolizje w zale¿noœci od tego, czy trwa dash
+        // Mo¿na aktywowaæ/dezaktywowaæ kolizje w zale¿noœci od tego, czy trwa dash
         foreach (Collider collider in colliders)
         {
             //collider.enabled = !isDashing;
         }
     }
-
-
 
     IEnumerator Dash()
     {

@@ -4,23 +4,27 @@ public class PlayerRotation : MonoBehaviour
 {
     void Update()
     {
-            // Pobierz pozycjê myszy na ekranie
-            Vector3 mousePosition = Input.mousePosition;
+        // Pobierz pozycjê myszy na ekranie
+        Vector3 mousePosition = Input.mousePosition;
 
-            // Uzyskaj pozycjê kamery w przestrzeni œwiata gry
-            Vector3 cameraWorldPosition = Camera.main.transform.position;
+        // Rzutuj promieñ z kamery do przestrzeni œwiata gry na podstawie pozycji myszy
+        Ray ray = Camera.main.ScreenPointToRay(mousePosition);
 
-            // Oblicz ró¿nicê w pozycji kamery wzglêdem obiektu
-            Vector3 cameraToObjectOffset = transform.position - cameraWorldPosition;
+        // Definiuj p³aszczyznê na poziomie gracza (y = transform.position.y)
+        Plane playerPlane = new Plane(Vector3.up, new Vector3(0, transform.position.y, 0));
 
-            // Ustaw pozycjê myszy w przestrzeni œwiata gry, uwzglêdniaj¹c offset kamery
-            Vector3 worldMousePosition = Camera.main.ScreenToWorldPoint(new Vector3(mousePosition.x, mousePosition.y, Mathf.Abs(cameraToObjectOffset.y)));
+        // Oblicz punkt przeciêcia promienia z p³aszczyzn¹
+        if (playerPlane.Raycast(ray, out float distance))
+        {
+            // ZnajdŸ punkt przeciêcia w przestrzeni œwiata
+            Vector3 worldMousePosition = ray.GetPoint(distance);
 
             // Oblicz rotacjê tylko w osi Y w kierunku kursora
-            Quaternion targetRotation = Quaternion.LookRotation(new Vector3(worldMousePosition.x - transform.position.x, 0f, worldMousePosition.z - transform.position.z));
+            Quaternion targetRotation = Quaternion.LookRotation(worldMousePosition - transform.position);
 
-            // Ustaw sta³¹ rotacjê 90 stopni w osi X i rotacjê tylko w osi Y
+            // Zastosuj rotacjê (zachowuj¹c obrót tylko w osi Y)
             transform.rotation = Quaternion.Euler(0f, targetRotation.eulerAngles.y, 0f);
+        }
     }
 
     void OnDrawGizmos()
@@ -31,18 +35,22 @@ public class PlayerRotation : MonoBehaviour
             // Pobierz pozycjê myszy na ekranie
             Vector3 mousePosition = Input.mousePosition;
 
-            // Uzyskaj pozycjê kamery w przestrzeni œwiata gry
-            Vector3 cameraWorldPosition = Camera.main.transform.position;
+            // Rzutuj promieñ z kamery do przestrzeni œwiata gry na podstawie pozycji myszy
+            Ray ray = Camera.main.ScreenPointToRay(mousePosition);
 
-            // Oblicz ró¿nicê w pozycji kamery wzglêdem obiektu
-            Vector3 cameraToObjectOffset = transform.position - cameraWorldPosition;
+            // Definiuj p³aszczyznê na poziomie gracza (y = transform.position.y)
+            Plane playerPlane = new Plane(Vector3.up, new Vector3(0, transform.position.y, 0));
 
-            // Ustaw pozycjê myszy w przestrzeni œwiata gry, uwzglêdniaj¹c offset kamery
-            Vector3 worldMousePosition = Camera.main.ScreenToWorldPoint(new Vector3(mousePosition.x, mousePosition.y, Mathf.Abs(cameraToObjectOffset.y)));
+            // Oblicz punkt przeciêcia promienia z p³aszczyzn¹
+            if (playerPlane.Raycast(ray, out float distance))
+            {
+                // ZnajdŸ punkt przeciêcia w przestrzeni œwiata
+                Vector3 worldMousePosition = ray.GetPoint(distance);
 
-            // Rysuj kropkê za pomoc¹ Gizmos
-            Gizmos.color = Color.red;
-            Gizmos.DrawSphere(worldMousePosition, 0.1f);
+                // Rysuj kropkê za pomoc¹ Gizmos
+                Gizmos.color = Color.red;
+                Gizmos.DrawSphere(worldMousePosition, 0.1f);
+            }
         }
     }
 }

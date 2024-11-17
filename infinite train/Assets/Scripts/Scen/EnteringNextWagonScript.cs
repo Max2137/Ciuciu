@@ -104,7 +104,7 @@ public class EnteringNextWagonScript : MonoBehaviour
                 mAnimator.SetTrigger("open");
             }
         }
-       
+
         wasOpenedLastFrame = isOpened; // Aktualizacja stanu otwarcia drzwi w poprzedniej klatce
     }
 }
