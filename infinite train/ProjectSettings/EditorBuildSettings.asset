@@ -6,7 +6,7 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/SceneMenu.unity
+    path: Assets/Scenes/urzywane/tymczasowy/Smietnik/SceneMenu.unity
     guid: 14cfb7726b5b591429f454ad856f2b55
   - enabled: 1
     path: Assets/Scenes/urzywane/tymczasowy/SceneStay.unity
@@ -15,10 +15,10 @@ EditorBuildSettings:
     path: Assets/Scenes/urzywane/tymczasowy/SceneStart.unity
     guid: e3efb6a4ffea72e469bf18ba67d87ce7
   - enabled: 1
-    path: Assets/Scenes/SceneFightingWagon.unity
+    path: Assets/Scenes/urzywane/tymczasowy/Smietnik/SceneFightingWagon.unity
     guid: 5f65765b686d743459d5565d58bd0ab6
   - enabled: 0
-    path: Assets/Scenes/SceneTest.unity
+    path: Assets/Scenes/urzywane/tymczasowy/Smietnik/SceneTest.unity
     guid: 7b3f134fea36f6e4cb853132581fcfc1
   - enabled: 1
     path: Assets/Scenes/urzywane/tymczasowy/SceneTreasureWagon.unity
@@ -33,25 +33,25 @@ EditorBuildSettings:
     path: NowaScena2
     guid: 00000000000000000000000000000000
   - enabled: 1
-    path: Assets/Scenes/urzywane/SceneFightingWagon 1.unity
+    path: Assets/Scenes/urzywane/tymczasowy/Smietnik/SceneFightingWagon 1.unity
     guid: b075b451962616544821d7557562d8f8
   - enabled: 1
-    path: Assets/Scenes/urzywane/SceneFightingWagon 2.unity
+    path: Assets/Scenes/urzywane/tymczasowy/Smietnik/SceneFightingWagon 2.unity
     guid: 786a30cace159da44ad955b3787c1d92
   - enabled: 1
-    path: Assets/Scenes/urzywane/SceneFightingWagon 3.unity
+    path: Assets/Scenes/urzywane/tymczasowy/Smietnik/SceneFightingWagon 3.unity
     guid: 30d74381ef2621b4790098ab01f26ebb
   - enabled: 1
-    path: Assets/Scenes/urzywane/SceneFightingWagon 4.unity
+    path: Assets/Scenes/urzywane/tymczasowy/Smietnik/SceneFightingWagon 4.unity
     guid: b0e4b182cc3f6ba4794c523f7060f545
   - enabled: 1
-    path: Assets/Scenes/urzywane/SceneFightingWagon 5.unity
+    path: Assets/Scenes/urzywane/tymczasowy/Smietnik/SceneFightingWagon 5.unity
     guid: 452ea2dd80170c142b0df6b901880dfb
   - enabled: 1
-    path: Assets/Scenes/urzywane/SceneFightingWagon 6.unity
+    path: Assets/Scenes/urzywane/tymczasowy/Smietnik/SceneFightingWagon 6.unity
     guid: 6425b4c4d9fc9d94983fb42642a76695
   - enabled: 1
-    path: Assets/Scenes/urzywane/SceneFightingWagon 7.unity
+    path: Assets/Scenes/urzywane/tymczasowy/Smietnik/SceneFightingWagon 7.unity
     guid: ac6f69f464d728c4995fc720cd81b9a7
   - enabled: 1
     path: Assets/Scenes/urzywane/tymczasowy/SceneFightingWagonPlain.unity
