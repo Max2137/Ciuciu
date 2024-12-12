@@ -20,9 +20,6 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/tymczasowy/Smietnik/SceneTest.unity
     guid: 7b3f134fea36f6e4cb853132581fcfc1
-  - enabled: 1
-    path: Assets/Scenes/tymczasowy/SceneTreasureWagon.unity
-    guid: 27f6a5aecaa58714f8da55edb4bcfd32
   - enabled: 0
     path: Assets/NowaScena.unity
     guid: 26dab9f6caa50234987d30625ba72e59
@@ -56,6 +53,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/tymczasowy/SceneFightingWagonPlain.unity
     guid: e8c3d943698d5a54387745f2ef36ceac
+  - enabled: 1
+    path: Assets/Scenes/tymczasowy/SceneTreasureWagon.unity
+    guid: 27f6a5aecaa58714f8da55edb4bcfd32
   - enabled: 0
     path: Assets/Scenes/tymczasowy/SceneFightingWagonRun.unity
     guid: c9e524e06ec40ad47804fd92489a149a
